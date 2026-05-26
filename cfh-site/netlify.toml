@@ -1,2 +1,4 @@
 [build]
-  functions = "netlify/functions"
+  base    = "cfh-site"
+  publish = "cfh-site"
+  functions = "cfh-site/netlify/functions"
