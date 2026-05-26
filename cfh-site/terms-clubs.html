@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service — Sports Clubs — Community Fundraising Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --white:#FFFFFF;
+  --sky:#F4FAFF;--sky2:#E8F3FC;
+  --blue:#1769AA;--blue2:#125490;--blue-mid:#2282CC;
+  --blue-lt:#EBF4FC;--blue-lt2:#CCE2F4;
+  --amber:#E08A0E;--amber-lt:#FEF4E0;
+  --green:#1F9E68;--green-lt:#E4F7EF;
+  --red-lt:#FDF0F0;
+  --text:#162035;--text2:#344258;--muted:#637087;
+  --border:rgba(23,105,170,0.1);--border2:rgba(23,105,170,0.22);
+  --radius:12px;--radius2:20px;
+  --shadow:0 2px 20px rgba(23,105,170,0.08);
+}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.65;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Syne',sans-serif;line-height:1.2}
+a{color:inherit;text-decoration:none}
+.container{max-width:800px;margin:0 auto;padding:0 24px}
+
+/* NAV */
+nav{background:var(--white);border-bottom:1px solid var(--border);padding:14px 0;position:sticky;top:0;z-index:100;box-shadow:var(--shadow)}
+.nav-inner{display:flex;align-items:center;gap:14px}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo-mark{width:36px;height:36px;border-radius:10px;background:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 10px rgba(23,105,170,0.3)}
+.nav-logo-mark svg{width:20px;height:20px}
+.nav-logo-text{font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:var(--text)}
+.nav-back{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:var(--blue);font-weight:500;padding:8px 16px;border-radius:9px;border:1.5px solid var(--border2);transition:all 0.2s}
+.nav-back:hover{background:var(--blue-lt)}
+
+/* HERO BAND */
+.page-hero{background:linear-gradient(135deg,var(--blue) 0%,var(--blue2) 100%);padding:52px 0 44px;color:#fff}
+.page-hero-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.8px;color:rgba(255,255,255,0.6);margin-bottom:12px}
+.page-hero h1{font-family:'Syne',sans-serif;font-size:clamp(24px,4vw,36px);font-weight:800;margin-bottom:10px}
+.page-hero-sub{font-size:15px;color:rgba(255,255,255,0.75);margin-bottom:20px}
+.page-hero-meta{display:flex;flex-wrap:wrap;gap:16px}
+.meta-pill{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:4px 14px;font-size:12px;color:rgba(255,255,255,0.8)}
+
+/* LEGAL NOTE */
+.legal-note{background:var(--amber-lt);border-left:3px solid var(--amber);border-radius:0 10px 10px 0;padding:16px 20px;margin:32px 0;font-size:14px;color:var(--text2)}
+.legal-note strong{color:var(--text);display:block;margin-bottom:4px}
+
+/* CONTENT */
+.doc-body{}
+.doc-section{margin-bottom:48px}
+.doc-section h2{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--text);padding-bottom:10px;border-bottom:2px solid var(--blue);margin-bottom:20px;margin-top:40px}
+.doc-section h3{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--blue);margin:24px 0 10px}
+.doc-section p{font-size:15px;color:var(--text2);line-height:1.75;margin-bottom:14px}
+.doc-section ul{margin:8px 0 14px 0;padding-left:0;list-style:none}
+.doc-section ul li{font-size:15px;color:var(--text2);line-height:1.7;padding:4px 0 4px 22px;position:relative}
+.doc-section ul li::before{content:"•";position:absolute;left:6px;color:var(--blue);font-weight:700}
+
+/* TABLES */
+.doc-table{width:100%;border-collapse:collapse;margin:16px 0 20px;font-size:14px}
+.doc-table th{background:var(--blue);color:#fff;padding:10px 14px;text-align:left;font-family:'Syne',sans-serif;font-size:13px;font-weight:700}
+.doc-table td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top}
+.doc-table tr:nth-child(even) td{background:var(--sky)}
+.doc-table td:first-child{font-weight:600;color:var(--text);white-space:nowrap}
+
+/* INFO BOXES */
+.info-box{background:var(--blue-lt);border-radius:12px;padding:20px 22px;margin:16px 0 20px}
+.info-box.warning{background:var(--amber-lt);border-left:3px solid var(--amber);border-radius:0 12px 12px 0}
+.info-box.danger{background:var(--red-lt);border-left:3px solid #C0392B;border-radius:0 12px 12px 0}
+.info-box strong{display:block;font-family:'Syne',sans-serif;font-size:14px;color:var(--text);margin-bottom:8px}
+.info-box p,.info-box li{font-size:14px;color:var(--text2);line-height:1.7}
+.info-box ul{margin:8px 0 0;padding-left:0;list-style:none}
+.info-box ul li{padding:3px 0 3px 18px;position:relative}
+.info-box ul li::before{content:"•";position:absolute;left:4px;color:var(--blue);font-weight:700}
+.info-box.warning ul li::before,.info-box.danger ul li::before{color:var(--amber)}
+.example-box{background:var(--sky);border:1px solid var(--border2);border-radius:12px;padding:20px 22px;margin:16px 0 20px}
+.example-box strong{display:block;font-family:'Syne',sans-serif;font-size:13px;color:var(--blue);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px}
+.example-box p,.example-box li{font-size:14px;color:var(--text2);line-height:1.7}
+
+/* LAYOUT — two-column with sticky sidebar TOC */
+.doc-outer{max-width:1180px;margin:0 auto;padding:0 24px}
+.doc-layout{display:grid;grid-template-columns:240px 1fr;gap:56px;align-items:start;padding:48px 0 80px}
+.doc-content{min-width:0}
+
+/* STICKY SIDEBAR TOC */
+.toc-sidebar{position:sticky;top:80px;max-height:calc(100vh - 110px);overflow-y:auto;padding-right:4px}
+.toc-sidebar::-webkit-scrollbar{width:3px}
+.toc-sidebar::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+.toc-label{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:14px;display:block}
+.toc-list{list-style:none;margin:0;padding:0;border-left:2px solid var(--border)}
+.toc-list li a{display:block;padding:5px 0 5px 14px;font-size:13px;color:var(--muted);line-height:1.4;transition:color 0.15s, border-color 0.15s;border-left:2px solid transparent;margin-left:-2px;text-decoration:none}
+.toc-list li a:hover{color:var(--blue)}
+.toc-list li a.active{color:var(--blue);border-left-color:var(--blue);font-weight:500}
+
+/* SECTION SCROLL OFFSET — compensates for sticky top nav */
+.doc-section{scroll-margin-top:80px;margin-bottom:48px}
+
+/* Mobile — stack TOC above content */
+@media(max-width:860px){
+  .doc-layout{grid-template-columns:1fr;gap:0;padding-top:0}
+  .toc-sidebar{position:static;max-height:none;overflow:visible;border:1px solid var(--border);border-radius:12px;padding:20px 24px;background:var(--sky);margin:32px 0 40px}
+  .toc-list{border-left:none}
+  .toc-list li a{padding:4px 0;border-left:none;margin-left:0;counter-increment:toc-counter}
+  .toc-list li a::before{content:counter(toc-counter) ". ";color:var(--blue);font-weight:600}
+  .toc-list{counter-reset:toc-counter}
+  .toc-list li a.active{background:none;font-weight:600}
+}
+
+/* CONTACT BOX */
+.contact-box{background:var(--blue);border-radius:16px;padding:28px 32px;color:#fff;margin-top:48px}
+.contact-box h3{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;margin-bottom:10px}
+.contact-box p,.contact-box a{font-size:15px;color:rgba(255,255,255,0.8);line-height:1.7}
+.contact-box a{text-decoration:underline}
+.contact-box a:hover{color:#fff}
+
+/* FOOTER */
+footer{background:var(--text);padding:48px 0 28px;color:rgba(255,255,255,0.65)}
+.footer-inner{display:grid;grid-template-columns:1.8fr 1fr 1fr;gap:48px;margin-bottom:40px}
+.footer-brand p{font-size:13.5px;line-height:1.7;margin-top:12px;color:rgba(255,255,255,0.48)}
+.footer-logo-text{font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:#fff}
+.footer-col-title{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,0.35);margin-bottom:14px}
+.footer-links{display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:13.5px;color:rgba(255,255,255,0.48);transition:color 0.2s}
+.footer-links a:hover{color:#fff}
+.footer-contact{margin-top:16px;display:flex;flex-direction:column;gap:7px}
+.footer-contact-item{display:flex;align-items:center;gap:8px;font-size:13.5px;color:rgba(255,255,255,0.6)}
+.footer-contact-item a{color:rgba(255,255,255,0.6);transition:color 0.2s}
+.footer-contact-item a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-legal{font-size:12px;color:rgba(255,255,255,0.28)}
+.footer-tag{font-size:12px;color:rgba(255,255,255,0.22);font-style:italic}
+
+@media(max-width:700px){
+  .footer-inner{grid-template-columns:1fr}
+  .page-hero-meta{flex-direction:column;gap:8px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container" style="max-width:1080px">
+    <div class="nav-inner">
+      <a href="https://cfh.org.nz" class="nav-logo">
+        <div class="nav-logo-mark"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="5.5" cy="15" r="2.8" fill="rgba(255,255,255,0.75)"/><circle cx="12" cy="11.5" r="3.2" fill="#fff"/><circle cx="18.5" cy="15" r="2.8" fill="rgba(255,255,255,0.75)"/><path d="M3 19.5 Q5.5 17.5 8 19.5" stroke="rgba(255,255,255,0.5)" stroke-width="1.3" fill="none" stroke-linecap="round"/><path d="M16 19.5 Q18.5 17.5 21 19.5" stroke="rgba(255,255,255,0.5)" stroke-width="1.3" fill="none" stroke-linecap="round"/><path d="M8.5 19.5 Q12 17 15.5 19.5" stroke="rgba(255,255,255,0.8)" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg></div>
+        <span class="nav-logo-text">Community <span style="color:var(--blue)">Fundraising</span> Hub</span>
+      </a>
+      <a href="https://cfh.org.nz" class="nav-back">← Back to site</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="page-hero-label">Legal</div>
+    <h1>Terms of Service — Sports Clubs</h1>
+    <p class="page-hero-sub">The agreement between Community Fundraising Hub and participating sports clubs</p>
+    <div class="page-hero-meta">
+      <span class="meta-pill">Version 1.2</span>
+      <span class="meta-pill">Effective: May 2026</span>
+      <span class="meta-pill">Governed by New Zealand law</span>
+      <span class="meta-pill">NZBN: 9429053669445</span>
+    </div>
+  </div>
+</div>
+
+<div class="doc-body">
+  <div class="doc-outer">
+  <div class="doc-layout">
+<aside class="toc-sidebar">
+<span class="toc-label">Contents</span>
+  <ul class="toc-list">
+    <li><a href="#c1">Introduction and Parties</a></li>
+    <li><a href="#c2">Definitions</a></li>
+    <li><a href="#c3">CFH's Services to Clubs</a></li>
+    <li><a href="#c4">Club Registration and Eligibility</a></li>
+    <li><a href="#c5">Charitable Status and Tax Receipts</a></li>
+    <li><a href="#c6">Platform Fee, Payment Processing, and Settlement</a></li>
+    <li><a href="#c7">Club's Responsibilities and Conduct</a></li>
+    <li><a href="#c8">CFH's Obligations and Limitations</a></li>
+    <li><a href="#c9">Intellectual Property</a></li>
+    <li><a href="#c10">Suspension and Termination</a></li>
+    <li><a href="#c11">Limitation of Liability</a></li>
+    <li><a href="#c12">Dispute Resolution</a></li>
+    <li><a href="#c13">General Provisions</a></li>
+    <li><a href="#c14">Contact</a></li>
+  </ul>
+</aside>
+
+<div class="doc-content">
+<div class="legal-note">
+      <strong>Legal Note</strong>
+      This document has been prepared in good faith and is intended to comply with New Zealand law. It has not been reviewed by a qualified NZ solicitor. Seek independent legal advice if you have specific concerns.
+    </div>
+
+<div class="doc-section" id="c1">
+  <h2>1. Introduction and Parties</h2>
+  <p>These Terms of Service ('Terms') govern the relationship between Community Fundraising Hub ('CFH') — a Charitable Trust Board incorporated under the Charitable Trusts Act 1957 (Incorporation No: 70000374, NZBN: 9429053669445) — and each sports club or sporting organisation ('Club', 'you', 'your') that registers with and uses the CFH platform.</p>
+  <p>By completing CFH's club intake form, registering your Club, or using CFH services, you agree to these Terms on behalf of your Club and confirm that you have authority to bind your Club to them.</p>
+  <p>These Terms should be read alongside the <a href="https://cfh.org.nz/privacy" style="color:var(--blue);text-decoration:underline">CFH Privacy Policy</a> and the <a href="https://cfh.org.nz/ethical-sponsorship" style="color:var(--blue);text-decoration:underline">CFH Ethical Sponsorship Guidelines</a> and <a href="https://cfh.org.nz/sponsorship-framework" style="color:var(--blue);text-decoration:underline">Sponsorship Responsibility Framework</a> (provided at onboarding). Together, these three documents form the complete agreement between your Club and CFH.</p>
+</div>
+
+<div class="doc-section" id="c2">
+  <h2>2. Definitions</h2>
+  <table class="doc-table">
+    <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td>CFH Platform</td><td>The fundraising system operated by Community Fundraising Hub, including the Club Landing Page, donation processing, automated receipting, and all associated tools and services</td></tr>
+      <tr><td>Club Landing Page</td><td>The custom-branded fundraising webpage built and hosted by CFH for your specific Club campaign</td></tr>
+      <tr><td>AI Business List</td><td>The research-generated list of local businesses tailored to your Club's suburb and sport, provided for the Club's own outreach use</td></tr>
+      <tr><td>Campaign</td><td>A fundraising period during which your Club solicits donations and sponsorships through your Club Landing Page</td></tr>
+      <tr><td>Donation</td><td>Any monetary contribution made through the CFH Platform to support your Club's campaign, in New Zealand dollars (NZD)</td></tr>
+      <tr><td>Platform Fee</td><td>The 7% fee retained by CFH from each Donation processed through the Platform</td></tr>
+      <tr><td>Payment Processing Fee</td><td>The fee charged by CFH's payment provider (currently Stripe) for processing each transaction</td></tr>
+      <tr><td>Settlement</td><td>The transfer of Donation proceeds (minus all fees) to the Club's nominated bank account</td></tr>
+      <tr><td>Ethical Sponsorship Guidelines</td><td>CFH's policy document governing which types of businesses and sponsors are permitted and prohibited on the Platform</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="doc-section" id="c3">
+  <h2>3. CFH's Services to Clubs</h2>
+  <h3>3.1 Custom Club Landing Page</h3>
+  <p>CFH will build a custom-branded fundraising webpage for your Club campaign displaying your name, logo (if provided), campaign description, sponsorship tiers, and campaign progress. The page will be hosted by CFH for the duration of the campaign. CFH reserves the right to review and edit copy for accuracy, tone, or compliance with these Terms.</p>
+  <h3>3.2 AI-Generated Business List</h3>
+  <p>CFH will provide your Club with a tailored list of local businesses researched using AI tools. Please note:</p>
+  <ul>
+    <li>Business details (names, addresses, categories) should be independently verified by the Club before contact, as AI-generated information may contain errors, outdated details, or misidentified business categories</li>
+    <li>The list is not a guarantee of any business's interest, availability, or willingness to donate</li>
+    <li>The list is screened against the Ethical Sponsorship Guidelines on a best-efforts basis — this is not a warranty that every business on the list is suitable. The Club must apply its own judgment</li>
+    <li>The list is for Club use only and must not be shared commercially or used for any purpose other than the Club's CFH campaign</li>
+  </ul>
+  <p>Reaching out to businesses is entirely the Club's responsibility. CFH does not contact businesses on the Club's behalf.</p>
+  <h3>3.3 Outreach Templates</h3>
+  <p>CFH will provide a suite of personalised outreach templates (email, WhatsApp, social media formats) designed to be sent from the Club's own contact channels.</p>
+  <h3>3.4 Automated Donation Processing and Receipting</h3>
+  <p>CFH receives all donations on behalf of the Club as the charitable trust, issues donation tax receipts to donors (once donee status is confirmed), records all donation data, and provides the Club with a campaign summary and donor acknowledgement list.</p>
+  <h3>3.5 Settlement — Weekly</h3>
+  <p>CFH will transfer campaign proceeds to the Club's nominated bank account weekly, net of the Platform Fee and Payment Processing Fee, with a settlement summary. Settlement is currently performed manually. CFH may adjust settlement frequency with minimum 14 days' written notice. Disputes about settlement amounts must be raised within 14 days of the settlement notification.</p>
+  <h3>3.6 End-of-Campaign Impact Report</h3>
+  <p>At the conclusion of each campaign, CFH will provide a summary impact report including total raised, number of sponsors, and tier breakdown.</p>
+</div>
+
+<div class="doc-section" id="c4">
+  <h2>4. Club Registration and Eligibility</h2>
+  <h3>4.1 Eligibility</h3>
+  <p>To register with CFH, a Club must be a legitimately operating sports club or sporting organisation in New Zealand, have a designated contact person with authority to enter this agreement, have a NZ bank account, and agree to these Terms and the Ethical Sponsorship Guidelines. CFH reserves the right to decline any Club registration.</p>
+  <h3>4.2 Club Information and Bank Account Changes</h3>
+  <p>The Club is responsible for providing accurate and complete information throughout the campaign. Changes to the Club's nominated bank account must be submitted in writing to hello@cfh.org.nz and take effect only upon CFH's written acknowledgement. CFH accepts no liability for settlement to an incorrect account where the Club failed to follow this process.</p>
+</div>
+
+<div class="doc-section" id="c5">
+  <h2>5. Charitable Status and Tax Receipts</h2>
+  <p>Community Fundraising Hub is incorporated as a Charitable Trust Board under the Charitable Trusts Act 1957. Our application for registration with Charities Services NZ is currently under assessment (as at May 2026).</p>
+  <div class="info-box warning">
+    <strong>Important — Current Status of Donee Status and Tax Receipts</strong>
+    <p>Until CFH receives its donee status number (DT number) from IRD, donations through the CFH Platform do NOT qualify for the NZ donor tax credit.</p>
+    <p style="margin-top:8px"><strong>Clubs MUST NOT represent donations as tax-deductible or promise tax receipts to businesses or individuals.</strong> Making such a representation before donee status is confirmed may breach the Fair Trading Act 1986 and could expose the Club and CFH to liability. CFH can issue a donation confirmation only — not a tax receipt.</p>
+  </div>
+  <p>Once donee status is confirmed, donors will receive automated tax receipts from CFH within 48 hours of donation. All donations through the CFH Platform are donations to Community Fundraising Hub as the charitable trust — CFH then applies those funds to support the named Club's community purposes.</p>
+</div>
+
+<div class="doc-section" id="c6">
+  <h2>6. Platform Fee, Payment Processing, and Settlement</h2>
+  <h3>6.1 Platform Fee — 7%</h3>
+  <p>CFH retains a Platform Fee of 7% from all Donations processed. This fee is applied to each donation at the time it is received, is not subject to GST (CFH is not currently GST registered), and is non-negotiable during the current Phase 1 period — except where a trial or pilot arrangement has been agreed in writing (see Section 6.5). CFH will give at least 30 days' written notice if its GST status changes.</p>
+  <h3>6.2 Payment Processing Costs</h3>
+  <p>Stripe's payment processing fees are deducted from each donation before settlement. Current rates are published at stripe.com/en-nz/pricing. CFH will notify Clubs of any material change to its payment processing provider.</p>
+  <h3>6.3 Settlement</h3>
+  <p>CFH will settle campaign proceeds weekly, net of all fees. Disputes about settlement amounts must be raised within 14 days of the settlement notification.</p>
+  <h3>6.4 Refunds</h3>
+  <p>CFH may issue a refund within 7 days of the donation where a reasonable basis exists (for example, an accidental duplicate donation). If a refund is issued, the settlement amount to the Club is reduced accordingly. If CFH is required to hold funds pending an AML/CFT investigation, settlement for those specific funds will be suspended for up to 30 days.</p>
+  <h3>6.5 Trial and Pilot Campaigns</h3>
+  <div class="info-box">
+    <p>CFH may from time to time offer trial or pilot campaigns on varied fee terms (including at no cost). Any such variation will be confirmed in writing to the Club before the campaign begins and supersedes Section 6.1 for that campaign only. All other Terms continue to apply in full during a trial or pilot campaign.</p>
+  </div>
+</div>
+
+<div class="doc-section" id="c7">
+  <h2>7. Club's Responsibilities and Conduct</h2>
+  <h3>7.1 Ethical Sponsorship Compliance</h3>
+  <p>The Club is responsible for ensuring that all businesses it approaches are consistent with CFH's Ethical Sponsorship Guidelines.</p>
+  <div class="info-box danger">
+    <strong>Absolute Prohibitions — NEVER permitted on CFH</strong>
+    <ul>
+      <li>Tobacco, vaping, and smoking-related products</li>
+      <li>Adult content</li>
+      <li>Predatory lenders (payday lenders, high-cost credit providers targeting vulnerable borrowers)</li>
+      <li>Multi-level marketing (MLM) schemes and pyramid selling</li>
+      <li>Businesses engaged in illegal activity in New Zealand</li>
+      <li>Gambling (except permitted conditional categories for adult sports clubs per the Guidelines)</li>
+    </ul>
+  </div>
+  <h3>7.2 No Tax Receipt Representations Before Donee Status</h3>
+  <p>Clubs must not represent donations as tax-deductible or promise tax receipts to any business or individual until CFH has notified the Club that donee status has been confirmed by IRD.</p>
+  <h3>7.3 Accuracy of Campaign Information</h3>
+  <p>The Club must ensure all campaign information is accurate, including how raised funds will be used, the Club's status and activities, sponsorship benefits offered, and CFH's role as platform provider and charitable vehicle (not a co-endorser of Club activities).</p>
+  <h3>7.4 Club's Responsibility for Sponsor Relationships</h3>
+  <p>The relationship between the Club and any business sponsor is the Club's own. CFH is not a party to any agreement between the Club and a specific business, does not guarantee any business will donate, and is not responsible for the Club's fulfilment of sponsorship commitments.</p>
+  <h3>7.5 Use of CFH Materials</h3>
+  <p>Outreach templates, AI business lists, and other CFH materials are licensed to the Club solely for use in connection with its CFH campaign. The Club must not share, resell, or distribute these materials, or use CFH's name, logo, or brand in a manner not authorised by CFH.</p>
+  <h3>7.6 Compliance with NZ Law</h3>
+  <p>The Club is responsible for ensuring its use of CFH's platform complies with all applicable NZ laws, including the Privacy Act 2020, Fair Trading Act 1986, Charities Act 2005, and any sport-specific regulations.</p>
+  <h3>7.7 Notification of Material Changes</h3>
+  <p>The Club must promptly notify CFH of any change of club contact or bank account details, dissolution or restructuring, any legal proceeding or regulatory action, or any concern about a sponsor's suitability.</p>
+</div>
+
+<div class="doc-section" id="c8">
+  <h2>8. CFH's Obligations and Limitations</h2>
+  <h3>8.1 CFH's Obligations</h3>
+  <p>CFH will build and host the Club Landing Page, provide the AI Business List within the agreed timeframe, process donations promptly and accurately, issue donor tax receipts once donee status is active, transfer settlement proceeds weekly net of fees, maintain campaign data securely, and provide a campaign summary at the end of each campaign.</p>
+  <h3>8.2 No Guarantee of Fundraising Outcomes</h3>
+  <p>CFH does not guarantee any specific fundraising outcome. CFH provides no warranty regarding the amount the Club will raise, the number of donors who will contribute, or any commercial outcome.</p>
+  <h3>8.3 Platform Availability</h3>
+  <p>CFH will take reasonable steps to ensure the Club Landing Page is accessible during the campaign but does not guarantee uninterrupted access and accepts no liability for loss caused by platform downtime, technical issues, or third-party service failures.</p>
+</div>
+
+<div class="doc-section" id="c9">
+  <h2>9. Intellectual Property</h2>
+  <p>All intellectual property in the CFH Platform — including Landing Page template design, AI Business List methodology, outreach templates, brand assets, and system design — remains the property of Community Fundraising Hub.</p>
+  <p>Content provided by the Club (logos, photos, descriptions) remains the Club's intellectual property. The Club grants CFH a limited, non-exclusive licence to use this content for the purpose of building and operating the Club's Landing Page. Upon the Club's request or upon termination, CFH will remove the Club's content within a reasonable timeframe.</p>
+</div>
+
+<div class="doc-section" id="c10">
+  <h2>10. Suspension and Termination</h2>
+  <h3>10.1 Club's Right to Withdraw</h3>
+  <p>A Club may withdraw at any time by written notice to hello@cfh.org.nz. Upon withdrawal, the Club Landing Page will be taken down, outstanding settlement amounts will be transferred after deduction of all fees and refunds, and donation records will be retained by CFH as required by law.</p>
+  <h3>10.2 CFH's Right to Suspend or Terminate</h3>
+  <p>CFH may suspend or terminate a Club's access without notice if the Club has provided false or misleading information, is in breach of these Terms or the Ethical Sponsorship Guidelines, CFH becomes aware of a prohibited sponsor on the Club's campaign, or the Club is subject to legal proceedings or regulatory action. For other concerns, CFH will provide written notice and a 7-day opportunity to respond.</p>
+  <h3>10.3 Effect of Termination</h3>
+  <p>Upon termination: outstanding donations are settled net of fees; CFH retains donation records as required by law; the Club must immediately cease using CFH materials and branding.</p>
+</div>
+
+<div class="doc-section" id="c11">
+  <h2>11. Limitation of Liability</h2>
+  <p>To the maximum extent permitted by New Zealand law:</p>
+  <ul>
+    <li>CFH's total liability to any Club for any claim arising from these Terms or the use of the Platform is limited to the greater of: (a) the total Platform Fees paid by that Club's campaign in the 12 months preceding the claim; or (b) $500 NZD</li>
+    <li>CFH is not liable for any indirect, consequential, incidental, or special loss, including loss of opportunity, revenue, or reputational harm</li>
+    <li>CFH is not liable for the conduct of any business or individual who donates or declines to donate through the Platform</li>
+    <li>CFH is not liable for the Club's failure to fulfil its own sponsorship commitments</li>
+  </ul>
+  <p>Nothing in these Terms limits any rights the Club may have under non-excludable statutory rights under New Zealand law.</p>
+</div>
+
+<div class="doc-section" id="c12">
+  <h2>12. Dispute Resolution</h2>
+  <h3>12.1 Informal Resolution</h3>
+  <p>If a Club has a concern or dispute, it should first contact CFH in writing at hello@cfh.org.nz. CFH will acknowledge receipt within 3 working days and endeavour to resolve the matter within 20 working days.</p>
+  <h3>12.2 Mediation</h3>
+  <p>If the dispute cannot be resolved informally, either party may request referral to a mediator accredited by LEADR & AMINZ (leadr.co.nz). The cost of mediation is shared equally unless otherwise agreed.</p>
+  <h3>12.3 Governing Law and Jurisdiction</h3>
+  <p>These Terms are governed by the laws of New Zealand. Each party submits to the non-exclusive jurisdiction of the New Zealand courts.</p>
+</div>
+
+<div class="doc-section" id="c13">
+  <h2>13. General Provisions</h2>
+  <h3>13.1 Entire Agreement</h3>
+  <p>These Terms, the CFH Privacy Policy, and the Ethical Sponsorship Guidelines constitute the entire agreement between CFH and the Club.</p>
+  <h3>13.2 Amendments</h3>
+  <p>CFH will notify registered Clubs at least 14 days before material changes take effect. Continued use of the Platform after that date constitutes acceptance of the updated Terms. The latest version is always available at cfh.org.nz/terms-clubs.</p>
+  <h3>13.3 Severability</h3>
+  <p>If any provision of these Terms is found to be unenforceable or invalid, that provision will be modified to the minimum extent necessary, or removed. The remaining provisions continue in full force.</p>
+  <h3>13.4 No Waiver</h3>
+  <p>A failure by CFH to enforce any provision on one occasion does not waive CFH's right to enforce it in future.</p>
+  <h3>13.5 Assignment</h3>
+  <p>The Club may not assign its rights or obligations without CFH's prior written consent. CFH may assign its obligations to a successor charitable entity, provided the Club's rights are preserved.</p>
+  <h3>13.6 Force Majeure</h3>
+  <p>CFH will not be in breach of these Terms if it is unable to perform its obligations due to circumstances beyond its reasonable control. CFH will notify affected Clubs as soon as reasonably practicable of any force majeure event and its expected duration.</p>
+  <h3>13.7 Relationship of the Parties</h3>
+  <p>Nothing in these Terms creates a partnership, employment relationship, or joint venture between CFH and the Club.</p>
+  <h3>13.8 GST</h3>
+  <p>Community Fundraising Hub is not currently registered for GST. All fees are stated exclusive of GST. CFH will give at least 30 days' written notice if its GST registration status changes in a way that affects fees charged to Clubs.</p>
+</div>
+
+<div class="doc-section" id="c14">
+  <h2>14. Contact</h2>
+  <div class="contact-box">
+    <h3>Community Fundraising Hub — Club Enquiries</h3>
+    <p>For questions about these Terms, your campaign, or your account:</p>
+    <p style="margin-top:12px">
+      <a href="mailto:hello@cfh.org.nz">hello@cfh.org.nz</a><br>
+      James Renall, Founding Trustee: <a href="mailto:james@cfh.org.nz">james@cfh.org.nz</a><br>
+      Community Fundraising Hub · Auckland, New Zealand · NZBN: 9429053669445
+    </p>
+  </div>
+</div>
+  </div><!-- /doc-content -->
+  </div><!-- /doc-layout -->
+  </div><!-- /doc-outer -->
+</div>
+
+<footer>
+  <div class="container" style="max-width:1080px">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:32px;height:32px;border-radius:9px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.22);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="5.5" cy="15" r="2.5" fill="rgba(255,255,255,0.6)"/><circle cx="12" cy="11.5" r="2.9" fill="#4AAEE8"/><circle cx="18.5" cy="15" r="2.5" fill="rgba(255,255,255,0.6)"/><path d="M3 19 Q5.5 17.2 8 19" stroke="rgba(255,255,255,0.4)" stroke-width="1.3" fill="none" stroke-linecap="round"/><path d="M16 19 Q18.5 17.2 21 19" stroke="rgba(255,255,255,0.4)" stroke-width="1.3" fill="none" stroke-linecap="round"/><path d="M8.8 19.2 Q12 17 15.2 19.2" stroke="rgba(255,255,255,0.7)" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg></div>
+          <span class="footer-logo-text">Community <span style="color:#4AAEE8">Fundraising</span> Hub</span>
+        </div>
+        <p>A NZ charitable platform connecting sports clubs with local businesses for sponsorship and fundraising. Charity registration pending with Charities Services NZ.</p>
+        <div class="footer-contact">
+          <div class="footer-contact-item">✉️ <a href="mailto:hello@cfh.org.nz">hello@cfh.org.nz</a></div>
+          <div class="footer-contact-item">📍 Auckland, New Zealand</div>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Platform</div>
+        <div class="footer-links">
+          <a href="https://cfh.org.nz#how-it-works">How it works</a>
+          <a href="https://cfh.org.nz#what-you-get">What you get</a>
+          <a href="https://cfh.org.nz#trust">Trust &amp; governance</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Legal</div>
+        <div class="footer-links">
+          <a href="https://cfh.org.nz/privacy">Privacy Policy</a>
+          <a href="https://cfh.org.nz/terms-donors">Terms — Businesses &amp; Donors</a>
+          <a href="https://cfh.org.nz/terms-clubs">Terms — Sports Clubs</a>
+          <a href="https://cfh.org.nz/ethical-sponsorship">Ethical Sponsorship Guidelines</a>
+          <a href="https://cfh.org.nz/sponsorship-framework">Sponsorship Responsibility Framework</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">© 2026 Community Fundraising Hub · NZBN 9429053669445 · <a href="https://cfh.org.nz/privacy" style="color:rgba(255,255,255,0.28);text-decoration:underline">Privacy Policy</a> · <a href="https://cfh.org.nz/terms-donors" style="color:rgba(255,255,255,0.28);text-decoration:underline">Terms of Service</a></div>
+      <div class="footer-tag">#SupportingLocal</div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+(function(){
+  var links = document.querySelectorAll('.toc-list a');
+  var sections = [];
+  links.forEach(function(a){
+    var id = a.getAttribute('href').replace('#','');
+    var el = document.getElementById(id);
+    if(el) sections.push({el:el, a:a});
+  });
+  function onScroll(){
+    var scrollY = window.scrollY + 120;
+    var active = null;
+    sections.forEach(function(s){
+      if(s.el.offsetTop <= scrollY) active = s;
+    });
+    links.forEach(function(a){ a.classList.remove('active'); });
+    if(active) active.a.classList.add('active');
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Community Fundraising Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --white:#FFFFFF;
+  --sky:#F4FAFF;--sky2:#E8F3FC;
+  --blue:#1769AA;--blue2:#125490;--blue-mid:#2282CC;
+  --blue-lt:#EBF4FC;--blue-lt2:#CCE2F4;
+  --amber:#E08A0E;--amber-lt:#FEF4E0;
+  --green:#1F9E68;--green-lt:#E4F7EF;
+  --red-lt:#FDF0F0;
+  --text:#162035;--text2:#344258;--muted:#637087;
+  --border:rgba(23,105,170,0.1);--border2:rgba(23,105,170,0.22);
+  --radius:12px;--radius2:20px;
+  --shadow:0 2px 20px rgba(23,105,170,0.08);
+}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.65;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Syne',sans-serif;line-height:1.2}
+a{color:inherit;text-decoration:none}
+.container{max-width:800px;margin:0 auto;padding:0 24px}
+
+/* NAV */
+nav{background:var(--white);border-bottom:1px solid var(--border);padding:14px 0;position:sticky;top:0;z-index:100;box-shadow:var(--shadow)}
+.nav-inner{display:flex;align-items:center;gap:14px}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo-mark{width:36px;height:36px;border-radius:10px;background:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 10px rgba(23,105,170,0.3)}
+.nav-logo-mark svg{width:20px;height:20px}
+.nav-logo-text{font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:var(--text)}
+.nav-back{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:var(--blue);font-weight:500;padding:8px 16px;border-radius:9px;border:1.5px solid var(--border2);transition:all 0.2s}
+.nav-back:hover{background:var(--blue-lt)}
+
+/* HERO BAND */
+.page-hero{background:linear-gradient(135deg,var(--blue) 0%,var(--blue2) 100%);padding:52px 0 44px;color:#fff}
+.page-hero-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.8px;color:rgba(255,255,255,0.6);margin-bottom:12px}
+.page-hero h1{font-family:'Syne',sans-serif;font-size:clamp(24px,4vw,36px);font-weight:800;margin-bottom:10px}
+.page-hero-sub{font-size:15px;color:rgba(255,255,255,0.75);margin-bottom:20px}
+.page-hero-meta{display:flex;flex-wrap:wrap;gap:16px}
+.meta-pill{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:4px 14px;font-size:12px;color:rgba(255,255,255,0.8)}
+
+/* LEGAL NOTE */
+.legal-note{background:var(--amber-lt);border-left:3px solid var(--amber);border-radius:0 10px 10px 0;padding:16px 20px;margin:32px 0;font-size:14px;color:var(--text2)}
+.legal-note strong{color:var(--text);display:block;margin-bottom:4px}
+
+/* CONTENT */
+.doc-body{}
+.doc-section{margin-bottom:48px}
+.doc-section h2{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--text);padding-bottom:10px;border-bottom:2px solid var(--blue);margin-bottom:20px;margin-top:40px}
+.doc-section h3{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--blue);margin:24px 0 10px}
+.doc-section p{font-size:15px;color:var(--text2);line-height:1.75;margin-bottom:14px}
+.doc-section ul{margin:8px 0 14px 0;padding-left:0;list-style:none}
+.doc-section ul li{font-size:15px;color:var(--text2);line-height:1.7;padding:4px 0 4px 22px;position:relative}
+.doc-section ul li::before{content:"•";position:absolute;left:6px;color:var(--blue);font-weight:700}
+
+/* TABLES */
+.doc-table{width:100%;border-collapse:collapse;margin:16px 0 20px;font-size:14px}
+.doc-table th{background:var(--blue);color:#fff;padding:10px 14px;text-align:left;font-family:'Syne',sans-serif;font-size:13px;font-weight:700}
+.doc-table td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top}
+.doc-table tr:nth-child(even) td{background:var(--sky)}
+.doc-table td:first-child{font-weight:600;color:var(--text);white-space:nowrap}
+
+/* INFO BOXES */
+.info-box{background:var(--blue-lt);border-radius:12px;padding:20px 22px;margin:16px 0 20px}
+.info-box.warning{background:var(--amber-lt);border-left:3px solid var(--amber);border-radius:0 12px 12px 0}
+.info-box.danger{background:var(--red-lt);border-left:3px solid #C0392B;border-radius:0 12px 12px 0}
+.info-box strong{display:block;font-family:'Syne',sans-serif;font-size:14px;color:var(--text);margin-bottom:8px}
+.info-box p,.info-box li{font-size:14px;color:var(--text2);line-height:1.7}
+.info-box ul{margin:8px 0 0;padding-left:0;list-style:none}
+.info-box ul li{padding:3px 0 3px 18px;position:relative}
+.info-box ul li::before{content:"•";position:absolute;left:4px;color:var(--blue);font-weight:700}
+.info-box.warning ul li::before,.info-box.danger ul li::before{color:var(--amber)}
+.example-box{background:var(--sky);border:1px solid var(--border2);border-radius:12px;padding:20px 22px;margin:16px 0 20px}
+.example-box strong{display:block;font-family:'Syne',sans-serif;font-size:13px;color:var(--blue);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px}
+.example-box p,.example-box li{font-size:14px;color:var(--text2);line-height:1.7}
+
+/* LAYOUT — two-column with sticky sidebar TOC */
+.doc-outer{max-width:1180px;margin:0 auto;padding:0 24px}
+.doc-layout{display:grid;grid-template-columns:240px 1fr;gap:56px;align-items:start;padding:48px 0 80px}
+.doc-content{min-width:0}
+
+/* STICKY SIDEBAR TOC */
+.toc-sidebar{position:sticky;top:80px;max-height:calc(100vh - 110px);overflow-y:auto;padding-right:4px}
+.toc-sidebar::-webkit-scrollbar{width:3px}
+.toc-sidebar::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+.toc-label{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:14px;display:block}
+.toc-list{list-style:none;margin:0;padding:0;border-left:2px solid var(--border)}
+.toc-list li a{display:block;padding:5px 0 5px 14px;font-size:13px;color:var(--muted);line-height:1.4;transition:color 0.15s, border-color 0.15s;border-left:2px solid transparent;margin-left:-2px;text-decoration:none}
+.toc-list li a:hover{color:var(--blue)}
+.toc-list li a.active{color:var(--blue);border-left-color:var(--blue);font-weight:500}
+
+/* SECTION SCROLL OFFSET — compensates for sticky top nav */
+.doc-section{scroll-margin-top:80px;margin-bottom:48px}
+
+/* Mobile — stack TOC above content */
+@media(max-width:860px){
+  .doc-layout{grid-template-columns:1fr;gap:0;padding-top:0}
+  .toc-sidebar{position:static;max-height:none;overflow:visible;border:1px solid var(--border);border-radius:12px;padding:20px 24px;background:var(--sky);margin:32px 0 40px}
+  .toc-list{border-left:none}
+  .toc-list li a{padding:4px 0;border-left:none;margin-left:0;counter-increment:toc-counter}
+  .toc-list li a::before{content:counter(toc-counter) ". ";color:var(--blue);font-weight:600}
+  .toc-list{counter-reset:toc-counter}
+  .toc-list li a.active{background:none;font-weight:600}
+}
+
+/* CONTACT BOX */
+.contact-box{background:var(--blue);border-radius:16px;padding:28px 32px;color:#fff;margin-top:48px}
+.contact-box h3{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;margin-bottom:10px}
+.contact-box p,.contact-box a{font-size:15px;color:rgba(255,255,255,0.8);line-height:1.7}
+.contact-box a{text-decoration:underline}
+.contact-box a:hover{color:#fff}
+
+/* FOOTER */
+footer{background:var(--text);padding:48px 0 28px;color:rgba(255,255,255,0.65)}
+.footer-inner{display:grid;grid-template-columns:1.8fr 1fr 1fr;gap:48px;margin-bottom:40px}
+.footer-brand p{font-size:13.5px;line-height:1.7;margin-top:12px;color:rgba(255,255,255,0.48)}
+.footer-logo-text{font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:#fff}
+.footer-col-title{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,0.35);margin-bottom:14px}
+.footer-links{display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:13.5px;color:rgba(255,255,255,0.48);transition:color 0.2s}
+.footer-links a:hover{color:#fff}
+.footer-contact{margin-top:16px;display:flex;flex-direction:column;gap:7px}
+.footer-contact-item{display:flex;align-items:center;gap:8px;font-size:13.5px;color:rgba(255,255,255,0.6)}
+.footer-contact-item a{color:rgba(255,255,255,0.6);transition:color 0.2s}
+.footer-contact-item a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-legal{font-size:12px;color:rgba(255,255,255,0.28)}
+.footer-tag{font-size:12px;color:rgba(255,255,255,0.22);font-style:italic}
+
+@media(max-width:700px){
+  .footer-inner{grid-template-columns:1fr}
+  .page-hero-meta{flex-direction:column;gap:8px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container" style="max-width:1080px">
+    <div class="nav-inner">
+      <a href="https://cfh.org.nz" class="nav-logo">
+        <div class="nav-logo-mark"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="5.5" cy="15" r="2.8" fill="rgba(255,255,255,0.75)"/><circle cx="12" cy="11.5" r="3.2" fill="#fff"/><circle cx="18.5" cy="15" r="2.8" fill="rgba(255,255,255,0.75)"/><path d="M3 19.5 Q5.5 17.5 8 19.5" stroke="rgba(255,255,255,0.5)" stroke-width="1.3" fill="none" stroke-linecap="round"/><path d="M16 19.5 Q18.5 17.5 21 19.5" stroke="rgba(255,255,255,0.5)" stroke-width="1.3" fill="none" stroke-linecap="round"/><path d="M8.5 19.5 Q12 17 15.5 19.5" stroke="rgba(255,255,255,0.8)" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg></div>
+        <span class="nav-logo-text">Community <span style="color:var(--blue)">Fundraising</span> Hub</span>
+      </a>
+      <a href="https://cfh.org.nz" class="nav-back">← Back to site</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="page-hero-label">Legal</div>
+    <h1>Privacy Policy</h1>
+    <p class="page-hero-sub">How Community Fundraising Hub collects, uses, and protects your information</p>
+    <div class="page-hero-meta">
+      <span class="meta-pill">Version 1.2</span>
+      <span class="meta-pill">Effective: May 2026</span>
+      <span class="meta-pill">Governed by New Zealand law</span>
+      <span class="meta-pill">NZBN: 9429053669445</span>
+    </div>
+  </div>
+</div>
+
+<div class="doc-body">
+  <div class="doc-outer">
+  <div class="doc-layout">
+<aside class="toc-sidebar">
+<span class="toc-label">Contents</span>
+  <ul class="toc-list">
+    <li><a href="#s1">About This Policy and Who We Are</a></li>
+    <li><a href="#s2">The Privacy Act 2020 and Our Obligations</a></li>
+    <li><a href="#s3">What Personal Information We Collect</a></li>
+    <li><a href="#s4">Overseas Transfer of Personal Information</a></li>
+    <li><a href="#s5">Why We Collect Your Information</a></li>
+    <li><a href="#s6">How We Use Your Information</a></li>
+    <li><a href="#s7">Who We Share Your Information With</a></li>
+    <li><a href="#s8">How We Store and Protect Your Information</a></li>
+    <li><a href="#s9">How Long We Keep Your Information</a></li>
+    <li><a href="#s10">Cookies and Website Analytics</a></li>
+    <li><a href="#s11">Your Rights Under the Privacy Act 2020</a></li>
+    <li><a href="#s12">Changes to This Privacy Policy</a></li>
+    <li><a href="#s13">Contact — Privacy Officer</a></li>
+  </ul>
+</aside>
+
+<div class="doc-content">
+<div class="legal-note">
+      <strong>Legal Note</strong>
+      This document has been prepared in good faith and is intended to comply with New Zealand law. It has not been reviewed by a qualified NZ solicitor. Seek independent legal advice if you have specific concerns.
+    </div>
+
+<div class="doc-section" id="s1">
+  <h2>1. About This Policy and Who We Are</h2>
+  <p>Community Fundraising Hub ('CFH', 'we', 'us', 'our') is a Charitable Trust Board incorporated under the Charitable Trusts Act 1957 (Incorporation No: 70000374, NZBN: 9429053669445). We operate the Community Fundraising Hub platform, which connects sports clubs with local businesses and individual donors for fundraising and sponsorship purposes.</p>
+  <p>This Privacy Policy explains what personal information we collect, why we collect it, how we use it, who we share it with, and what rights you have. It applies to all users of our platform, including sports club contacts, business donors, individual donors, and website visitors.</p>
+  <p>By providing your information to us, registering with our platform, or using our website at cfh.org.nz, you confirm that you have read and understood this Privacy Policy. This Privacy Policy is governed by the laws of New Zealand.</p>
+</div>
+
+<div class="doc-section" id="s2">
+  <h2>2. The Privacy Act 2020 and Our Obligations</h2>
+  <p>Our collection, use, disclosure, and storage of personal information is governed by the New Zealand Privacy Act 2020. The Act establishes 13 Information Privacy Principles (IPPs) that guide how we handle personal information. In summary, the Act requires us to:</p>
+  <ul>
+    <li>Only collect personal information that is necessary for a lawful purpose connected with our activities</li>
+    <li>Tell individuals why we are collecting their information and how it will be used</li>
+    <li>Take reasonable steps to ensure information is accurate and up to date</li>
+    <li>Keep personal information secure against loss, unauthorised access, use, modification, or disclosure</li>
+    <li>Allow individuals to access and correct their personal information on request</li>
+    <li>Not disclose personal information to third parties except in limited circumstances</li>
+    <li>Not use personal information for a purpose other than the purpose for which it was collected, unless an exception applies</li>
+  </ul>
+</div>
+
+<div class="doc-section" id="s3">
+  <h2>3. What Personal Information We Collect</h2>
+  <h3>3.1 Club Contacts</h3>
+  <p>When a sports club registers with CFH or contacts us for onboarding, we collect:</p>
+  <ul>
+    <li>Full name and role within the club</li>
+    <li>Club name, sport, and suburb or region</li>
+    <li>Email address and phone number</li>
+    <li>Bank account details for campaign settlement payments — held securely and used only for settlement</li>
+    <li>Information about the club's fundraising goals and campaign preferences</li>
+    <li>Any correspondence between the club contact and CFH</li>
+  </ul>
+  <h3>3.2 Business Donors</h3>
+  <p>When a business makes a donation through a CFH club campaign, we collect:</p>
+  <ul>
+    <li>Business name and the name of the person making the donation</li>
+    <li>Email address (for tax receipt delivery)</li>
+    <li>Donation amount, chosen sponsorship tier, and the club campaign supported</li>
+    <li>Payment transaction reference only — CFH does not receive, store, or have access to card numbers. All card data is handled exclusively by Stripe</li>
+    <li>Any optional message included with the donation</li>
+    <li>Business logo or brand assets, if provided for sponsorship recognition</li>
+  </ul>
+  <h3>3.3 Individual Donors</h3>
+  <ul>
+    <li>Full name</li>
+    <li>Email address (for tax receipt delivery)</li>
+    <li>Donation amount and the club campaign supported</li>
+    <li>Payment transaction reference (via Stripe — we do not store card data)</li>
+  </ul>
+  <h3>3.4 Website Visitors</h3>
+  <ul>
+    <li>IP address and general location (country/region level only)</li>
+    <li>Browser type, device type, and operating system</li>
+    <li>Pages visited, time spent, and navigation paths</li>
+    <li>Referral source</li>
+    <li>Email address and name, if you submit our expression of interest form</li>
+  </ul>
+  <h3>3.5 Information We Do Not Collect</h3>
+  <ul>
+    <li>Full credit or debit card numbers — handled exclusively by Stripe</li>
+    <li>Government-issued identification numbers such as IRD numbers from individual donors</li>
+    <li>Information about children or minors (Phase 1 sports clubs only — club administrators are adults)</li>
+    <li>Sensitive personal information such as health information, ethnicity, or criminal history</li>
+  </ul>
+</div>
+
+<div class="doc-section" id="s4">
+  <h2>4. Overseas Transfer of Personal Information</h2>
+  <p>Some of the third-party services CFH uses are based outside New Zealand. By providing your personal information to CFH, you acknowledge that it may be transferred to, stored in, or processed in countries other than New Zealand, including the United States, where the following providers operate:</p>
+  <ul>
+    <li>Google Workspace — email, file storage, and data management including Google Sheets</li>
+    <li>Stripe — payment processing</li>
+    <li>Netlify — website hosting and registration form processing</li>
+    <li>Zapier — workflow automation connecting our registration forms to our club management systems</li>
+  </ul>
+  <p>CFH selects reputable, internationally recognised service providers and relies on their published privacy policies and security certifications. CFH will not transfer your data to overseas parties beyond those named here without notifying you.</p>
+</div>
+
+<div class="doc-section" id="s5">
+  <h2>5. Why We Collect Your Information</h2>
+  <table class="doc-table">
+    <thead><tr><th>Information</th><th>Why We Collect It</th></tr></thead>
+    <tbody>
+      <tr><td>Club contact details</td><td>To onboard the club, communicate during the campaign, and arrange settlement payments</td></tr>
+      <tr><td>Club bank account</td><td>To transfer campaign proceeds upon settlement</td></tr>
+      <tr><td>Donor name and email</td><td>To issue tax receipts as required by IRD</td></tr>
+      <tr><td>Donation amount and campaign</td><td>To process payment, issue the correct receipt, and report to the club</td></tr>
+      <tr><td>Payment transaction reference</td><td>For financial reconciliation and dispute resolution</td></tr>
+      <tr><td>Website visitor data</td><td>To understand how the site is being used and improve it</td></tr>
+      <tr><td>Expression of interest emails</td><td>To respond to enquiries and add to our club waitlist</td></tr>
+      <tr><td>Business logos (if provided)</td><td>To display sponsorship recognition on the Club Landing Page</td></tr>
+    </tbody>
+  </table>
+  <p>We do not use your personal information for direct marketing without your consent. We do not sell your personal information to any third party, ever.</p>
+</div>
+
+<div class="doc-section" id="s6">
+  <h2>6. How We Use Your Information</h2>
+  <ul>
+    <li>Providing and operating the CFH platform and services to sports clubs</li>
+    <li>Processing donations and sponsorship contributions through our payment provider</li>
+    <li>Issuing tax receipts to donors on behalf of CFH's charitable trust (once donee status is confirmed by IRD)</li>
+    <li>Transferring campaign proceeds to clubs following weekly settlement</li>
+    <li>Communicating with club contacts about their campaign setup, progress, and reporting</li>
+    <li>Generating anonymised, aggregated data about community fundraising patterns</li>
+    <li>Improving our platform, website, and services</li>
+    <li>Complying with our legal and financial reporting obligations as a registered charitable trust</li>
+    <li>Responding to your enquiries and providing support</li>
+  </ul>
+</div>
+
+<div class="doc-section" id="s7">
+  <h2>7. Who We Share Your Information With</h2>
+  <p>CFH does not sell, rent, or trade your personal information. We share information only in the following limited circumstances:</p>
+  <h3>7.1 Sports Clubs</h3>
+  <p>When you donate to a specific club campaign, the club's designated contact receives your name, business name (if applicable), donation amount, chosen tier, and any optional message. Your email address is not shared with clubs for marketing purposes.</p>
+  <h3>7.2 Payment Processor — Stripe</h3>
+  <p>Donations are processed by Stripe (stripe.com/privacy). Stripe receives your payment card details. CFH receives only a transaction confirmation — we never receive or store card data.</p>
+  <h3>7.3 IRD — Inland Revenue Department</h3>
+  <p>CFH maintains donation records consistent with IRD requirements for registered donee organisations, and may be required to disclose these during compliance or audit processes.</p>
+  <h3>7.4 Legal and Regulatory Disclosure</h3>
+  <p>CFH may disclose personal information if required by New Zealand law, a court order, or a regulatory authority, including the Office of the Privacy Commissioner, Charities Services, or Inland Revenue.</p>
+  <h3>7.5 Service Providers</h3>
+  <ul>
+    <li><strong>Google Workspace</strong> — email, file storage, and Google Sheets. US-based.</li>
+    <li><strong>Stripe</strong> — payment processing. US-based.</li>
+    <li><strong>Netlify</strong> — website hosting and registration form processing. US-based.</li>
+    <li><strong>Zapier</strong> — workflow automation connecting registration forms to club management systems. US-based.</li>
+  </ul>
+</div>
+
+<div class="doc-section" id="s8">
+  <h2>8. How We Store and Protect Your Information</h2>
+  <ul>
+    <li>Email and document systems are secured using Google Workspace with two-factor authentication</li>
+    <li>Financial and donation records are maintained with access limited to authorised trustees and staff</li>
+    <li>Payment card data is never stored by CFH — all card processing is handled by Stripe's PCI-DSS compliant infrastructure</li>
+    <li>Club bank account details are stored securely, used only for settlement, and changed only upon written request</li>
+    <li>Digital data is held in password-protected accounts with restricted access</li>
+  </ul>
+  <p>In the event of a privacy breach that poses a risk of serious harm, CFH will notify affected individuals and the Office of the Privacy Commissioner as required by the Privacy Act 2020.</p>
+</div>
+
+<div class="doc-section" id="s9">
+  <h2>9. How Long We Keep Your Information</h2>
+  <table class="doc-table">
+    <thead><tr><th>Information Type</th><th>Retention Period</th></tr></thead>
+    <tbody>
+      <tr><td>Donation and tax receipt records</td><td>7 years minimum (IRD requirements)</td></tr>
+      <tr><td>Club contact information</td><td>Duration of club relationship + 3 years</td></tr>
+      <tr><td>Business donor contact information</td><td>7 years</td></tr>
+      <tr><td>Club bank account details</td><td>Duration of club relationship + 1 year, then securely deleted</td></tr>
+      <tr><td>Website visitor analytics data</td><td>12 months (aggregated data may be retained indefinitely)</td></tr>
+      <tr><td>Expression of interest emails</td><td>Until the person joins the platform or requests deletion</td></tr>
+      <tr><td>General correspondence</td><td>3 years from last contact</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="doc-section" id="s10">
+  <h2>10. Cookies and Website Analytics</h2>
+  <p>Our website uses cookies to ensure it functions correctly and to remember your preferences between visits. We may also use analytics tools (such as Google Analytics) to understand how the website is being used and to improve it. Where analytics are in use, data is collected in an aggregated, anonymised way that does not identify you personally. We will update this policy to reflect when analytics tools are activated.</p>
+  <p>You can control cookie settings through your browser. Disabling cookies may affect some features of our website.</p>
+</div>
+
+<div class="doc-section" id="s11">
+  <h2>11. Your Rights Under the Privacy Act 2020</h2>
+  <h3>11.1 Right to Access</h3>
+  <p>You may request access to any personal information CFH holds about you. We will respond within 20 working days.</p>
+  <h3>11.2 Right to Correction</h3>
+  <p>If you believe information we hold about you is incorrect, you may ask us to correct it. If we disagree, we will note your request alongside the information.</p>
+  <h3>11.3 Right to Deletion</h3>
+  <p>You may request deletion of your personal information where we no longer have a lawful basis for holding it. We cannot delete information subject to legal retention obligations (e.g. donation records required by IRD for 7 years).</p>
+  <h3>11.4 Right to Object</h3>
+  <p>You may ask us not to use your personal information for purposes beyond those directly necessary to the reason you provided it. You may withdraw consent for email communications at any time by contacting hello@cfh.org.nz.</p>
+  <h3>11.5 Right to Complain</h3>
+  <p>If you believe CFH has not handled your personal information correctly, contact our Privacy Officer first (see Section 13). If not resolved within 20 working days, you may complain to the Office of the Privacy Commissioner at <a href="https://privacy.org.nz" style="color:var(--blue);text-decoration:underline">privacy.org.nz</a> or 0800 803 909.</p>
+</div>
+
+<div class="doc-section" id="s12">
+  <h2>12. Changes to This Privacy Policy</h2>
+  <p>We may update this Privacy Policy to reflect changes in our practices, technology, or legal obligations. The current version will always be available at cfh.org.nz/privacy. Where changes are material, we will take reasonable steps to notify affected individuals.</p>
+</div>
+
+<div class="doc-section" id="s13">
+  <h2>13. Contact — Privacy Officer</h2>
+  <div class="contact-box">
+    <h3>Privacy Officer — Community Fundraising Hub</h3>
+    <p>For any privacy enquiries, access or correction requests, or concerns about how your information has been handled:</p>
+    <p style="margin-top:12px"><strong style="color:#fff">James Renall</strong>, Founding Trustee &amp; Privacy Officer<br>
+    <a href="mailto:james@cfh.org.nz">james@cfh.org.nz</a><br>
+    General enquiries: <a href="mailto:hello@cfh.org.nz">hello@cfh.org.nz</a><br>
+    Community Fundraising Hub · Auckland, New Zealand</p>
+    <p style="margin-top:12px;font-size:13px;color:rgba(255,255,255,0.6)">We aim to respond to all privacy enquiries within 5 working days.</p>
+  </div>
+</div>
+  </div><!-- /doc-content -->
+  </div><!-- /doc-layout -->
+  </div><!-- /doc-outer -->
+</div>
+
+<footer>
+  <div class="container" style="max-width:1080px">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:32px;height:32px;border-radius:9px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.22);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="5.5" cy="15" r="2.5" fill="rgba(255,255,255,0.6)"/><circle cx="12" cy="11.5" r="2.9" fill="#4AAEE8"/><circle cx="18.5" cy="15" r="2.5" fill="rgba(255,255,255,0.6)"/><path d="M3 19 Q5.5 17.2 8 19" stroke="rgba(255,255,255,0.4)" stroke-width="1.3" fill="none" stroke-linecap="round"/><path d="M16 19 Q18.5 17.2 21 19" stroke="rgba(255,255,255,0.4)" stroke-width="1.3" fill="none" stroke-linecap="round"/><path d="M8.8 19.2 Q12 17 15.2 19.2" stroke="rgba(255,255,255,0.7)" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg></div>
+          <span class="footer-logo-text">Community <span style="color:#4AAEE8">Fundraising</span> Hub</span>
+        </div>
+        <p>A NZ charitable platform connecting sports clubs with local businesses for sponsorship and fundraising. Charity registration pending with Charities Services NZ.</p>
+        <div class="footer-contact">
+          <div class="footer-contact-item">✉️ <a href="mailto:hello@cfh.org.nz">hello@cfh.org.nz</a></div>
+          <div class="footer-contact-item">📍 Auckland, New Zealand</div>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Platform</div>
+        <div class="footer-links">
+          <a href="https://cfh.org.nz#how-it-works">How it works</a>
+          <a href="https://cfh.org.nz#what-you-get">What you get</a>
+          <a href="https://cfh.org.nz#trust">Trust &amp; governance</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Legal</div>
+        <div class="footer-links">
+          <a href="https://cfh.org.nz/privacy">Privacy Policy</a>
+          <a href="https://cfh.org.nz/terms-donors">Terms — Businesses &amp; Donors</a>
+          <a href="https://cfh.org.nz/terms-clubs">Terms — Sports Clubs</a>
+          <a href="https://cfh.org.nz/ethical-sponsorship">Ethical Sponsorship Guidelines</a>
+          <a href="https://cfh.org.nz/sponsorship-framework">Sponsorship Responsibility Framework</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">© 2026 Community Fundraising Hub · NZBN 9429053669445 · <a href="https://cfh.org.nz/privacy" style="color:rgba(255,255,255,0.28);text-decoration:underline">Privacy Policy</a> · <a href="https://cfh.org.nz/terms-donors" style="color:rgba(255,255,255,0.28);text-decoration:underline">Terms of Service</a></div>
+      <div class="footer-tag">#SupportingLocal</div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+(function(){
+  var links = document.querySelectorAll('.toc-list a');
+  var sections = [];
+  links.forEach(function(a){
+    var id = a.getAttribute('href').replace('#','');
+    var el = document.getElementById(id);
+    if(el) sections.push({el:el, a:a});
+  });
+  function onScroll(){
+    var scrollY = window.scrollY + 120;
+    var active = null;
+    sections.forEach(function(s){
+      if(s.el.offsetTop <= scrollY) active = s;
+    });
+    links.forEach(function(a){ a.classList.remove('active'); });
+    if(active) active.a.classList.add('active');
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+
+</body>
+</html>

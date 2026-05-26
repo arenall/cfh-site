@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service — Businesses & Donors — Community Fundraising Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --white:#FFFFFF;
+  --sky:#F4FAFF;--sky2:#E8F3FC;
+  --blue:#1769AA;--blue2:#125490;--blue-mid:#2282CC;
+  --blue-lt:#EBF4FC;--blue-lt2:#CCE2F4;
+  --amber:#E08A0E;--amber-lt:#FEF4E0;
+  --green:#1F9E68;--green-lt:#E4F7EF;
+  --red-lt:#FDF0F0;
+  --text:#162035;--text2:#344258;--muted:#637087;
+  --border:rgba(23,105,170,0.1);--border2:rgba(23,105,170,0.22);
+  --radius:12px;--radius2:20px;
+  --shadow:0 2px 20px rgba(23,105,170,0.08);
+}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.65;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Syne',sans-serif;line-height:1.2}
+a{color:inherit;text-decoration:none}
+.container{max-width:800px;margin:0 auto;padding:0 24px}
+
+/* NAV */
+nav{background:var(--white);border-bottom:1px solid var(--border);padding:14px 0;position:sticky;top:0;z-index:100;box-shadow:var(--shadow)}
+.nav-inner{display:flex;align-items:center;gap:14px}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo-mark{width:36px;height:36px;border-radius:10px;background:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 10px rgba(23,105,170,0.3)}
+.nav-logo-mark svg{width:20px;height:20px}
+.nav-logo-text{font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:var(--text)}
+.nav-back{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:var(--blue);font-weight:500;padding:8px 16px;border-radius:9px;border:1.5px solid var(--border2);transition:all 0.2s}
+.nav-back:hover{background:var(--blue-lt)}
+
+/* HERO BAND */
+.page-hero{background:linear-gradient(135deg,var(--blue) 0%,var(--blue2) 100%);padding:52px 0 44px;color:#fff}
+.page-hero-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.8px;color:rgba(255,255,255,0.6);margin-bottom:12px}
+.page-hero h1{font-family:'Syne',sans-serif;font-size:clamp(24px,4vw,36px);font-weight:800;margin-bottom:10px}
+.page-hero-sub{font-size:15px;color:rgba(255,255,255,0.75);margin-bottom:20px}
+.page-hero-meta{display:flex;flex-wrap:wrap;gap:16px}
+.meta-pill{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:4px 14px;font-size:12px;color:rgba(255,255,255,0.8)}
+
+/* LEGAL NOTE */
+.legal-note{background:var(--amber-lt);border-left:3px solid var(--amber);border-radius:0 10px 10px 0;padding:16px 20px;margin:32px 0;font-size:14px;color:var(--text2)}
+.legal-note strong{color:var(--text);display:block;margin-bottom:4px}
+
+/* CONTENT */
+.doc-body{}
+.doc-section{margin-bottom:48px}
+.doc-section h2{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--text);padding-bottom:10px;border-bottom:2px solid var(--blue);margin-bottom:20px;margin-top:40px}
+.doc-section h3{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--blue);margin:24px 0 10px}
+.doc-section p{font-size:15px;color:var(--text2);line-height:1.75;margin-bottom:14px}
+.doc-section ul{margin:8px 0 14px 0;padding-left:0;list-style:none}
+.doc-section ul li{font-size:15px;color:var(--text2);line-height:1.7;padding:4px 0 4px 22px;position:relative}
+.doc-section ul li::before{content:"•";position:absolute;left:6px;color:var(--blue);font-weight:700}
+
+/* TABLES */
+.doc-table{width:100%;border-collapse:collapse;margin:16px 0 20px;font-size:14px}
+.doc-table th{background:var(--blue);color:#fff;padding:10px 14px;text-align:left;font-family:'Syne',sans-serif;font-size:13px;font-weight:700}
+.doc-table td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top}
+.doc-table tr:nth-child(even) td{background:var(--sky)}
+.doc-table td:first-child{font-weight:600;color:var(--text);white-space:nowrap}
+
+/* INFO BOXES */
+.info-box{background:var(--blue-lt);border-radius:12px;padding:20px 22px;margin:16px 0 20px}
+.info-box.warning{background:var(--amber-lt);border-left:3px solid var(--amber);border-radius:0 12px 12px 0}
+.info-box.danger{background:var(--red-lt);border-left:3px solid #C0392B;border-radius:0 12px 12px 0}
+.info-box strong{display:block;font-family:'Syne',sans-serif;font-size:14px;color:var(--text);margin-bottom:8px}
+.info-box p,.info-box li{font-size:14px;color:var(--text2);line-height:1.7}
+.info-box ul{margin:8px 0 0;padding-left:0;list-style:none}
+.info-box ul li{padding:3px 0 3px 18px;position:relative}
+.info-box ul li::before{content:"•";position:absolute;left:4px;color:var(--blue);font-weight:700}
+.info-box.warning ul li::before,.info-box.danger ul li::before{color:var(--amber)}
+.example-box{background:var(--sky);border:1px solid var(--border2);border-radius:12px;padding:20px 22px;margin:16px 0 20px}
+.example-box strong{display:block;font-family:'Syne',sans-serif;font-size:13px;color:var(--blue);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px}
+.example-box p,.example-box li{font-size:14px;color:var(--text2);line-height:1.7}
+
+/* LAYOUT — two-column with sticky sidebar TOC */
+.doc-outer{max-width:1180px;margin:0 auto;padding:0 24px}
+.doc-layout{display:grid;grid-template-columns:240px 1fr;gap:56px;align-items:start;padding:48px 0 80px}
+.doc-content{min-width:0}
+
+/* STICKY SIDEBAR TOC */
+.toc-sidebar{position:sticky;top:80px;max-height:calc(100vh - 110px);overflow-y:auto;padding-right:4px}
+.toc-sidebar::-webkit-scrollbar{width:3px}
+.toc-sidebar::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+.toc-label{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:14px;display:block}
+.toc-list{list-style:none;margin:0;padding:0;border-left:2px solid var(--border)}
+.toc-list li a{display:block;padding:5px 0 5px 14px;font-size:13px;color:var(--muted);line-height:1.4;transition:color 0.15s, border-color 0.15s;border-left:2px solid transparent;margin-left:-2px;text-decoration:none}
+.toc-list li a:hover{color:var(--blue)}
+.toc-list li a.active{color:var(--blue);border-left-color:var(--blue);font-weight:500}
+
+/* SECTION SCROLL OFFSET — compensates for sticky top nav */
+.doc-section{scroll-margin-top:80px;margin-bottom:48px}
+
+/* Mobile — stack TOC above content */
+@media(max-width:860px){
+  .doc-layout{grid-template-columns:1fr;gap:0;padding-top:0}
+  .toc-sidebar{position:static;max-height:none;overflow:visible;border:1px solid var(--border);border-radius:12px;padding:20px 24px;background:var(--sky);margin:32px 0 40px}
+  .toc-list{border-left:none}
+  .toc-list li a{padding:4px 0;border-left:none;margin-left:0;counter-increment:toc-counter}
+  .toc-list li a::before{content:counter(toc-counter) ". ";color:var(--blue);font-weight:600}
+  .toc-list{counter-reset:toc-counter}
+  .toc-list li a.active{background:none;font-weight:600}
+}
+
+/* CONTACT BOX */
+.contact-box{background:var(--blue);border-radius:16px;padding:28px 32px;color:#fff;margin-top:48px}
+.contact-box h3{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;margin-bottom:10px}
+.contact-box p,.contact-box a{font-size:15px;color:rgba(255,255,255,0.8);line-height:1.7}
+.contact-box a{text-decoration:underline}
+.contact-box a:hover{color:#fff}
+
+/* FOOTER */
+footer{background:var(--text);padding:48px 0 28px;color:rgba(255,255,255,0.65)}
+.footer-inner{display:grid;grid-template-columns:1.8fr 1fr 1fr;gap:48px;margin-bottom:40px}
+.footer-brand p{font-size:13.5px;line-height:1.7;margin-top:12px;color:rgba(255,255,255,0.48)}
+.footer-logo-text{font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:#fff}
+.footer-col-title{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,0.35);margin-bottom:14px}
+.footer-links{display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:13.5px;color:rgba(255,255,255,0.48);transition:color 0.2s}
+.footer-links a:hover{color:#fff}
+.footer-contact{margin-top:16px;display:flex;flex-direction:column;gap:7px}
+.footer-contact-item{display:flex;align-items:center;gap:8px;font-size:13.5px;color:rgba(255,255,255,0.6)}
+.footer-contact-item a{color:rgba(255,255,255,0.6);transition:color 0.2s}
+.footer-contact-item a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-legal{font-size:12px;color:rgba(255,255,255,0.28)}
+.footer-tag{font-size:12px;color:rgba(255,255,255,0.22);font-style:italic}
+
+@media(max-width:700px){
+  .footer-inner{grid-template-columns:1fr}
+  .page-hero-meta{flex-direction:column;gap:8px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container" style="max-width:1080px">
+    <div class="nav-inner">
+      <a href="https://cfh.org.nz" class="nav-logo">
+        <div class="nav-logo-mark"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="5.5" cy="15" r="2.8" fill="rgba(255,255,255,0.75)"/><circle cx="12" cy="11.5" r="3.2" fill="#fff"/><circle cx="18.5" cy="15" r="2.8" fill="rgba(255,255,255,0.75)"/><path d="M3 19.5 Q5.5 17.5 8 19.5" stroke="rgba(255,255,255,0.5)" stroke-width="1.3" fill="none" stroke-linecap="round"/><path d="M16 19.5 Q18.5 17.5 21 19.5" stroke="rgba(255,255,255,0.5)" stroke-width="1.3" fill="none" stroke-linecap="round"/><path d="M8.5 19.5 Q12 17 15.5 19.5" stroke="rgba(255,255,255,0.8)" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg></div>
+        <span class="nav-logo-text">Community <span style="color:var(--blue)">Fundraising</span> Hub</span>
+      </a>
+      <a href="https://cfh.org.nz" class="nav-back">← Back to site</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="page-hero-label">Legal</div>
+    <h1>Terms of Service — Businesses & Donors</h1>
+    <p class="page-hero-sub">What you need to know before donating or sponsoring through Community Fundraising Hub</p>
+    <div class="page-hero-meta">
+      <span class="meta-pill">Version 1.2</span>
+      <span class="meta-pill">Effective: May 2026</span>
+      <span class="meta-pill">Governed by New Zealand law</span>
+      <span class="meta-pill">NZBN: 9429053669445</span>
+    </div>
+  </div>
+</div>
+
+<div class="doc-body">
+  <div class="doc-outer">
+  <div class="doc-layout">
+<aside class="toc-sidebar">
+<span class="toc-label">Contents</span>
+  <ul class="toc-list">
+    <li><a href="#d1">Introduction — Who We Are</a></li>
+    <li><a href="#d2">The Nature of Your Donation</a></li>
+    <li><a href="#d3">Tax Receipts and Charitable Giving</a></li>
+    <li><a href="#d4">How Donations Are Processed</a></li>
+    <li><a href="#d5">Refund Policy</a></li>
+    <li><a href="#d6">Sponsorship and Business Use</a></li>
+    <li><a href="#d7">Anti-Money Laundering and Countering Financing of Terrorism</a></li>
+    <li><a href="#d8">Limitation of Liability</a></li>
+    <li><a href="#d9">Changes to These Terms</a></li>
+    <li><a href="#d10">Governing Law</a></li>
+    <li><a href="#d11">Contact</a></li>
+  </ul>
+</aside>
+
+<div class="doc-content">
+<div class="legal-note">
+      <strong>Legal Note</strong>
+      This document has been prepared in good faith and is intended to comply with New Zealand law. It has not been reviewed by a qualified NZ solicitor. Seek independent legal advice if you have specific concerns.
+    </div>
+
+<div class="doc-section" id="d1">
+  <h2>1. Introduction — Who We Are</h2>
+  <p>Community Fundraising Hub ('CFH', 'we', 'us', 'our') is a Charitable Trust Board incorporated under the Charitable Trusts Act 1957 (Incorporation No: 70000374, NZBN: 9429053669445). We connect sports clubs with local businesses and individual donors to fund community sporting activities.</p>
+  <p>These Terms of Service ('Terms') apply to every business and individual ('you', 'Donor') who makes a donation or sponsorship contribution through the CFH Platform. By completing a donation, you confirm you have read, understood, and agreed to these Terms. All transactions are in New Zealand dollars (NZD).</p>
+</div>
+
+<div class="doc-section" id="d2">
+  <h2>2. The Nature of Your Donation</h2>
+  <h3>2.1 You Are Donating to CFH — Not Directly to the Club</h3>
+  <p>When you donate through a CFH Club fundraising page, your donation is made to Community Fundraising Hub — not directly to the sports club shown on the page. CFH then applies those funds to support the named club's campaign, consistent with CFH's charitable mission.</p>
+  <ul>
+    <li>CFH can issue tax receipts for donations (once donee status is confirmed — see Section 3)</li>
+    <li>Funds are managed through a trustee-governed charitable trust with proper financial oversight</li>
+    <li>Donations are protected by the governance framework of a registered NZ charitable entity</li>
+  </ul>
+  <h3>2.2 How Your Donation Is Used</h3>
+  <p>CFH retains a Platform Fee of 7% from each donation to fund platform operations. After this fee and Stripe's payment processing costs are deducted, the remaining balance is transferred to the nominated sports club weekly.</p>
+  <div class="example-box">
+    <strong>Example — Where your money goes</strong>
+    <p>You donate $500 to the Warkworth Netball Club campaign.</p>
+    <ul>
+      <li>$35.00 (7%) is retained by CFH as the Platform Fee</li>
+      <li>Stripe's payment processing fee (current NZ rate) is deducted</li>
+      <li>The remaining balance is transferred to the club</li>
+    </ul>
+    <p style="margin-top:8px;font-size:13px;color:var(--muted)">Stripe's current NZ rates: stripe.com/en-nz/pricing</p>
+  </div>
+  <h3>2.3 Sponsorship Recognition</h3>
+  <p>If you select a named sponsorship tier, recognition benefits (such as logo placement or mentions in club communications) are the responsibility of the sports club — not CFH. CFH facilitates the donation and campaign page, but cannot guarantee the delivery of offline sponsorship benefits. If a club is unable to deliver a promised benefit, your recourse is with the club.</p>
+</div>
+
+<div class="doc-section" id="d3">
+  <h2>3. Tax Receipts and Charitable Giving</h2>
+  <div class="info-box warning">
+    <strong>Donee Status — Not Yet Active (as at May 2026)</strong>
+    <p>CFH has applied for registration with Charities Services NZ and is awaiting approval. Until CFH's registration is confirmed AND a donee organisation number (DT number) is issued by Inland Revenue, donations to CFH do <strong>NOT</strong> qualify for the NZ donor tax credit.</p>
+    <p style="margin-top:8px">CFH will notify all donors immediately upon receiving donee status. In the meantime, CFH can provide a donation confirmation for your records only — this is <strong>not</strong> a tax receipt and does not entitle you to a tax credit.</p>
+  </div>
+  <h3>3.2 Once Donee Status Is Confirmed</h3>
+  <ul>
+    <li>Businesses and individuals donating $5 or more in a tax year will be entitled to a 33.33% NZ donor tax credit</li>
+    <li>CFH will automatically issue a tax receipt to your email address within 48 hours of processing</li>
+    <li>Tax receipts will confirm CFH's charitable registration number, donee status number, donation amount, date, and donor name</li>
+    <li>Donors can use the receipt to claim their tax credit via their IRD tax return or myIR</li>
+  </ul>
+  <p>Please retain your tax receipt for at least 7 years as IRD may request evidence.</p>
+  <h3>3.3 Your Responsibility for Tax Claims</h3>
+  <p>CFH issues tax receipts in good faith. However, it is your responsibility to ensure you are eligible to claim a donor tax credit. CFH does not provide tax advice. Contact IRD at ird.govt.nz or 0800 775 247 if you have questions.</p>
+</div>
+
+<div class="doc-section" id="d4">
+  <h2>4. How Donations Are Processed</h2>
+  <h3>4.1 Payment Processing</h3>
+  <p>Donations are processed through Stripe. When you submit payment:</p>
+  <ul>
+    <li>Your card details are handled directly by Stripe — CFH never receives, stores, or has access to your card number, expiry, or security code</li>
+    <li>Stripe processes the transaction using PCI-DSS compliant infrastructure</li>
+    <li>You will receive a payment confirmation from Stripe at the time of donation</li>
+    <li>CFH will separately issue a donation acknowledgement and (when donee status is active) a tax receipt by email</li>
+  </ul>
+  <p>If you experience a payment failure or technical issue, contact hello@cfh.org.nz. Please do not attempt multiple payments for the same donation.</p>
+  <h3>4.2 Your Information</h3>
+  <p>When you make a donation, CFH collects your name, business name (if applicable), email address, donation amount, and the campaign you are supporting. Your information may also be processed by third-party services CFH uses to operate, including Stripe, Netlify, and Zapier. See our <a href="https://cfh.org.nz/privacy" style="color:var(--blue);text-decoration:underline">Privacy Policy</a> for full details.</p>
+  <h3>4.3 Sharing Information with the Club</h3>
+  <p>Your name, business name (if applicable), donation amount, and chosen tier will be shared with the sports club whose campaign you supported, so the club can acknowledge your contribution and fulfil sponsorship recognition. Your email address will not be provided to clubs for unsolicited marketing purposes.</p>
+</div>
+
+<div class="doc-section" id="d5">
+  <h2>5. Refund Policy</h2>
+  <h3>5.1 General Principle</h3>
+  <p>Donations to CFH are generally non-refundable once processed, consistent with standard charitable giving practice in New Zealand.</p>
+  <h3>5.2 Refunds at CFH's Discretion</h3>
+  <p>CFH may issue a refund where: you made an accidental duplicate donation; a technical error resulted in an incorrect charge; or you submit a refund request within 72 hours of donation AND the funds have not yet been settled to the Club. Contact hello@cfh.org.nz promptly with your name, email, amount, campaign name, and reason.</p>
+  <h3>5.3 AML/CFT Holds</h3>
+  <p>If CFH has reasonable grounds to suspect a donation may be connected with money laundering, terrorism financing, or fraud, CFH may hold those funds for up to 30 days pending investigation and, if required, report to the NZ Police Financial Intelligence Unit.</p>
+  <h3>5.4 Campaign Cancellation</h3>
+  <p>If a Club's campaign is cancelled before settlement, CFH will notify all donors and offer a full refund to donors who request one within 20 working days. Where no refund is requested, donated funds will be applied to CFH's general charitable purpose.</p>
+  <h3>5.5 No Refund After Settlement</h3>
+  <p>Once funds have been settled to a Club, CFH cannot unilaterally recover them. CFH may assist in mediating between the donor and the club but cannot guarantee a financial remedy.</p>
+</div>
+
+<div class="doc-section" id="d6">
+  <h2>6. Sponsorship and Business Use</h2>
+  <h3>6.1 Ethical Sponsorship</h3>
+  <p>All club campaigns on the CFH Platform are subject to CFH's Ethical Sponsorship Guidelines. By making a donation or sponsorship contribution, you confirm that your business does not operate primarily in any absolute prohibition category under those Guidelines, and is not engaged in illegal activity in New Zealand. CFH reserves the right to decline, reverse, or refund a donation from any business whose involvement would be inconsistent with CFH's charitable purposes.</p>
+  <h3>6.2 Sponsorship Tier Recognition and Logo Licence</h3>
+  <p>If you select a named sponsorship tier, your name or business logo may appear on the Club's public fundraising page and in club communications for the duration of the campaign. By providing a logo or name, you confirm you have the right to grant this licence and that it does not infringe any third party's intellectual property rights. You may request removal at any time by contacting hello@cfh.org.nz.</p>
+  <h3>6.3 No Guarantee of Advertising Outcomes</h3>
+  <p>Sponsorship through CFH is a charitable donation, not a commercial advertising purchase. CFH provides no guarantee of any specific number of page views, social media impressions, or commercial return on your donation.</p>
+</div>
+
+<div class="doc-section" id="d7">
+  <h2>7. Anti-Money Laundering and Countering Financing of Terrorism</h2>
+  <p>CFH is committed to compliance with the Anti-Money Laundering and Countering Financing of Terrorism Act 2009 (AML/CFT Act). CFH does not knowingly accept donations derived from illegal activity and reserves the right to decline, reverse, hold, or report any donation it reasonably suspects is connected with money laundering, terrorism financing, or fraud.</p>
+</div>
+
+<div class="doc-section" id="d8">
+  <h2>8. Limitation of Liability</h2>
+  <p>To the maximum extent permitted by New Zealand law:</p>
+  <ul>
+    <li>CFH's total liability to any donor for any claim is limited to the amount of that specific donation</li>
+    <li>CFH is not liable for any indirect, consequential, incidental, or special loss</li>
+    <li>CFH is not liable for the conduct of any Club or the delivery of any Club's sponsorship commitments</li>
+    <li>CFH is not liable for any tax outcome resulting from a donation</li>
+  </ul>
+  <p>Nothing in these Terms limits any rights you may have under the Consumer Guarantees Act 1993, the Fair Trading Act 1986, or any other non-excludable statutory right under New Zealand law.</p>
+</div>
+
+<div class="doc-section" id="d9">
+  <h2>9. Changes to These Terms</h2>
+  <p>CFH may update these Terms from time to time. The current version will always be available at cfh.org.nz/terms-donors. If you make a repeat donation after an update, you are deemed to have accepted the updated Terms. Material changes will be communicated by email to donors where we hold your contact details.</p>
+</div>
+
+<div class="doc-section" id="d10">
+  <h2>10. Governing Law</h2>
+  <p>These Terms are governed by the laws of New Zealand. Any dispute arising from or in connection with these Terms or a donation will be subject to the non-exclusive jurisdiction of the New Zealand courts. If you have a concern or complaint, please contact us first at hello@cfh.org.nz — we will do our best to resolve it promptly and fairly.</p>
+</div>
+
+<div class="doc-section" id="d11">
+  <h2>11. Contact</h2>
+  <div class="contact-box">
+    <h3>Community Fundraising Hub — Donor Enquiries</h3>
+    <p>Questions about your donation, tax receipt, or these Terms:</p>
+    <p style="margin-top:12px"><a href="mailto:hello@cfh.org.nz">hello@cfh.org.nz</a><br>
+    Community Fundraising Hub · Auckland, New Zealand · NZBN: 9429053669445</p>
+    <p style="margin-top:10px;font-size:13px;color:rgba(255,255,255,0.6)">We aim to respond to all donor enquiries within 3 working days.</p>
+    <p style="margin-top:12px;font-size:14px">Your personal information is handled in accordance with our <a href="https://cfh.org.nz/privacy">Privacy Policy</a>.</p>
+  </div>
+</div>
+  </div><!-- /doc-content -->
+  </div><!-- /doc-layout -->
+  </div><!-- /doc-outer -->
+</div>
+
+<footer>
+  <div class="container" style="max-width:1080px">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:32px;height:32px;border-radius:9px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.22);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="5.5" cy="15" r="2.5" fill="rgba(255,255,255,0.6)"/><circle cx="12" cy="11.5" r="2.9" fill="#4AAEE8"/><circle cx="18.5" cy="15" r="2.5" fill="rgba(255,255,255,0.6)"/><path d="M3 19 Q5.5 17.2 8 19" stroke="rgba(255,255,255,0.4)" stroke-width="1.3" fill="none" stroke-linecap="round"/><path d="M16 19 Q18.5 17.2 21 19" stroke="rgba(255,255,255,0.4)" stroke-width="1.3" fill="none" stroke-linecap="round"/><path d="M8.8 19.2 Q12 17 15.2 19.2" stroke="rgba(255,255,255,0.7)" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg></div>
+          <span class="footer-logo-text">Community <span style="color:#4AAEE8">Fundraising</span> Hub</span>
+        </div>
+        <p>A NZ charitable platform connecting sports clubs with local businesses for sponsorship and fundraising. Charity registration pending with Charities Services NZ.</p>
+        <div class="footer-contact">
+          <div class="footer-contact-item">✉️ <a href="mailto:hello@cfh.org.nz">hello@cfh.org.nz</a></div>
+          <div class="footer-contact-item">📍 Auckland, New Zealand</div>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Platform</div>
+        <div class="footer-links">
+          <a href="https://cfh.org.nz#how-it-works">How it works</a>
+          <a href="https://cfh.org.nz#what-you-get">What you get</a>
+          <a href="https://cfh.org.nz#trust">Trust &amp; governance</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Legal</div>
+        <div class="footer-links">
+          <a href="https://cfh.org.nz/privacy">Privacy Policy</a>
+          <a href="https://cfh.org.nz/terms-donors">Terms — Businesses &amp; Donors</a>
+          <a href="https://cfh.org.nz/terms-clubs">Terms — Sports Clubs</a>
+          <a href="https://cfh.org.nz/ethical-sponsorship">Ethical Sponsorship Guidelines</a>
+          <a href="https://cfh.org.nz/sponsorship-framework">Sponsorship Responsibility Framework</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">© 2026 Community Fundraising Hub · NZBN 9429053669445 · <a href="https://cfh.org.nz/privacy" style="color:rgba(255,255,255,0.28);text-decoration:underline">Privacy Policy</a> · <a href="https://cfh.org.nz/terms-donors" style="color:rgba(255,255,255,0.28);text-decoration:underline">Terms of Service</a></div>
+      <div class="footer-tag">#SupportingLocal</div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+(function(){
+  var links = document.querySelectorAll('.toc-list a');
+  var sections = [];
+  links.forEach(function(a){
+    var id = a.getAttribute('href').replace('#','');
+    var el = document.getElementById(id);
+    if(el) sections.push({el:el, a:a});
+  });
+  function onScroll(){
+    var scrollY = window.scrollY + 120;
+    var active = null;
+    sections.forEach(function(s){
+      if(s.el.offsetTop <= scrollY) active = s;
+    });
+    links.forEach(function(a){ a.classList.remove('active'); });
+    if(active) active.a.classList.add('active');
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+
+</body>
+</html>

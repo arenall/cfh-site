@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ethical Sponsorship Guidelines — Community Fundraising Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --white:#FFFFFF;
+  --sky:#F4FAFF;--sky2:#E8F3FC;
+  --blue:#1769AA;--blue2:#125490;--blue-mid:#2282CC;
+  --blue-lt:#EBF4FC;--blue-lt2:#CCE2F4;
+  --amber:#E08A0E;--amber-lt:#FEF4E0;
+  --green:#1F9E68;--green-lt:#E4F7EF;
+  --red-lt:#FDF0F0;
+  --text:#162035;--text2:#344258;--muted:#637087;
+  --border:rgba(23,105,170,0.1);--border2:rgba(23,105,170,0.22);
+  --radius:12px;--radius2:20px;
+  --shadow:0 2px 20px rgba(23,105,170,0.08);
+}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.65;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Syne',sans-serif;line-height:1.2}
+a{color:inherit;text-decoration:none}
+.container{max-width:800px;margin:0 auto;padding:0 24px}
+
+/* NAV */
+nav{background:var(--white);border-bottom:1px solid var(--border);padding:14px 0;position:sticky;top:0;z-index:100;box-shadow:var(--shadow)}
+.nav-inner{display:flex;align-items:center;gap:14px}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo-mark{width:36px;height:36px;border-radius:10px;background:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 10px rgba(23,105,170,0.3)}
+.nav-logo-mark svg{width:20px;height:20px}
+.nav-logo-text{font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:var(--text)}
+.nav-back{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:var(--blue);font-weight:500;padding:8px 16px;border-radius:9px;border:1.5px solid var(--border2);transition:all 0.2s}
+.nav-back:hover{background:var(--blue-lt)}
+
+/* HERO BAND */
+.page-hero{background:linear-gradient(135deg,var(--blue) 0%,var(--blue2) 100%);padding:52px 0 44px;color:#fff}
+.page-hero-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.8px;color:rgba(255,255,255,0.6);margin-bottom:12px}
+.page-hero h1{font-family:'Syne',sans-serif;font-size:clamp(24px,4vw,36px);font-weight:800;margin-bottom:10px}
+.page-hero-sub{font-size:15px;color:rgba(255,255,255,0.75);margin-bottom:20px}
+.page-hero-meta{display:flex;flex-wrap:wrap;gap:16px}
+.meta-pill{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:4px 14px;font-size:12px;color:rgba(255,255,255,0.8)}
+
+/* LEGAL NOTE */
+.legal-note{background:var(--amber-lt);border-left:3px solid var(--amber);border-radius:0 10px 10px 0;padding:16px 20px;margin:32px 0;font-size:14px;color:var(--text2)}
+.legal-note strong{color:var(--text);display:block;margin-bottom:4px}
+
+/* CONTENT */
+.doc-body{}
+.doc-section{margin-bottom:48px}
+.doc-section h2{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--text);padding-bottom:10px;border-bottom:2px solid var(--blue);margin-bottom:20px;margin-top:40px}
+.doc-section h3{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--blue);margin:24px 0 10px}
+.doc-section p{font-size:15px;color:var(--text2);line-height:1.75;margin-bottom:14px}
+.doc-section ul{margin:8px 0 14px 0;padding-left:0;list-style:none}
+.doc-section ul li{font-size:15px;color:var(--text2);line-height:1.7;padding:4px 0 4px 22px;position:relative}
+.doc-section ul li::before{content:"•";position:absolute;left:6px;color:var(--blue);font-weight:700}
+
+/* TABLES */
+.doc-table{width:100%;border-collapse:collapse;margin:16px 0 20px;font-size:14px}
+.doc-table th{background:var(--blue);color:#fff;padding:10px 14px;text-align:left;font-family:'Syne',sans-serif;font-size:13px;font-weight:700}
+.doc-table td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top}
+.doc-table tr:nth-child(even) td{background:var(--sky)}
+.doc-table td:first-child{font-weight:600;color:var(--text);white-space:nowrap}
+
+/* INFO BOXES */
+.info-box{background:var(--blue-lt);border-radius:12px;padding:20px 22px;margin:16px 0 20px}
+.info-box.warning{background:var(--amber-lt);border-left:3px solid var(--amber);border-radius:0 12px 12px 0}
+.info-box.danger{background:var(--red-lt);border-left:3px solid #C0392B;border-radius:0 12px 12px 0}
+.info-box strong{display:block;font-family:'Syne',sans-serif;font-size:14px;color:var(--text);margin-bottom:8px}
+.info-box p,.info-box li{font-size:14px;color:var(--text2);line-height:1.7}
+.info-box ul{margin:8px 0 0;padding-left:0;list-style:none}
+.info-box ul li{padding:3px 0 3px 18px;position:relative}
+.info-box ul li::before{content:"•";position:absolute;left:4px;color:var(--blue);font-weight:700}
+.info-box.warning ul li::before,.info-box.danger ul li::before{color:var(--amber)}
+.example-box{background:var(--sky);border:1px solid var(--border2);border-radius:12px;padding:20px 22px;margin:16px 0 20px}
+.example-box strong{display:block;font-family:'Syne',sans-serif;font-size:13px;color:var(--blue);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px}
+.example-box p,.example-box li{font-size:14px;color:var(--text2);line-height:1.7}
+
+/* LAYOUT — two-column with sticky sidebar TOC */
+.doc-outer{max-width:1180px;margin:0 auto;padding:0 24px}
+.doc-layout{display:grid;grid-template-columns:240px 1fr;gap:56px;align-items:start;padding:48px 0 80px}
+.doc-content{min-width:0}
+
+/* STICKY SIDEBAR TOC */
+.toc-sidebar{position:sticky;top:80px;max-height:calc(100vh - 110px);overflow-y:auto;padding-right:4px}
+.toc-sidebar::-webkit-scrollbar{width:3px}
+.toc-sidebar::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+.toc-label{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:14px;display:block}
+.toc-list{list-style:none;margin:0;padding:0;border-left:2px solid var(--border)}
+.toc-list li a{display:block;padding:5px 0 5px 14px;font-size:13px;color:var(--muted);line-height:1.4;transition:color 0.15s, border-color 0.15s;border-left:2px solid transparent;margin-left:-2px;text-decoration:none}
+.toc-list li a:hover{color:var(--blue)}
+.toc-list li a.active{color:var(--blue);border-left-color:var(--blue);font-weight:500}
+
+/* SECTION SCROLL OFFSET — compensates for sticky top nav */
+.doc-section{scroll-margin-top:80px;margin-bottom:48px}
+
+/* Mobile — stack TOC above content */
+@media(max-width:860px){
+  .doc-layout{grid-template-columns:1fr;gap:0;padding-top:0}
+  .toc-sidebar{position:static;max-height:none;overflow:visible;border:1px solid var(--border);border-radius:12px;padding:20px 24px;background:var(--sky);margin:32px 0 40px}
+  .toc-list{border-left:none}
+  .toc-list li a{padding:4px 0;border-left:none;margin-left:0;counter-increment:toc-counter}
+  .toc-list li a::before{content:counter(toc-counter) ". ";color:var(--blue);font-weight:600}
+  .toc-list{counter-reset:toc-counter}
+  .toc-list li a.active{background:none;font-weight:600}
+}
+
+/* CONTACT BOX */
+.contact-box{background:var(--blue);border-radius:16px;padding:28px 32px;color:#fff;margin-top:48px}
+.contact-box h3{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;margin-bottom:10px}
+.contact-box p,.contact-box a{font-size:15px;color:rgba(255,255,255,0.8);line-height:1.7}
+.contact-box a{text-decoration:underline}
+.contact-box a:hover{color:#fff}
+
+/* FOOTER */
+footer{background:var(--text);padding:48px 0 28px;color:rgba(255,255,255,0.65)}
+.footer-inner{display:grid;grid-template-columns:1.8fr 1fr 1fr;gap:48px;margin-bottom:40px}
+.footer-brand p{font-size:13.5px;line-height:1.7;margin-top:12px;color:rgba(255,255,255,0.48)}
+.footer-logo-text{font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:#fff}
+.footer-col-title{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,0.35);margin-bottom:14px}
+.footer-links{display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:13.5px;color:rgba(255,255,255,0.48);transition:color 0.2s}
+.footer-links a:hover{color:#fff}
+.footer-contact{margin-top:16px;display:flex;flex-direction:column;gap:7px}
+.footer-contact-item{display:flex;align-items:center;gap:8px;font-size:13.5px;color:rgba(255,255,255,0.6)}
+.footer-contact-item a{color:rgba(255,255,255,0.6);transition:color 0.2s}
+.footer-contact-item a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-legal{font-size:12px;color:rgba(255,255,255,0.28)}
+.footer-tag{font-size:12px;color:rgba(255,255,255,0.22);font-style:italic}
+
+@media(max-width:700px){
+  .footer-inner{grid-template-columns:1fr}
+  .page-hero-meta{flex-direction:column;gap:8px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container" style="max-width:1080px">
+    <div class="nav-inner">
+      <a href="https://cfh.org.nz" class="nav-logo">
+        <div class="nav-logo-mark"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="5.5" cy="15" r="2.8" fill="rgba(255,255,255,0.75)"/><circle cx="12" cy="11.5" r="3.2" fill="#fff"/><circle cx="18.5" cy="15" r="2.8" fill="rgba(255,255,255,0.75)"/><path d="M3 19.5 Q5.5 17.5 8 19.5" stroke="rgba(255,255,255,0.5)" stroke-width="1.3" fill="none" stroke-linecap="round"/><path d="M16 19.5 Q18.5 17.5 21 19.5" stroke="rgba(255,255,255,0.5)" stroke-width="1.3" fill="none" stroke-linecap="round"/><path d="M8.5 19.5 Q12 17 15.5 19.5" stroke="rgba(255,255,255,0.8)" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg></div>
+        <span class="nav-logo-text">Community <span style="color:var(--blue)">Fundraising</span> Hub</span>
+      </a>
+      <a href="https://cfh.org.nz" class="nav-back">← Back to site</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="page-hero-label">Legal</div>
+    <h1>Ethical Sponsorship Guidelines</h1>
+    <p class="page-hero-sub">Sports Clubs Edition — Phase 1</p>
+    <div class="page-hero-meta">
+      <span class="meta-pill">Version 2</span>
+      <span class="meta-pill">Effective: May 2026</span>
+      <span class="meta-pill">Governed by New Zealand law</span>
+      <span class="meta-pill">NZBN: 9429053669445</span>
+    </div>
+  </div>
+</div>
+
+<div class="doc-body">
+  <div class="doc-outer">
+  <div class="doc-layout">
+<aside class="toc-sidebar">
+<span class="toc-label">Contents</span>
+  <ul class="toc-list">
+    <li><a href="#e1">Purpose</a></li>
+    <li><a href="#e2">Phase 1 Context — Why Sports Clubs Have Different Standards</a></li>
+    <li><a href="#e3">How Sponsorship Works on CFH</a></li>
+    <li><a href="#e4">Approved Business Categories</a></li>
+    <li><a href="#e5">Conditional Categories</a></li>
+    <li><a href="#e6">Prohibited Categories — Absolute</a></li>
+    <li><a href="#e7">Club Responsibilities</a></li>
+    <li><a href="#e8">CFH Responsibilities</a></li>
+    <li><a href="#e9">Raising a Concern</a></li>
+    <li><a href="#e10">Schools Phase (Future — Phase 2)</a></li>
+  </ul>
+</aside>
+
+<div class="doc-content">
+<div class="legal-note">
+      <strong>Legal Note</strong>
+      This document has been prepared in good faith and is intended to comply with New Zealand law. It has not been reviewed by a qualified NZ solicitor. Seek independent legal advice if you have specific concerns.
+    </div>
+
+<div class="doc-section" id="e1">
+  <h2>1. Purpose</h2>
+  <p>These guidelines define the ethical standards that govern sponsorship relationships on the CFH platform during Phase 1 (sports clubs). They exist to protect the integrity of participating clubs, ensure CFH remains a trusted platform, and reflect the realities of the NZ sports club sponsorship landscape.</p>
+  <p>These guidelines replace the previous version, which was written for a schools and PTA context. That version is no longer applicable.</p>
+  <table class="doc-table">
+    <tbody>
+      <tr><td>Applies to</td><td>Sports clubs using the CFH platform — Phase 1</td></tr>
+      <tr><td>Does NOT apply to</td><td>Schools and educational institutions (separate guidelines will apply in Phase 2)</td></tr>
+      <tr><td>Approved by</td><td>CFH Board of Trustees</td></tr>
+      <tr><td>Next review</td><td>On commencement of schools phase, or 12 months from effective date</td></tr>
+      <tr><td>Maintained by</td><td>James Renall, Founding Trustee</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="doc-section" id="e2">
+  <h2>2. Phase 1 Context — Why Sports Clubs Have Different Standards</h2>
+  <p>CFH recognises that the sponsorship landscape for community sports clubs differs meaningfully from schools:</p>
+  <ul>
+    <li>Sports clubs regularly receive support from local breweries, hospitality businesses, and gaming trusts — these are established, normalised funding relationships in the NZ community sport sector</li>
+    <li>Major NZ community funders including the Lion Foundation and Pub Charity are themselves connected to gaming and liquor — applying blanket prohibitions in this context would be inconsistent and impractical</li>
+    <li>Adult members and committees make decisions on behalf of clubs; the commercial context is fundamentally different from a school environment</li>
+  </ul>
+  <p>Schools will be governed by a separate, stricter set of guidelines when CFH enters Phase 2. Alcohol, gambling, and other conditional categories will not be permitted for school-facing campaigns under any circumstances.</p>
+</div>
+
+<div class="doc-section" id="e3">
+  <h2>3. How Sponsorship Works on CFH</h2>
+  <p>CFH operates a club-led outreach model. This is important for understanding how these guidelines apply in practice:</p>
+  <ul>
+    <li>CFH provides each club with an AI-generated list of suggested local businesses and a suite of outreach templates</li>
+    <li>Clubs make all approaches to businesses themselves — CFH does not contact businesses directly on behalf of clubs</li>
+    <li>Businesses are not required to submit an application or be formally vetted by CFH before a club approaches them</li>
+    <li>These guidelines function as upfront guidance given to clubs — defining which categories of business are appropriate to approach through CFH, and which are not</li>
+    <li>Clubs retain the right to decline any business they feel is not aligned with their own values, regardless of whether CFH's guidelines permit that category</li>
+  </ul>
+  <p>The AI business list CFH generates will be filtered in line with these guidelines — prohibited categories will not appear on the list. However, clubs may also approach businesses from their own network; in those cases, clubs should apply these guidelines in good faith.</p>
+</div>
+
+<div class="doc-section" id="e4">
+  <h2>4. Approved Business Categories</h2>
+  <p>The following business types are appropriate for clubs to approach through the CFH platform:</p>
+  <table class="doc-table">
+    <thead><tr><th>Category</th><th>Examples</th></tr></thead>
+    <tbody>
+      <tr><td>Local retail & services</td><td>Supermarkets, hardware stores, pharmacies, clothing stores, garden centres</td></tr>
+      <tr><td>Hospitality & food</td><td>Cafes, restaurants, bakeries, catering businesses, food trucks</td></tr>
+      <tr><td>Professional services</td><td>Accountants, lawyers, real estate agents, financial advisers, insurance brokers</td></tr>
+      <tr><td>Health & wellness</td><td>Physios, gyms, sports medicine clinics, dentists, optometrists</td></tr>
+      <tr><td>Trades & construction</td><td>Builders, plumbers, electricians, landscapers, painters</td></tr>
+      <tr><td>Automotive</td><td>Car dealerships, mechanics, tyre shops, fuel stations</td></tr>
+      <tr><td>Sports & recreation</td><td>Sports retailers, outdoor equipment, coaching services</td></tr>
+      <tr><td>Media & marketing</td><td>Local printers, photographers, graphic designers, radio</td></tr>
+      <tr><td>Alcohol (conditional)</td><td>Breweries, wineries, liquor stores, RTD brands — see Section 5</td></tr>
+      <tr><td>Gambling (conditional)</td><td>TAB, gaming lounges, Lotto retailers — see Section 5</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="doc-section" id="e5">
+  <h2>5. Conditional Categories</h2>
+  <h3>5.1 Alcohol</h3>
+  <p>Alcohol businesses may be approached for sports club campaigns, subject to the following conditions:</p>
+  <ul>
+    <li>The club's campaign is not targeted at, or primarily composed of, under-18 members. A senior football club with a junior section may use CFH for its senior campaign but should not direct alcohol sponsorship toward junior-specific fundraising</li>
+    <li>All sponsorship messaging must comply with New Zealand's Sale and Supply of Alcohol Act 2012 and the Advertising Standards Authority's codes for alcohol advertising</li>
+    <li>Alcohol sponsors must not use their sponsorship to promote excessive consumption or target vulnerable individuals</li>
+    <li>CFH will include alcohol businesses on the AI business list for clubs where the primary membership is adult. Clubs with predominantly junior membership should use their own judgment and may opt to exclude this category</li>
+  </ul>
+  <div class="info-box">
+    <p>If a club is primarily a junior club (e.g. U13 football) but has a parent/volunteer fundraising committee, the committee can still approach alcohol businesses for contributions to the club's general fund — provided the sponsorship is not branded as targeting the junior members themselves.</p>
+  </div>
+  <h3>5.2 Gambling</h3>
+  <p>Gaming trusts and gambling-adjacent businesses may be approached, subject to similar conditions:</p>
+  <ul>
+    <li>TAB, gaming lounges (non-casino), Lotto retailers, and gaming machine operators are common sponsors in the NZ community sport sector and are approved under these guidelines for adult-membership clubs</li>
+    <li>Sponsorship messaging must not promote gambling as a solution to financial difficulty or target vulnerable individuals</li>
+    <li>Clubs with predominantly junior membership should not actively seek gambling business sponsorships, though acceptance of gaming trust grants (e.g. from the Lion Foundation or Pub Charity) is a separate matter and is not governed by these guidelines</li>
+  </ul>
+</div>
+
+<div class="doc-section" id="e6">
+  <h2>6. Prohibited Categories — Absolute</h2>
+  <p>The following categories are prohibited regardless of club type, campaign context, or business reputation. These are never appropriate on the CFH platform:</p>
+  <div class="info-box danger">
+    <strong>Tobacco and vaping products</strong>
+    <p>Cigarettes, cigars, smokeless tobacco, vaping devices, nicotine products, and any associated retail or distribution businesses.</p>
+  </div>
+  <div class="info-box danger">
+    <strong>Adult content and adult entertainment</strong>
+    <p>Businesses whose primary revenue is derived from pornography, escort services, or adult entertainment venues.</p>
+  </div>
+  <div class="info-box danger">
+    <strong>Predatory financial services</strong>
+    <p>Payday lenders, loan sharks, unlicensed financial services, or any business whose model depends on high-interest short-term lending to financially vulnerable people.</p>
+  </div>
+  <div class="info-box danger">
+    <strong>Pyramid schemes and multi-level marketing</strong>
+    <p>Businesses operating as MLM or pyramid structures where participants are primarily compensated by recruiting others rather than by product or service sales.</p>
+  </div>
+  <div class="info-box danger">
+    <strong>Businesses under serious active legal proceedings</strong>
+    <p>Any business under active investigation or subject to recent serious sanctions by the Commerce Commission, FMA, RBNZ, or law enforcement, where the conduct in question is directly relevant to community trust. Assessed by CFH on a case-by-case basis if flagged.</p>
+  </div>
+</div>
+
+<div class="doc-section" id="e7">
+  <h2>7. Club Responsibilities</h2>
+  <p>By participating in the CFH platform, clubs agree to:</p>
+  <ul>
+    <li>Apply these guidelines in good faith when approaching businesses from their own network</li>
+    <li>Not use CFH's outreach templates to approach businesses in prohibited categories</li>
+    <li>Exercise their own judgment on conditional categories, taking into account their membership composition</li>
+    <li>Inform CFH if they become aware of concerns about a sponsor that may reflect negatively on the club or CFH</li>
+    <li>Ensure that any sponsor recognition (social posts, naming rights, signage) does not promote harmful products or messaging to their members</li>
+  </ul>
+</div>
+
+<div class="doc-section" id="e8">
+  <h2>8. CFH Responsibilities</h2>
+  <p>CFH commits to:</p>
+  <ul>
+    <li>Filtering the AI business list to exclude prohibited categories before providing it to clubs</li>
+    <li>Applying conditional category logic to the AI list — alcohol and gambling businesses will only appear on lists for clubs where the primary membership profile is adult</li>
+    <li>Reviewing these guidelines on a scheduled basis and updating them as the platform evolves, particularly on commencement of the schools phase</li>
+    <li>Responding promptly if a club or third party raises a concern about a sponsor relationship on the platform</li>
+  </ul>
+</div>
+
+<div class="doc-section" id="e9">
+  <h2>9. Raising a Concern</h2>
+  <p>If a club, business, or community member has concerns about a sponsorship relationship on the CFH platform:</p>
+  <ul>
+    <li>Contact CFH at hello@cfh.org.nz with a brief description of the concern and the club/business involved</li>
+    <li>CFH will acknowledge the concern within 3 business days and investigate</li>
+    <li>If CFH determines that a sponsorship relationship breaches these guidelines, CFH will notify the club and request that the relationship be discontinued through the platform. The club is not obligated to end the relationship entirely — only to remove CFH's facilitation of it</li>
+    <li>CFH will not make public statements about individual sponsor concerns without the affected club's knowledge</li>
+  </ul>
+  <div class="contact-box">
+    <h3>Raise a concern</h3>
+    <p>Contact CFH at <a href="mailto:hello@cfh.org.nz">hello@cfh.org.nz</a> — we will acknowledge within 3 business days.</p>
+  </div>
+</div>
+
+<div class="doc-section" id="e10">
+  <h2>10. Schools Phase (Future — Phase 2)</h2>
+  <p>When CFH extends to schools, a separate Ethical Sponsorship Guidelines document will apply. The schools version will be materially stricter:</p>
+  <ul>
+    <li>Alcohol: not permitted under any circumstances</li>
+    <li>Gambling: not permitted under any circumstances</li>
+    <li>Food and beverage: additional restrictions on categories inconsistent with school nutrition policies</li>
+    <li>All businesses will be subject to a more formal review process before being added to school-facing AI business lists</li>
+  </ul>
+  <p>Clubs operating under Phase 1 guidelines should be aware that the platform will operate differently in a school context.</p>
+</div>
+  </div><!-- /doc-content -->
+  </div><!-- /doc-layout -->
+  </div><!-- /doc-outer -->
+</div>
+
+<footer>
+  <div class="container" style="max-width:1080px">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:32px;height:32px;border-radius:9px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.22);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="5.5" cy="15" r="2.5" fill="rgba(255,255,255,0.6)"/><circle cx="12" cy="11.5" r="2.9" fill="#4AAEE8"/><circle cx="18.5" cy="15" r="2.5" fill="rgba(255,255,255,0.6)"/><path d="M3 19 Q5.5 17.2 8 19" stroke="rgba(255,255,255,0.4)" stroke-width="1.3" fill="none" stroke-linecap="round"/><path d="M16 19 Q18.5 17.2 21 19" stroke="rgba(255,255,255,0.4)" stroke-width="1.3" fill="none" stroke-linecap="round"/><path d="M8.8 19.2 Q12 17 15.2 19.2" stroke="rgba(255,255,255,0.7)" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg></div>
+          <span class="footer-logo-text">Community <span style="color:#4AAEE8">Fundraising</span> Hub</span>
+        </div>
+        <p>A NZ charitable platform connecting sports clubs with local businesses for sponsorship and fundraising. Charity registration pending with Charities Services NZ.</p>
+        <div class="footer-contact">
+          <div class="footer-contact-item">✉️ <a href="mailto:hello@cfh.org.nz">hello@cfh.org.nz</a></div>
+          <div class="footer-contact-item">📍 Auckland, New Zealand</div>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Platform</div>
+        <div class="footer-links">
+          <a href="https://cfh.org.nz#how-it-works">How it works</a>
+          <a href="https://cfh.org.nz#what-you-get">What you get</a>
+          <a href="https://cfh.org.nz#trust">Trust &amp; governance</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Legal</div>
+        <div class="footer-links">
+          <a href="https://cfh.org.nz/privacy">Privacy Policy</a>
+          <a href="https://cfh.org.nz/terms-donors">Terms — Businesses &amp; Donors</a>
+          <a href="https://cfh.org.nz/terms-clubs">Terms — Sports Clubs</a>
+          <a href="https://cfh.org.nz/ethical-sponsorship">Ethical Sponsorship Guidelines</a>
+          <a href="https://cfh.org.nz/sponsorship-framework">Sponsorship Responsibility Framework</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">© 2026 Community Fundraising Hub · NZBN 9429053669445 · <a href="https://cfh.org.nz/privacy" style="color:rgba(255,255,255,0.28);text-decoration:underline">Privacy Policy</a> · <a href="https://cfh.org.nz/terms-donors" style="color:rgba(255,255,255,0.28);text-decoration:underline">Terms of Service</a></div>
+      <div class="footer-tag">#SupportingLocal</div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+(function(){
+  var links = document.querySelectorAll('.toc-list a');
+  var sections = [];
+  links.forEach(function(a){
+    var id = a.getAttribute('href').replace('#','');
+    var el = document.getElementById(id);
+    if(el) sections.push({el:el, a:a});
+  });
+  function onScroll(){
+    var scrollY = window.scrollY + 120;
+    var active = null;
+    sections.forEach(function(s){
+      if(s.el.offsetTop <= scrollY) active = s;
+    });
+    links.forEach(function(a){ a.classList.remove('active'); });
+    if(active) active.a.classList.add('active');
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+
+</body>
+</html>
