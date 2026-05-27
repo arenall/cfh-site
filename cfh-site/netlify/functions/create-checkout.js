@@ -38,6 +38,7 @@ exports.handler = async (event) => {
       sponsorName,     // sponsor's full name
       businessName,    // sponsor's business name
       sponsorEmail,    // sponsor's email
+      pageUrl,         // the club page URL to redirect back to after payment
     } = body;
 
     // Validate required fields
@@ -92,8 +93,8 @@ exports.handler = async (event) => {
         },
       },
       // Redirect URLs
-      success_url: `${event.headers.origin || 'https://cfh.org.nz'}?payment=success&session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${event.headers.origin || 'https://cfh.org.nz'}?payment=cancelled`,
+      success_url: `${pageUrl || event.headers.referer || 'https://cfh.org.nz'}?payment=success&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${pageUrl || event.headers.referer || 'https://cfh.org.nz'}?payment=cancelled`,
     });
 
     return {
