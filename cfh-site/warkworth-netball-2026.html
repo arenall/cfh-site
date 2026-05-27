@@ -595,9 +595,9 @@
     </div>
     <p style="font-size:13.5px;color:var(--text2);margin:0 0 18px;line-height:1.65">Would you like to help cover our 7% fee and bring CFH to more clubs across NZ?</p>
     <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
-      <button onclick="proceedWithFee(true)" style="width:100%;padding:12px 16px;border-radius:10px;border:1.5px solid var(--blue);background:var(--blue);color:#fff;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;justify-content:space-between;align-items:center">
+      <button onclick="proceedWithFee(true)" style="width:100%;padding:12px 16px;border-radius:10px;border:1.5px solid var(--blue);background:var(--blue);color:#fff;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;justify-content:space-between;align-items:center;-webkit-font-smoothing:antialiased">
         <span>Yes, add the 7% fee</span>
-        <span id="modal-yes-total" style="font-size:13px;opacity:0.88"></span>
+        <span id="modal-yes-total" style="font-size:13px;color:rgba(255,255,255,0.9)"></span>
       </button>
       <button onclick="proceedWithFee(false)" style="width:100%;padding:12px 16px;border-radius:10px;border:1.5px solid var(--border2);background:var(--white);color:var(--text);font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;justify-content:space-between;align-items:center">
         <span>No thanks</span>
@@ -674,6 +674,7 @@
   async function proceedWithFee(coverFee) {
     closeFeeModal();
     var tierName = pendingIsDonation ? 'Community Donation' : pendingDescription;
+    var pageUrl = window.location.href.split('?')[0];
     try {
       var response = await fetch('/.netlify/functions/create-checkout', {
         method: 'POST',
@@ -682,7 +683,8 @@
           amountCents: pendingAmount * 100,
           tierName: tierName,
           clubName: 'Warkworth Netball Club',
-          coverFee: coverFee
+          coverFee: coverFee,
+          pageUrl: pageUrl
         })
       });
       var data = await response.json();
