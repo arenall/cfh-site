@@ -578,11 +578,13 @@
 </div>
 
 <!-- Footer -->
-<!-- Thank You Banner -->
-<div id="thankyou-banner" style="display:none;background:var(--green);padding:14px 28px;text-align:center">
-  <div style="max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:10px">
-    <span style="font-size:18px">🎉</span>
-    <span style="font-size:14px;font-weight:600;color:#fff">Thank you for your contribution! Your tax receipt is on its way to your inbox.</span>
+<!-- Thank You Modal -->
+<div id="thankyou-overlay" style="display:none;position:fixed;inset:0;background:rgba(22,32,53,0.6);z-index:2000;align-items:center;justify-content:center;padding:20px;opacity:0;transition:opacity 0.3s ease">
+  <div id="thankyou-modal" style="background:var(--white);border-radius:var(--radius2);border:1px solid var(--border);padding:32px 28px 24px;max-width:400px;width:100%;text-align:center;transform:scale(0.9);transition:transform 0.35s cubic-bezier(0.22,1,0.36,1)">
+    <div style="font-size:48px;color:var(--green);margin-bottom:14px">✓</div>
+    <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:var(--text);margin-bottom:10px">Thank you for your contribution!</div>
+    <div style="font-size:14px;color:var(--text2);line-height:1.65;margin-bottom:24px">Your tax receipt is on its way to your inbox. We appreciate your support of Warkworth Netball Club.</div>
+    <button onclick="closeThankyou()" style="width:100%;padding:12px;font-size:14px;font-weight:600;background:var(--green);color:#fff;border:none;border-radius:10px;cursor:pointer;font-family:'DM Sans',sans-serif">Close</button>
   </div>
 </div>
 
@@ -708,19 +710,25 @@
     openFeeModal(amt, 'Community Donation', true);
   }
 
+  function closeThankyou() {
+    var overlay = document.getElementById('thankyou-overlay');
+    overlay.style.opacity = '0';
+    setTimeout(function(){ overlay.style.display = 'none'; }, 300);
+    window.history.replaceState({}, '', window.location.pathname);
+  }
+
   // Check for successful payment return
   window.addEventListener('DOMContentLoaded', function() {
     var params = new URLSearchParams(window.location.search);
     if (params.get('payment') === 'success' || params.get('session_id')) {
-      var banner = document.getElementById('thankyou-banner');
-      banner.style.display = 'block';
-      // Insert banner at top of page after nav
-      var nav = document.querySelector('.club-nav');
-      if (nav) nav.insertAdjacentElement('afterend', banner);
-      // Smooth scroll to top
+      var overlay = document.getElementById('thankyou-overlay');
+      var modal = document.getElementById('thankyou-modal');
+      overlay.style.display = 'flex';
+      setTimeout(function(){
+        overlay.style.opacity = '1';
+        modal.style.transform = 'scale(1)';
+      }, 50);
       window.scrollTo({top: 0, behavior: 'smooth'});
-      // Remove param from URL without reload
-      window.history.replaceState({}, '', window.location.pathname);
     }
   });
 
