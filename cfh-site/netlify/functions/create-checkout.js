@@ -81,14 +81,14 @@ exports.handler = async (event) => {
       // Pass metadata through to webhook for receipt generation
       payment_intent_data: {
         metadata: {
-          clubName,
-          tierName,
-          sponsorName: sponsorName || '',
-          businessName: businessName || '',
-          sponsorEmail: sponsorEmail || '',
-          coverFee: coverFee ? 'yes' : 'no',
-          originalAmountCents: amountCents.toString(),
-          finalAmountCents: finalAmountCents.toString(),
+          club_name: clubName,
+          tier_name: tierName,
+          donor_name: sponsorName || '',
+          business_name: businessName || '',
+          donor_email: sponsorEmail || '',
+          cover_fee: coverFee ? 'yes' : 'no',
+          original_amount_cents: amountCents.toString(),
+          final_amount_cents: finalAmountCents.toString(),
         },
       },
       // Redirect URLs
