@@ -711,7 +711,7 @@
   // Check for successful payment return
   window.addEventListener('DOMContentLoaded', function() {
     var params = new URLSearchParams(window.location.search);
-    if (params.get('payment') === 'success') {
+    if (params.get('payment') === 'success' || params.get('session_id')) {
       var banner = document.getElementById('thankyou-banner');
       banner.style.display = 'block';
       // Insert banner at top of page after nav
