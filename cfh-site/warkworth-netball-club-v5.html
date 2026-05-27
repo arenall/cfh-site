@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Warkworth Netball Club — Sponsors &amp; Fundraising</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --white:#FFFFFF;--sky:#F4FAFF;--sky2:#E8F3FC;--sky3:#D0E6F5;
+      --blue:#1769AA;--blue2:#125490;--blue-mid:#2282CC;
+      --blue-lt:#EBF4FC;--blue-lt2:#CCE2F4;
+      --green:#1F9E68;--green-lt:#E4F7EF;--green2:#157A50;
+      --amber:#E08A0E;--amber-lt:#FEF4E0;--amber-lt2:#FDEAB8;
+      --ww:#5B2D8E;--ww2:#4A2172;--ww-lt:#F2EBF9;--ww-lt2:#E0D0F5;
+      --text:#162035;--text2:#344258;--muted:#637087;
+      --border:rgba(23,105,170,0.1);--border2:rgba(23,105,170,0.22);
+      --ww-border:rgba(91,45,142,0.15);
+      --radius:12px;--radius2:16px;
+      --shadow:0 2px 20px rgba(23,105,170,0.08);
+      --shadow-ww:0 2px 20px rgba(91,45,142,0.08);
+    }
+    html{scroll-behavior:smooth}
+    body{background:var(--sky);color:var(--text);font-family:"DM Sans",sans-serif;font-size:16px;line-height:1.65;min-height:100vh}
+    h1,h2,h3,h4{font-family:"Syne",sans-serif;line-height:1.15}
+    a{color:var(--blue);text-decoration:none}
+
+    /* BUTTONS */
+    .btn{display:inline-flex;align-items:center;gap:7px;font-family:"DM Sans",sans-serif;font-weight:500;font-size:14px;padding:11px 22px;border-radius:10px;cursor:pointer;transition:all 0.18s;border:none;white-space:nowrap;text-decoration:none}
+    .btn-blue{background:var(--blue);color:#fff}
+    .btn-blue:hover{background:var(--blue2);transform:translateY(-1px);box-shadow:0 4px 16px rgba(23,105,170,0.32);color:#fff;text-decoration:none}
+    .btn-ww{background:var(--ww);color:#fff}
+    .btn-ww:hover{background:var(--ww2);transform:translateY(-1px);box-shadow:0 4px 16px rgba(91,45,142,0.32);color:#fff;text-decoration:none}
+    .btn-green{background:var(--green);color:#fff}
+    .btn-green:hover{background:var(--green2);transform:translateY(-1px);color:#fff;text-decoration:none}
+    .wfull{width:100%;justify-content:center}
+
+    /* CFH POWER BAR */
+    .cfh-bar{background:var(--text);padding:9px 28px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .cfh-bar-l{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.5)}
+    .cfh-icon{width:22px;height:22px;background:var(--blue);border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .cfh-icon svg{width:13px;height:13px}
+    .cfh-wm{font-family:"Syne",sans-serif;font-weight:800;font-size:12.5px;color:#fff}
+    .cfh-wm span{color:#4AAEE8}
+    .cfh-bar-r{font-size:11px;color:rgba(255,255,255,0.38)}
+    .cfh-bar-r a{color:rgba(255,255,255,0.55);text-decoration:none}
+
+    /* CLUB NAV */
+    .club-nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 1px 20px rgba(23,105,170,0.06)}
+    .club-nav-brand{display:flex;align-items:center;gap:12px}
+    .club-nav-logo{width:40px;height:40px;border-radius:10px;overflow:hidden;flex-shrink:0;border:1px solid var(--ww-border)}
+    .club-nav-logo img{width:100%;height:100%;object-fit:cover}
+    .club-nav-name{font-family:"Syne",sans-serif;font-weight:800;font-size:14px;color:var(--text);line-height:1.2}
+    .club-nav-name small{font-family:"DM Sans",sans-serif;font-weight:400;font-size:11px;color:var(--muted);display:block}
+    .badge-verified{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;background:var(--green-lt);color:var(--green);padding:4px 10px;border-radius:20px;border:1px solid rgba(31,158,104,0.22);white-space:nowrap}
+    .badge-charity{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;background:var(--blue-lt);color:var(--blue);padding:4px 10px;border-radius:20px;border:1px solid var(--border2);white-space:nowrap}
+    .nav-links a{font-size:13.5px;font-weight:500;color:var(--text2);padding:6px 12px;border-radius:8px;transition:all 0.15s;display:inline-block;text-decoration:none}
+    .nav-links a:hover{background:var(--blue-lt);color:var(--blue)}
+
+    /* HERO */
+    .hero{position:relative;overflow:hidden}
+    .hero-img{width:100%;height:260px;object-fit:cover;object-position:center 38%;display:block}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(22,32,53,0.15) 0%,rgba(22,32,53,0.72) 100%)}
+    
+
+    /* PAGE */
+    .page{max-width:860px;margin:0 auto;padding:24px 24px 64px}
+
+    /* ABOUT CARD */
+    .about-card{background:var(--white);border-radius:var(--radius2);border:1px solid var(--border);padding:20px 24px;margin-bottom:12px;box-shadow:var(--shadow)}
+    .about-text{font-size:14px;color:var(--text2);line-height:1.72}
+
+    /* WHY SPONSOR CARD */
+    .why-card{background:var(--white);border-radius:var(--radius2);border:1px solid var(--border);overflow:hidden;margin-bottom:12px;box-shadow:var(--shadow)}
+    .why-head{padding:16px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+    .why-head-eyebrow{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:1.3px;color:var(--blue);margin-bottom:3px}
+    .why-title{font-family:"Syne",sans-serif;font-weight:800;font-size:16px;color:var(--text)}
+    .why-stats{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--border)}
+    .why-stat{padding:18px 20px;text-align:center;border-right:1px solid var(--border)}
+    .why-stat:last-child{border-right:none}
+    .why-stat-n{font-family:"Syne",sans-serif;font-weight:800;font-size:26px;color:var(--blue);line-height:1}
+    .why-stat-l{font-size:12px;color:var(--muted);margin-top:4px}
+    .why-points{display:grid;grid-template-columns:repeat(2,1fr);gap:0}
+    .why-point{padding:14px 20px;display:flex;align-items:flex-start;gap:10px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .why-point:nth-child(2n){border-right:none}
+    .why-point:nth-last-child(-n+2){border-bottom:none}
+    .why-tick{color:var(--blue);font-weight:700;font-size:13px;flex-shrink:0;margin-top:1px}
+    .why-point-text{font-size:13px;color:var(--text2);line-height:1.5}
+
+    /* TABS */
+    .tabs{display:flex;gap:4px;margin-bottom:14px;background:var(--white);border-radius:13px;padding:5px;border:1px solid var(--border);box-shadow:var(--shadow)}
+    .tab{flex:1;padding:10px 12px;border-radius:9px;font-size:13px;font-weight:600;border:none;background:transparent;cursor:pointer;color:var(--muted);font-family:"DM Sans",sans-serif;transition:all 0.18s;text-align:center;line-height:1.3}
+    .tab.active{background:var(--blue);color:#fff;box-shadow:0 2px 10px rgba(23,105,170,0.28)}
+    .tab-content{display:none}
+    .tab-content.active{display:block}
+
+    /* CARD */
+    .card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius2);overflow:hidden;margin-bottom:10px;box-shadow:var(--shadow)}
+    .card-head{padding:14px 22px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .card-title{font-family:"Syne",sans-serif;font-weight:700;font-size:12.5px;color:var(--text);text-transform:uppercase;letter-spacing:0.6px}
+    .card-sub{font-size:12px;color:var(--muted)}
+
+    /* TIER CARDS */
+    .tier-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius2);margin-bottom:8px;box-shadow:var(--shadow);overflow:hidden;transition:box-shadow 0.18s}
+    .tier-card:hover{box-shadow:0 4px 28px rgba(23,105,170,0.13)}
+    .tier-card-head{padding:16px 22px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:14px}
+    .tier-card-left{display:flex;align-items:center;gap:12px}
+    .tier-icon{font-size:22px;flex-shrink:0}
+    .tier-name{font-family:"Syne",sans-serif;font-size:15px;font-weight:800;color:var(--text)}
+    .tier-amount{font-size:14px;font-weight:600;color:var(--blue);margin-top:2px}
+    .tier-badge-popular{font-size:10px;font-weight:700;background:var(--blue-lt);color:var(--blue);border:1px solid var(--border2);padding:3px 10px;border-radius:20px;white-space:nowrap}
+    .tier-body{padding:14px 22px;display:flex;align-items:flex-start;justify-content:space-between;gap:20px}
+    .tier-perks{flex:1;list-style:none}
+    .tier-perks li{font-size:13px;color:var(--text2);line-height:1.6;padding:3px 0;display:flex;align-items:flex-start;gap:8px}
+    .tier-perks li::before{content:"›";color:var(--blue);font-weight:700;font-size:13px;flex-shrink:0;margin-top:0px}
+    .tier-perks li strong{color:var(--text);font-weight:600}
+    .tier-receipt{font-size:12px;color:var(--muted);margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
+    .tier-action{flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+
+    /* EVENT TIER CARDS */
+    .event-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius2);margin-bottom:8px;box-shadow:var(--shadow);overflow:hidden;transition:box-shadow 0.18s}
+    .event-card:hover{box-shadow:0 4px 28px rgba(23,105,170,0.13)}
+    .event-card-head{padding:16px 22px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--sky)}
+    .event-card-body{padding:14px 22px;display:flex;align-items:flex-start;justify-content:space-between;gap:20px}
+
+    /* TAX SECTION */
+    .tax-section{background:var(--blue-lt);border-top:1px solid var(--blue-lt2);padding:18px 22px}
+    .tax-eyebrow{font-size:11.5px;font-weight:700;color:var(--blue2);margin-bottom:6px}
+    .tax-body{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:14px}
+    .tax-body strong{color:var(--text)}
+    .tax-calc{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+    .tax-stat{background:var(--white);border-radius:10px;padding:12px 14px;border:1px solid var(--blue-lt2);text-align:center}
+    .tax-stat-label{font-size:11px;color:var(--muted);margin-bottom:4px}
+    .tax-stat-val{font-family:"Syne",sans-serif;font-weight:800;font-size:18px;color:var(--text)}
+    .tax-stat-val.green{color:var(--green)}
+    .tax-stat-val.amber{color:var(--amber)}
+    .tax-note{font-size:11.5px;color:var(--blue2);line-height:1.6}
+
+    /* CONTACT CARD */
+    .contact-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius2);margin-bottom:10px;box-shadow:var(--shadow);padding:16px 22px;display:flex;align-items:center;gap:14px}
+    .contact-av{width:40px;height:40px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font-family:"Syne",sans-serif;font-weight:800;font-size:14px;color:#fff;flex-shrink:0}
+    .contact-name{font-family:"Syne",sans-serif;font-weight:700;font-size:14px;color:var(--text)}
+    .contact-role{font-size:12px;color:var(--muted)}
+    .contact-email a{font-size:12.5px;color:var(--blue)}
+
+    /* DONATE */
+    .donate-card{padding:22px}
+    .donate-intro{font-size:14px;color:var(--text2);margin-bottom:18px;line-height:1.65}
+    .amt-row{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+    .amt-btn{padding:9px 20px;border-radius:9px;border:1.5px solid var(--border);background:var(--sky);font-size:14px;font-weight:600;color:var(--text2);cursor:pointer;font-family:"DM Sans",sans-serif;transition:all 0.15s}
+    .amt-btn:hover{border-color:var(--blue);color:var(--blue)}
+    .amt-btn.active{background:var(--green);color:#fff;border-color:var(--green)}
+    .custom-row{display:flex;align-items:center;border:1.5px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:18px;background:var(--white)}
+    .custom-prefix{background:var(--sky);border-right:1.5px solid var(--border);padding:11px 14px;font-size:15px;font-weight:500;color:var(--muted)}
+    .custom-input{flex:1;padding:11px 14px;border:none;font-family:"DM Sans",sans-serif;font-size:15px;font-weight:500;color:var(--text);outline:none;background:var(--white)}
+    .donate-note{margin-top:14px;background:var(--green-lt);border:1px solid rgba(31,158,104,0.2);border-radius:10px;padding:13px 15px;font-size:12.5px;color:var(--text2);line-height:1.65}
+    .donate-note strong{color:var(--green)}
+
+    /* SUPPORTERS */
+    .supporters-empty{padding:28px 22px;text-align:center;color:var(--muted);font-size:13.5px}
+
+    /* FOOTER */
+    footer{background:var(--text);padding:28px;margin-top:48px}
+    .footer-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+    .footer-brand{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+    .footer-icon{width:26px;height:26px;background:var(--blue);border-radius:6px;display:flex;align-items:center;justify-content:center}
+    .footer-icon svg{width:15px;height:15px}
+    .footer-wm{font-family:"Syne",sans-serif;font-weight:800;font-size:13px;color:#fff;margin-left:6px}
+    .footer-wm span{color:#4AAEE8}
+    .footer-legal{font-size:11.5px;color:rgba(255,255,255,0.32);line-height:1.85}
+    .footer-legal a{color:rgba(255,255,255,0.5)}
+
+    @media(max-width:640px){
+      /* Nav */
+      .nav-links{display:none}
+      .badge-charity{display:none}
+      .club-nav{padding:0 14px;height:auto;min-height:56px;flex-wrap:wrap;gap:6px;padding-top:10px;padding-bottom:10px}
+      .club-nav-name{font-size:13px}
+      /* CFH bar */
+      .cfh-bar{padding:8px 14px;flex-wrap:wrap;gap:4px}
+      .cfh-bar-l span:nth-child(3),.cfh-bar-l span:nth-child(4){display:none}
+      /* Hero */
+      .hero-img{height:180px}
+      /* Page */
+      .page{padding:14px 12px 48px}
+      /* About card */
+      .about-card{padding:14px 16px}
+      /* Tabs */
+      .tabs{gap:2px;padding:4px}
+      .tab{font-size:10.5px;padding:8px 4px}
+      /* Shoutout card - stack to single column */
+      .cfh-strip-grid{grid-template-columns:1fr!important}
+      .cfh-strip-item-border{border-right:none!important;border-bottom:1px solid rgba(255,255,255,0.08)!important}
+      /* Tier cards */
+      .tier-card-head{flex-direction:column;align-items:flex-start;gap:10px}
+      .tier-card-head .btn{width:100%;justify-content:center}
+      .tier-body{flex-direction:column}
+      .tier-action{align-items:flex-start;width:100%}
+      .tier-action .btn{width:100%;justify-content:center}
+      .event-card-head{flex-direction:column;align-items:flex-start;gap:10px}
+      .event-card-head .btn{width:100%;justify-content:center}
+      .event-card-body{flex-direction:column}
+      /* Tax */
+      .tax-calc{grid-template-columns:1fr}
+      /* Contact card */
+      .contact-card{flex-direction:column;align-items:flex-start}
+      /* Donate amounts */
+      .amt-row{gap:6px}
+      .amt-btn{padding:8px 14px;font-size:13px}
+      /* Footer */
+      .footer-inner{flex-direction:column;gap:14px}
+      .footer-inner div:last-child{text-align:left!important}
+      /* Why card cleanup */
+      .why-stats{grid-template-columns:1fr}
+      .why-stat{border-right:none;border-bottom:1px solid var(--border)}
+      .why-points{grid-template-columns:1fr}
+      .why-point{border-right:none}
+      .why-point:nth-last-child(-n+2){border-bottom:1px solid var(--border)}
+      .why-point:last-child{border-bottom:none}
+    }
+  </style>
+</head>
+<body>
+
+<!-- CFH Power Bar -->
+<div class="cfh-bar">
+  <div class="cfh-bar-l">
+    <div class="cfh-icon"><svg viewBox="0 0 20 20" fill="none"><circle cx="5" cy="13" r="2.8" fill="rgba(255,255,255,0.75)"/><circle cx="15" cy="13" r="2.8" fill="rgba(255,255,255,0.75)"/><circle cx="10" cy="9" r="3.2" fill="white"/></svg></div>
+    <span class="cfh-wm">Community <span>Fundraising</span> Hub</span>
+    <span>·</span>
+    <span>Powering Warkworth Netball Club</span>
+  </div>
+  <div class="cfh-bar-r"><a href="https://cfh.org.nz" target="_blank">cfh.org.nz</a></div>
+</div>
+
+<!-- Club Nav -->
+<nav class="club-nav">
+  <div class="club-nav-brand">
+    
+    <div class="club-nav-name">Warkworth Netball Club <small>Warkworth, Auckland</small></div>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px">
+    
+    <div class="nav-links">
+      <a href="#" onclick="switchTab('sponsors');return false">Sponsorships</a>
+      <a href="#" onclick="switchTab('events');return false">Event Sponsorships</a>
+      <a href="#" onclick="switchTab('donate');return false">Community Fundraising</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <img class="hero-img" src="images/ww-netball-hero.jpg" alt="Warkworth Netball Club players in action">
+  <div class="hero-overlay"></div>
+</div>
+
+<div class="page">
+
+  <!-- About -->
+  <div class="about-card">
+    <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:14px">
+      <div style="flex:1">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:var(--text);line-height:1.15;margin-bottom:5px">Warkworth Netball Club</div>
+        <div style="font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <span>📍 Warkworth, Auckland</span>
+          <span>·</span>
+          <span>🏐 Community netball club</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;flex-shrink:0">
+        <div class="badge-verified">✓ CFH Verified</div>
+        <div class="badge-charity">♥ Registered Charity CC-XXXXXX</div>
+      </div>
+    </div>
+    <div style="border-top:1px solid var(--border);padding-top:12px">
+      <div class="about-text">We're a locally run, volunteer-driven club dedicated to providing netball for our community. We support junior teams (ages 5–11) competing at Warkworth Showgrounds and Wellsford Centennial Park on Tuesdays and Saturdays, as well as adult teams playing in Wellsford on Friday nights. Your support goes directly towards fees for those who can't afford them, player of the day prizes, bibs, balls, uniforms, first aid kits, and our end of year prizegiving.</div>
+    </div>
+  </div>
+
+
+
+  <!-- CFH Shoutout Card -->
+  <div style="background:var(--text);border-radius:var(--radius2);overflow:hidden;margin-bottom:12px;box-shadow:var(--shadow)">
+    <div style="padding:14px 20px;border-bottom:1px solid rgba(255,255,255,0.1)">
+      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:#fff">The CFH difference</div>
+    </div>
+    <div class="cfh-strip-grid" style="display:grid;grid-template-columns:repeat(3,1fr)">
+      <div class="cfh-strip-item-border" style="padding:16px 18px;display:flex;align-items:flex-start;gap:10px;border-right:1px solid rgba(255,255,255,0.08)">
+        <div style="font-size:18px;flex-shrink:0;margin-top:1px">🧾</div>
+        <div>
+          <div style="font-size:12px;font-weight:600;color:#fff;line-height:1.3">Tax receipt in 60 seconds</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:2px">Automatic — issued on contribution</div>
+        </div>
+      </div>
+      <div class="cfh-strip-item-border" style="padding:16px 18px;display:flex;align-items:flex-start;gap:10px;border-right:1px solid rgba(255,255,255,0.08)">
+        <div style="font-size:18px;flex-shrink:0;margin-top:1px">💸</div>
+        <div>
+          <div style="font-size:12px;font-weight:600;color:#fff;line-height:1.3">Up to 33.33% back at tax time</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:2px">Donee status · Speak to your accountant</div>
+        </div>
+      </div>
+      <div style="padding:16px 18px;display:flex;align-items:flex-start;gap:10px">
+        <div style="font-size:18px;flex-shrink:0;margin-top:1px">⚡</div>
+        <div>
+          <div style="font-size:12px;font-weight:600;color:#fff;line-height:1.3">2 minutes to contribute</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:2px">Secure Stripe payment, that's it</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fee Toggle -->
+  <div style="background:var(--white);border-radius:var(--radius2);border:1px solid var(--border);padding:14px 20px;margin-bottom:14px;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px">
+    <input type="checkbox" id="cover-fee-check" style="width:18px;height:18px;accent-color:var(--blue);cursor:pointer;flex-shrink:0">
+    <label for="cover-fee-check" style="font-size:13.5px;color:var(--text2);cursor:pointer;line-height:1.5">Help cover our 7% fee and bring CFH to more clubs across NZ <span style="font-size:12px;color:var(--muted)">(adds 7% to your contribution)</span></label>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab active" id="tab-sponsors" onclick="switchTab('sponsors')">🏢 Sponsorships</button>
+    <button class="tab" id="tab-events" onclick="switchTab('events')">🏆 Event Sponsorships</button>
+    <button class="tab" id="tab-donate" onclick="switchTab('donate')">❤️ Community Fundraising</button>
+  </div>
+
+  <!-- ── TAB: SPONSORSHIPS ── -->
+  <div class="tab-content active" id="tc-sponsors">
+
+    <!-- Gold -->
+    <div class="tier-card">
+      <div class="tier-card-head">
+        <div class="tier-card-left">
+          <div class="tier-icon">🥇</div>
+          <div>
+            <div class="tier-name">Gold Sponsor</div>
+            <div class="tier-amount">$1,000 per season</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div class="tier-badge-popular">⭐ Most popular with local businesses</div>
+          <button class="btn btn-ww" onclick="goToPayment(1000,'Gold Sponsor')">Sponsor now</button>
+        </div>
+      </div>
+      <div class="tier-body">
+        <ul class="tier-perks">
+          <li>3 social media posts throughout the season acknowledging your business</li>
+          <li>Your <strong>company logo on our website</strong> and digital newsletters</li>
+          <li>Your <strong>framed sponsorship certificate</strong> — logo prominently featured</li>
+          <li>Your business <strong>acknowledged in our annual report</strong></li>
+        </ul>
+      </div>
+      <div style="padding:0 22px 14px">
+        <div class="tier-receipt">Instant tax receipt issued automatically · Registered NZ Charity CC-XXXXXX · Donee status DT-XXXXXX</div>
+      </div>
+    </div>
+
+    <!-- Silver -->
+    <div class="tier-card">
+      <div class="tier-card-head">
+        <div class="tier-card-left">
+          <div class="tier-icon">🥈</div>
+          <div>
+            <div class="tier-name">Silver Sponsor</div>
+            <div class="tier-amount">$500 per season</div>
+          </div>
+        </div>
+        <button class="btn btn-ww" onclick="goToPayment(500,'Silver Sponsor')">Sponsor now</button>
+      </div>
+      <div class="tier-body">
+        <ul class="tier-perks">
+          <li>2 social media posts throughout the season acknowledging your business</li>
+          <li>Your <strong>company logo on our website</strong> and digital newsletters</li>
+          <li>Your business <strong>acknowledged in our annual report</strong></li>
+        </ul>
+      </div>
+      <div style="padding:0 22px 14px">
+        <div class="tier-receipt">Instant tax receipt issued automatically · Registered NZ Charity CC-XXXXXX · Donee status DT-XXXXXX</div>
+      </div>
+    </div>
+
+    <!-- Bronze -->
+    <div class="tier-card">
+      <div class="tier-card-head">
+        <div class="tier-card-left">
+          <div class="tier-icon">🥉</div>
+          <div>
+            <div class="tier-name">Bronze Sponsor</div>
+            <div class="tier-amount">$100 per season</div>
+          </div>
+        </div>
+        <button class="btn btn-ww" onclick="goToPayment(100,'Bronze Sponsor')">Sponsor now</button>
+      </div>
+      <div class="tier-body">
+        <ul class="tier-perks">
+          <li>1 social media post acknowledging your business</li>
+          <li>Your <strong>company logo on our website</strong></li>
+          <li>Your business <strong>acknowledged in our annual report</strong></li>
+        </ul>
+      </div>
+      <div style="padding:0 22px 14px">
+        <div class="tier-receipt">Instant tax receipt issued automatically · Registered NZ Charity CC-XXXXXX · Donee status DT-XXXXXX</div>
+      </div>
+    </div>
+
+    <!-- Tax explainer -->
+    <div class="card" style="margin-top:4px">
+      <div class="tax-section" style="border-top:none">
+        <div class="tax-eyebrow">💡 Don't forget — sponsorships are tax-deductible</div>
+        <div class="tax-body">As a <strong>registered NZ charity (CC-XXXXXX, Donee status DT-XXXXXX)</strong>, every sponsorship comes with an instant tax receipt. Here's what a $1,000 Gold sponsorship looks like after your tax credit:</div>
+        <div class="tax-calc">
+          <div class="tax-stat"><div class="tax-stat-label">You contribute</div><div class="tax-stat-val">$1,000</div></div>
+          <div class="tax-stat"><div class="tax-stat-label">Tax credit back (up to 33.33%)</div><div class="tax-stat-val amber">− $333</div></div>
+          <div class="tax-stat"><div class="tax-stat-label">Your actual cost</div><div class="tax-stat-val green">~$667</div></div>
+        </div>
+        <div class="tax-note">The club receives <strong>$930</strong> after the 7% CFH platform fee — which funds the charitable trust that makes this platform possible.</div>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="contact-card">
+      <div class="contact-av" style="width:44px;height:44px;border-radius:10px;background:#1769AA;display:flex;align-items:center;justify-content:center;flex-shrink:0;min-width:44px">
+          <svg viewBox="0 0 40 40" fill="none" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="14" r="5.5" fill="white"/>
+            <circle cx="10" cy="26" r="4" fill="rgba(255,255,255,0.75)"/>
+            <circle cx="30" cy="26" r="4" fill="rgba(255,255,255,0.75)"/>
+            <path d="M3 36c0-4.5 3.1-7 7-7s7 2.5 7 7" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" fill="none"/>
+            <path d="M23 36c0-4.5 3.1-7 7-7s7 2.5 7 7" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" fill="none"/>
+            <path d="M11 36c0-5 4-9 9-9s9 4 9 9" stroke="white" stroke-width="1.8" fill="none"/>
+          </svg>
+        </div>
+      <div>
+        <div class="contact-name">Questions about sponsorship?</div>
+        <div class="contact-role">Community Fundraising Hub · Partnerships</div>
+        <div class="contact-email"><a href="mailto:partnerships@cfh.org.nz">partnerships@cfh.org.nz</a></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── TAB: EVENT SPONSORSHIPS ── -->
+  <div class="tab-content" id="tc-events">
+
+    <!-- Junior POTD -->
+    <div class="event-card">
+      <div class="event-card-head">
+        <div class="tier-card-left">
+          <div class="tier-icon">🏅</div>
+          <div>
+            <div class="tier-name">Junior Player of the Day</div>
+            <div class="tier-amount">$250 · 1 spot available</div>
+          </div>
+        </div>
+        <button class="btn btn-ww" onclick="goToPayment(250,'Junior Player of the Day Sponsorship')">Sponsor now</button>
+      </div>
+      <div class="event-card-body">
+        <ul class="tier-perks">
+          <li>Your <strong>company logo printed on every Player of the Day certificate</strong> — presented to a junior player each week</li>
+          <li>Ongoing recognition throughout the entire season with every award</li>
+          <li>1 social media post acknowledging your business as the POTD sponsor</li>
+        </ul>
+      </div>
+      <div style="padding:0 22px 14px">
+        <div class="tier-receipt">Instant tax receipt issued automatically · Registered NZ Charity CC-XXXXXX · Donee status DT-XXXXXX</div>
+      </div>
+    </div>
+
+    <!-- Junior Hoodies -->
+    <div class="event-card">
+      <div class="event-card-head">
+        <div class="tier-card-left">
+          <div class="tier-icon">👕</div>
+          <div>
+            <div class="tier-name">Junior Team Hoodies</div>
+            <div class="tier-amount">$1,000 · 1 spot available</div>
+          </div>
+        </div>
+        <button class="btn btn-ww" onclick="goToPayment(1000,'Junior Team Hoodies Sponsorship')">Sponsor now</button>
+      </div>
+      <div class="event-card-body">
+        <ul class="tier-perks">
+          <li>Your <strong>large company logo on the back of every junior team hoodie</strong></li>
+          <li>Junior players wearing your brand in the community all season — and beyond</li>
+          <li>Social media announcement tagging your business on hoodie delivery day</li>
+        </ul>
+      </div>
+      <div style="padding:0 22px 14px">
+        <div class="tier-receipt">Instant tax receipt issued automatically · Registered NZ Charity CC-XXXXXX · Donee status DT-XXXXXX</div>
+      </div>
+    </div>
+
+    <!-- Senior Hoodies -->
+    <div class="event-card">
+      <div class="event-card-head">
+        <div class="tier-card-left">
+          <div class="tier-icon">👕</div>
+          <div>
+            <div class="tier-name">Senior Team Hoodies</div>
+            <div class="tier-amount">$1,500 · 1 spot available</div>
+          </div>
+        </div>
+        <button class="btn btn-ww" onclick="goToPayment(1500,'Senior Team Hoodies Sponsorship')">Sponsor now</button>
+      </div>
+      <div class="event-card-body">
+        <ul class="tier-perks">
+          <li>Your <strong>large company logo on the back of every senior team hoodie</strong></li>
+          <li>Senior players wearing your brand across Warkworth and Wellsford all season</li>
+          <li>Social media announcement tagging your business on hoodie delivery day</li>
+        </ul>
+      </div>
+      <div style="padding:0 22px 14px">
+        <div class="tier-receipt">Instant tax receipt issued automatically · Registered NZ Charity CC-XXXXXX · Donee status DT-XXXXXX</div>
+      </div>
+    </div>
+
+    <!-- Tax explainer -->
+    <div class="card" style="margin-top:4px">
+      <div class="tax-section" style="border-top:none">
+        <div class="tax-eyebrow">💡 Don't forget — event sponsorships are tax-deductible</div>
+        <div class="tax-body">As a <strong>registered NZ charity (CC-XXXXXX, Donee status DT-XXXXXX)</strong>, every sponsorship comes with an instant tax receipt. Here's what a $1,000 sponsorship looks like after your tax credit:</div>
+        <div class="tax-calc">
+          <div class="tax-stat"><div class="tax-stat-label">You contribute</div><div class="tax-stat-val">$1,000</div></div>
+          <div class="tax-stat"><div class="tax-stat-label">Tax credit back (up to 33.33%)</div><div class="tax-stat-val amber">− $333</div></div>
+          <div class="tax-stat"><div class="tax-stat-label">Your actual cost</div><div class="tax-stat-val green">~$667</div></div>
+        </div>
+        <div class="tax-note">The club receives <strong>$930</strong> after the 7% CFH platform fee — which funds the charitable trust that makes this platform possible.</div>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="contact-card">
+      <div class="contact-av" style="width:44px;height:44px;border-radius:10px;background:#1769AA;display:flex;align-items:center;justify-content:center;flex-shrink:0;min-width:44px">
+          <svg viewBox="0 0 40 40" fill="none" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="14" r="5.5" fill="white"/>
+            <circle cx="10" cy="26" r="4" fill="rgba(255,255,255,0.75)"/>
+            <circle cx="30" cy="26" r="4" fill="rgba(255,255,255,0.75)"/>
+            <path d="M3 36c0-4.5 3.1-7 7-7s7 2.5 7 7" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" fill="none"/>
+            <path d="M23 36c0-4.5 3.1-7 7-7s7 2.5 7 7" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" fill="none"/>
+            <path d="M11 36c0-5 4-9 9-9s9 4 9 9" stroke="white" stroke-width="1.8" fill="none"/>
+          </svg>
+        </div>
+      <div>
+        <div class="contact-name">Questions about event sponsorships?</div>
+        <div class="contact-role">Community Fundraising Hub · Partnerships</div>
+        <div class="contact-email"><a href="mailto:partnerships@cfh.org.nz">partnerships@cfh.org.nz</a></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── TAB: DONATE ── -->
+  <div class="tab-content" id="tc-donate">
+    <div class="card">
+      <div class="card-head"><div class="card-title">Make a donation</div></div>
+      <div class="donate-card">
+        <div class="donate-intro">A one-off donation — any amount — goes directly to Warkworth Netball Club and is personally appreciated by every player and family in the club.</div>
+        <div class="amt-row">
+          <button class="amt-btn" onclick="setAmt(10,this)">$10</button>
+          <button class="amt-btn" onclick="setAmt(25,this)">$25</button>
+          <button class="amt-btn active" onclick="setAmt(50,this)">$50</button>
+          <button class="amt-btn" onclick="setAmt(100,this)">$100</button>
+          <button class="amt-btn" onclick="setAmt(250,this)">$250</button>
+        </div>
+        <div class="custom-row">
+          <span class="custom-prefix">$</span>
+          <input type="number" class="custom-input" id="custom-amt" placeholder="Other amount" min="1" oninput="clearAmts()">
+        </div>
+        <button class="btn btn-green wfull" id="donate-btn" style="font-size:15px;padding:13px 20px" onclick="goToDonation()">Donate now — $50</button>
+        <div class="donate-note"><strong>Your donation is tax-deductible.</strong> Community Fundraising Hub is a registered NZ charity (CC-XXXXXX) with confirmed Donee status (DT-XXXXXX) — a tax receipt will be issued automatically within 60 seconds. Claim up to 33.33% back — your accountant can advise on your specific rate. A 7% platform fee applies; the remainder transfers directly to Warkworth Netball Club.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div class="card-title">Recent supporters</div></div>
+      <div class="supporters-empty">
+        <div style="font-size:22px;margin-bottom:8px">🏐</div>
+        <div style="font-weight:600;color:var(--text2);margin-bottom:4px">Be the first to donate!</div>
+        Every contribution is tax-deductible and goes directly to the club.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">
+        <div class="footer-icon"><svg viewBox="0 0 20 20" fill="none"><circle cx="5" cy="13" r="2.8" fill="rgba(255,255,255,0.75)"/><circle cx="15" cy="13" r="2.8" fill="rgba(255,255,255,0.75)"/><circle cx="10" cy="9" r="3.2" fill="white"/></svg></div>
+        <span class="footer-wm">Community <span>Fundraising</span> Hub</span>
+      </div>
+      <div class="footer-legal">
+        Registered NZ Charity · CC-XXXXXX · Donee Status DT-XXXXXX<br>
+        Powering Warkworth Netball Club · <a href="https://cfh.org.nz">cfh.org.nz</a> · <a href="https://www.facebook.com/p/Warkworth-Netball-Club-100093990044005/" target="_blank">Club Facebook</a>
+      </div>
+    </div>
+    <div class="footer-legal" style="text-align:right">
+      Community Fundraising Hub<br>
+      Charitable Trust Board · Inc. No. 70000374<br>
+      NZBN 9429053669445 · IRD 148-754-675
+    </div>
+  </div>
+</footer>
+
+<script>
+  var amt = 50;
+  function setAmt(a,el){
+    amt=a;
+    document.getElementById("custom-amt").value="";
+    document.querySelectorAll(".amt-btn").forEach(function(b){b.classList.remove("active")});
+    el.classList.add("active");
+    document.getElementById("donate-btn").textContent="Donate now — $"+a;
+  }
+  function clearAmts(){
+    document.querySelectorAll(".amt-btn").forEach(function(b){b.classList.remove("active")});
+    var v=parseFloat(document.getElementById("custom-amt").value);
+    if(!isNaN(v)&&v>0){amt=v;document.getElementById("donate-btn").textContent="Donate now — $"+v;}
+  }
+  function switchTab(id){
+    ["sponsors","events","donate"].forEach(function(t){
+      document.getElementById("tc-"+t).classList.remove("active");
+      document.getElementById("tab-"+t).classList.remove("active");
+    });
+    document.getElementById("tc-"+id).classList.add("active");
+    document.getElementById("tab-"+id).classList.add("active");
+  }
+  async function goToPayment(amount, description) {
+    var coverFee = document.getElementById('cover-fee-check') && document.getElementById('cover-fee-check').checked;
+    var btn = event.target;
+    var originalText = btn.textContent;
+    btn.textContent = 'Loading...';
+    btn.disabled = true;
+    try {
+      var response = await fetch('/.netlify/functions/create-checkout', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          amountCents: amount * 100,
+          tierName: description,
+          clubName: 'Warkworth Netball Club',
+          coverFee: coverFee
+        })
+      });
+      var data = await response.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert('Something went wrong. Please try again.');
+        btn.textContent = originalText;
+        btn.disabled = false;
+      }
+    } catch(err) {
+      alert('Something went wrong. Please try again.');
+      btn.textContent = originalText;
+      btn.disabled = false;
+    }
+  }
+
+  async function goToDonation() {
+    var customVal = parseFloat(document.getElementById("custom-amt").value);
+    if (!isNaN(customVal) && customVal > 0) { amt = customVal; }
+    var btn = document.getElementById('donate-btn');
+    var originalText = btn.textContent;
+    btn.textContent = 'Loading...';
+    btn.disabled = true;
+    try {
+      var response = await fetch('/.netlify/functions/create-checkout', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          amountCents: amt * 100,
+          tierName: 'Community Donation',
+          clubName: 'Warkworth Netball Club',
+          coverFee: false
+        })
+      });
+      var data = await response.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert('Something went wrong. Please try again.');
+        btn.textContent = originalText;
+        btn.disabled = false;
+      }
+    } catch(err) {
+      alert('Something went wrong. Please try again.');
+      btn.textContent = originalText;
+      btn.disabled = false;
+    }
+  }
+</script>
+</body>
+</html>
