@@ -101,8 +101,6 @@ function buildReceiptHtml(d) {
                 <tr><td style="font-size:12px;color:#637087">Donor name</td><td style="font-size:12px;color:#162035;font-weight:600;text-align:right">${d.donorName}</td></tr>
                 <tr><td style="font-size:12px;color:#637087">Business name</td><td style="font-size:12px;color:#162035;font-weight:600;text-align:right">${d.businessName}</td></tr>
                 <tr><td style="font-size:12px;color:#637087">Business type</td><td style="font-size:12px;color:#162035;font-weight:600;text-align:right">${d.businessType}</td></tr>
-                <tr><td style="font-size:12px;color:#637087">Suburb / region</td><td style="font-size:12px;color:#162035;font-weight:600;text-align:right">${d.businessSuburb}</td></tr>
-                <tr><td style="font-size:12px;color:#637087">Website</td><td style="font-size:12px;color:#162035;font-weight:600;text-align:right">${d.websiteUrl}</td></tr>
                 <tr><td style="font-size:12px;color:#637087">Club supported</td><td style="font-size:12px;color:#162035;font-weight:600;text-align:right">${d.clubName}</td></tr>
                 <tr><td style="font-size:12px;color:#637087">Sponsorship tier</td><td style="font-size:12px;color:#162035;font-weight:600;text-align:right">${d.tierName}</td></tr>
                 <tr><td style="font-size:12px;color:#637087">Stripe reference</td><td style="font-size:12px;color:#162035;font-weight:600;text-align:right">${d.stripePaymentId}</td></tr>
@@ -173,8 +171,6 @@ function buildNotificationHtml(d) {
       <tr><td style="color:#637087">Donor</td><td>${d.donorName}</td></tr>
       <tr><td style="color:#637087">Business</td><td>${d.businessName}</td></tr>
       <tr><td style="color:#637087">Type</td><td>${d.businessType}</td></tr>
-      <tr><td style="color:#637087">Suburb</td><td>${d.businessSuburb}</td></tr>
-      <tr><td style="color:#637087">Website</td><td>${d.websiteUrl}</td></tr>
       <tr><td style="color:#637087">Email</td><td>${d.businessEmail}</td></tr>
       <tr><td style="color:#637087">Receipt</td><td>${d.receiptNumber}</td></tr>
       <tr><td style="color:#637087">Payment ID</td><td style="font-size:11px">${d.stripePaymentId}</td></tr>
@@ -213,8 +209,6 @@ exports.handler = async (event) => {
   let donorNameFromSession = '';
   let businessNameFromSession = '';
   let businessTypeFromSession = '';
-  let businessSuburbFromSession = '';
-  let websiteUrlFromSession = '';
 
   // Retrieve from Checkout Session — email + custom fields (name, business name)
   try {
@@ -230,17 +224,13 @@ exports.handler = async (event) => {
       }
       // Extract custom fields
       const customFields = session.custom_fields || [];
-      const bizField     = customFields.find(f => f.key === 'business_name');
-      const nameField    = customFields.find(f => f.key === 'contact_person_name');
-      const typeField    = customFields.find(f => f.key === 'business_type');
-      const suburbField  = customFields.find(f => f.key === 'business_suburb');
-      const urlField     = customFields.find(f => f.key === 'website_url');
-      donorNameFromSession     = nameField?.text?.value || '';
-      businessNameFromSession  = bizField?.text?.value || '';
-      businessTypeFromSession  = typeField?.dropdown?.value || '';
-      businessSuburbFromSession = suburbField?.text?.value || '';
-      websiteUrlFromSession    = urlField?.text?.value || '';
-      console.log('Custom fields:', donorNameFromSession, businessNameFromSession, businessTypeFromSession, businessSuburbFromSession);
+      const bizField    = customFields.find(f => f.key === 'business_name');
+      const nameField   = customFields.find(f => f.key === 'contact_person_name');
+      const typeField   = customFields.find(f => f.key === 'business_type');
+      donorNameFromSession    = nameField?.text?.value || '';
+      businessNameFromSession = bizField?.text?.value || '';
+      businessTypeFromSession = typeField?.dropdown?.value || '';
+      console.log('Custom fields:', donorNameFromSession, businessNameFromSession, businessTypeFromSession);
     }
   } catch (err) {
     console.error('Could not retrieve checkout session:', err.message);
@@ -251,10 +241,8 @@ exports.handler = async (event) => {
     donationDate:    formatDate(pi.created),
     taxYear:         taxYear(pi.created),
     donorName:       donorNameFromSession || meta.donor_name || 'Valued Donor',
-    businessName:    businessNameFromSession  || meta.business_name  || '—',
-    businessType:    businessTypeFromSession  || '—',
-    businessSuburb:  businessSuburbFromSession || '—',
-    websiteUrl:      websiteUrlFromSession    || '—',
+    businessName:    businessNameFromSession || meta.business_name || '—',
+    businessType:    businessTypeFromSession || '—',
     businessEmail:   customerEmail,
     gstNumber:       meta.gst_number     || '—',
     amountFormatted: (pi.amount / 100).toFixed(2),
