@@ -93,18 +93,6 @@ exports.handler = async (event) => {
           },
           optional: false,
         },
-        {
-          key: 'business_suburb',
-          label: { type: 'custom', custom: 'Business suburb / region' },
-          type: 'text',
-          optional: false,
-        },
-        {
-          key: 'website_url',
-          label: { type: 'custom', custom: 'Website URL' },
-          type: 'text',
-          optional: true,
-        },
       ],
       line_items: [{
         price_data: {
