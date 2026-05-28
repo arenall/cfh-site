@@ -51,6 +51,18 @@ function receiptNumber(paymentIntentId) {
   return `CFH-${year}-${suffix}`;
 }
 
+function formatBusinessType(value) {
+  const map = {
+    retail: 'Retail',
+    hospitality: 'Hospitality',
+    trades: 'Trades',
+    professionalservices: 'Professional Services',
+    health: 'Health',
+    other: 'Other',
+  };
+  return map[value] || value;
+}
+
 function taxCredit(amountCents) {
   const credit = (amountCents / 100) * (1 / 3);
   return credit.toFixed(2);
@@ -205,7 +217,7 @@ exports.handler = async (event) => {
   const meta = pi.metadata || {};
 
   // Try to get customer email and custom fields from multiple sources
-  let customerEmail = meta.donor_email || pi.receipt_email || '';
+  let customerEmail = pi.receipt_email || '';
   let donorNameFromSession = '';
   let businessNameFromSession = '';
   let businessTypeFromSession = '';
@@ -218,10 +230,9 @@ exports.handler = async (event) => {
     });
     if (sessions.data.length > 0) {
       const session = sessions.data[0];
-      if (!customerEmail) {
-        customerEmail = session.customer_details?.email || '';
-        console.log('Email retrieved from checkout session:', customerEmail);
-      }
+      // Always prefer the email from checkout session customer details
+      customerEmail = session.customer_details?.email || customerEmail;
+      console.log('Email from checkout session:', customerEmail);
       // Extract custom fields
       const customFields = session.custom_fields || [];
       const bizField    = customFields.find(f => f.key === 'business_name');
@@ -242,7 +253,7 @@ exports.handler = async (event) => {
     taxYear:         taxYear(pi.created),
     donorName:       donorNameFromSession || meta.donor_name || 'Valued Donor',
     businessName:    businessNameFromSession || meta.business_name || '—',
-    businessType:    businessTypeFromSession || '—',
+    businessType:    formatBusinessType(businessTypeFromSession) || '—',
     businessEmail:   customerEmail,
     gstNumber:       meta.gst_number     || '—',
     amountFormatted: (pi.amount / 100).toFixed(2),
