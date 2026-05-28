@@ -86,7 +86,7 @@ exports.handler = async (event) => {
               { label: 'Retail',                value: 'retail' },
               { label: 'Hospitality',           value: 'hospitality' },
               { label: 'Trades',                value: 'trades' },
-              { label: 'Professional services', value: 'professional_services' },
+              { label: 'Professional services', value: 'professionalservices' },
               { label: 'Health',                value: 'health' },
               { label: 'Other',                 value: 'other' },
             ],
