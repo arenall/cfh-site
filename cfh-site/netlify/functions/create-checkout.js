@@ -52,18 +52,60 @@ exports.handler = async (event) => {
 
     // Calculate final amount
     // If coverFee is true, add 7% so CFH receives its fee AND club gets full amount
-    const feeMultiplier = coverFee ? 1.07 : 1;
+    const feeMultiplier = coverFee ? 1.095 : 1;
     const finalAmountCents = Math.round(amountCents * feeMultiplier);
 
     // Build line item description
     const description = coverFee
-      ? `${tierName} — ${clubName} (includes 7% CFH platform fee)`
+      ? `${tierName} — ${clubName} (includes ~2.5% payment processing + 7% CFH platform fee)`
       : `${tierName} — ${clubName}`;
 
     // Create Stripe Checkout session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       mode: 'payment',
+      custom_fields: [
+        {
+          key: 'business_name',
+          label: { type: 'custom', custom: 'Business name' },
+          type: 'text',
+          optional: false,
+        },
+        {
+          key: 'contact_person_name',
+          label: { type: 'custom', custom: 'Contact person name' },
+          type: 'text',
+          optional: false,
+        },
+        {
+          key: 'business_type',
+          label: { type: 'custom', custom: 'Business type' },
+          type: 'dropdown',
+          dropdown: {
+            options: [
+              { label: 'Retail',                value: 'retail' },
+              { label: 'Hospitality',           value: 'hospitality' },
+              { label: 'Trades',                value: 'trades' },
+              { label: 'Professional services', value: 'professional_services' },
+              { label: 'Health',                value: 'health' },
+              { label: 'Other',                 value: 'other' },
+            ],
+          },
+          optional: false,
+        },
+        {
+          key: 'business_suburb',
+          label: { type: 'custom', custom: 'Business suburb / region' },
+          type: 'text',
+          optional: false,
+        },
+        {
+          key: 'website_url',
+          label: { type: 'custom', custom: 'Website URL' },
+          type: 'text',
+          optional: true,
+        },
+      ],
       line_items: [{
         price_data: {
           currency: 'nzd',
