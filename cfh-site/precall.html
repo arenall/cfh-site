@@ -3,53 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Before Your Call — Community Fundraising Hub</title>
+<title>Before We Talk — Community Fundraising Hub</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
 <!--
-╔══════════════════════════════════════════════════════════════════════╗
-║  CFH PRE-CALL FORM — v3.0 · June 2026                               ║
-║  cfh.org.nz/precall                                                  ║
-╠══════════════════════════════════════════════════════════════════════╣
-║  DEPLOY                                                              ║
-║  Rename to precall.html → drag onto Netlify project.                 ║
-║  Live at cfh.org.nz/precall immediately.                             ║
-║                                                                      ║
-║  ZAPIER SETUP — "club-precall" form → Google Sheets                  ║
-║  Trigger : Netlify · New Form Submission · form = "club-precall"     ║
-║  Action  : Google Sheets · Create Spreadsheet Row                    ║
-║  Sheet   : CFH_Club_Management → tab "🏉 Clubs — Pipeline"          ║
-║                                                                      ║
-║  FIELD MAPPING (Zapier field name → Sheet column)                    ║
-║  club_name          → C  Club Name                                   ║
-║  contact_name       → D  Contact Name                                ║
-║  contact_role       → E  Role                                        ║
-║  contact_email      → F  Email                                       ║
-║  contact_phone      → G  Phone                                       ║
-║  [auto]             → H  STATUS = "📞 Interview Booked"              ║
-║  [today]            → B  Date Submitted = today's date               ║
-║  sport              → (intake interview tab col F)                   ║
-║  suburb             → (intake interview tab col G)                   ║
-║  region             → (intake interview tab col H)                   ║
-║  total_members      → (intake interview tab col J)                   ║
-║  junior_members     → (intake interview tab col K)                   ║
-║  membership_type    → (intake interview tab col Q)                   ║
-║  website_url        → (intake interview tab col N)                   ║
-║  facebook_url       → (intake interview tab col O)                   ║
-║  campaign_goal_text → (intake interview tab col R)                   ║
-║  diamond_amount     → (intake interview tab col X)                   ║
-║  gold_amount        → (intake interview tab col Y)                   ║
-║  silver_amount      → (intake interview tab col Z)                   ║
-║  page_live_target   → (intake interview tab col AB)                  ║
-║  existing_biz       → (intake interview tab col V)                   ║
-║  anything_else      → S  Notes (pipeline tab)                        ║
-║                                                                      ║
-║  ALSO ADD these static values in Zapier:                             ║
-║  Status     = 📞 Interview Booked                                    ║
-║  Workflow   = Step 3 – Interview Booked                              ║
-║  ToS Accepted = No                                                   ║
-║  Package Sent = No                                                   ║
-╚══════════════════════════════════════════════════════════════════════╝
+  CFH PRE-CALL FORM — v4.0 · June 2026
+  Deploy: upload this file (precall.html) to cfh-site/cfh-site/ in GitHub → auto-deploys to cfh.org.nz/precall
+  Zapier: Netlify form "club-precall" → Google Sheets CFH_Club_Management → 🏉 Clubs — Pipeline tab
 -->
 <style>
 :root {
@@ -77,7 +37,6 @@
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.65;color:var(--text);background:var(--sky);min-height:100vh}
 
-/* NAV */
 .nav{background:var(--text);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
 .nav-brand{display:flex;align-items:center;gap:10px}
 .nav-mark{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center}
@@ -86,7 +45,6 @@ body{font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.65;color:var(
 .nav-wordmark span{color:#4AAEE8}
 .nav-tag{font-size:11px;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:3px 10px}
 
-/* HERO */
 .hero{background:var(--text);padding:52px 24px 68px;text-align:center;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 60% at 15% 50%,rgba(23,105,170,.22) 0%,transparent 70%),radial-gradient(ellipse 40% 50% at 85% 30%,rgba(31,158,104,.1) 0%,transparent 70%);pointer-events:none}
 .hero-inner{position:relative;max-width:560px;margin:0 auto}
@@ -99,17 +57,14 @@ body{font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.65;color:var(
 .wave{background:var(--sky);line-height:0}
 .wave svg{display:block;width:100%}
 
-/* PROGRESS */
 .prog-wrap{max-width:600px;margin:28px auto 0;padding:0 24px}
 .prog-track{height:4px;background:var(--border);border-radius:4px;overflow:hidden;margin-bottom:7px}
 .prog-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--green));border-radius:4px;width:0%;transition:width .35s ease}
 .prog-label{font-size:12px;color:var(--muted);display:flex;justify-content:space-between}
 .prog-label .pct{font-weight:600;color:var(--blue)}
 
-/* LAYOUT */
 .form-wrap{max-width:600px;margin:0 auto;padding:24px 24px 80px}
 
-/* SECTION CARDS */
 .card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius2);overflow:hidden;box-shadow:var(--shadow);margin-bottom:20px;opacity:0;transform:translateY(14px);animation:up .38s ease forwards}
 .card:nth-child(1){animation-delay:.06s}
 .card:nth-child(2){animation-delay:.14s}
@@ -121,7 +76,6 @@ body{font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.65;color:var(
 .card-body{padding:26px}
 .card-note{font-size:13px;color:var(--muted);font-style:italic;background:var(--blue-lt);border:1px solid var(--border2);border-radius:var(--radius);padding:11px 15px;margin-bottom:22px;line-height:1.6}
 
-/* FIELDS */
 .field{margin-bottom:18px}
 .field:last-child{margin-bottom:0}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
@@ -132,26 +86,14 @@ label .req{color:var(--blue);margin-left:1px}
 input[type=text],input[type=email],input[type=tel],input[type=number],input[type=url],select,textarea{width:100%;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--text);background:var(--white);border:1.5px solid var(--border2);border-radius:var(--radius);padding:11px 14px;transition:border-color .18s,box-shadow .18s;appearance:none;outline:none}
 input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(23,105,170,.1)}
 input::placeholder,textarea::placeholder{color:rgba(99,112,135,.45)}
-textarea{resize:vertical;min-height:80px;line-height:1.6}
+textarea{resize:vertical;min-height:90px;line-height:1.6}
 select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23637087' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:16px;padding-right:36px;cursor:pointer}
 
-/* RADIO / CHECK */
 .check-group{display:flex;flex-direction:column;gap:8px;margin-top:4px}
 .check-item{display:flex;align-items:flex-start;gap:9px;cursor:pointer}
-.check-item input[type=radio],.check-item input[type=checkbox]{width:17px;height:17px;margin-top:3px;flex-shrink:0;accent-color:var(--blue);cursor:pointer}
+.check-item input[type=radio]{width:17px;height:17px;margin-top:3px;flex-shrink:0;accent-color:var(--blue);cursor:pointer}
 .check-label{font-size:14px;color:var(--text2);line-height:1.5}
 
-/* TIER TABLE */
-.tier-table{width:100%;border-collapse:collapse;font-size:14px}
-.tier-table th{background:var(--blue);color:var(--white);font-family:'Syne',sans-serif;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.5px;padding:9px 12px;text-align:left}
-.tier-table td{padding:7px 10px;border-bottom:1px solid var(--border);vertical-align:middle}
-.tier-table tr:last-child td{border-bottom:none}
-.tier-table tr:nth-child(even) td{background:var(--sky)}
-.tier-name{font-weight:600}
-.tier-hint{font-size:12px;color:var(--muted)}
-.tier-table input[type=number]{padding:8px 10px;font-size:14px;width:130px}
-
-/* SUBMIT */
 .submit-card{background:var(--text);border-radius:var(--radius2);padding:32px 28px;text-align:center;box-shadow:var(--shadow2)}
 .submit-heading{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--white);margin-bottom:8px}
 .submit-sub{font-size:14px;color:rgba(255,255,255,.52);margin-bottom:24px;line-height:1.65}
@@ -160,7 +102,6 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 .submit-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
 .submit-note{font-size:11px;color:rgba(255,255,255,.28);margin-top:14px}
 
-/* SUCCESS */
 .success{display:none;text-align:center;padding:72px 24px;max-width:440px;margin:0 auto}
 .success-icon{width:68px;height:68px;border-radius:50%;background:var(--green-lt);border:2px solid var(--green);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 22px}
 .success-heading{font-family:'Syne',sans-serif;font-weight:800;font-size:26px;color:var(--text);margin-bottom:10px}
@@ -172,7 +113,6 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
   .card-body{padding:20px}
   .submit-card{padding:24px 18px}
   .hero{padding:40px 18px 56px}
-  .tier-table input[type=number]{width:100px}
 }
 </style>
 </head>
@@ -190,18 +130,18 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
     </div>
     <div class="nav-wordmark">Community <span>Fundraising</span> Hub</div>
   </div>
-  <div class="nav-tag">Before your call</div>
+  <div class="nav-tag">Before we talk</div>
 </nav>
 
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-label">Before your intake call</div>
+    <div class="hero-label">Before we talk</div>
     <h1>Tell us about<br><em>your club</em></h1>
     <p class="hero-sub">
-      A few minutes now means we can spend the call on what actually matters — building your page and getting you live fast.
+      A few minutes now means we can spend the call on what actually matters — understanding your goals and figuring out how CFH can help.
     </p>
     <div class="hero-chips">
-      <span class="hero-chip">⏱ ~5 minutes</span>
+      <span class="hero-chip">⏱ 2–3 minutes</span>
       <span class="hero-chip">📋 3 sections</span>
       <span class="hero-chip">🔒 Shared only with your CFH contact</span>
     </div>
@@ -213,7 +153,6 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
   </svg>
 </div>
 
-<!-- PROGRESS -->
 <div class="prog-wrap">
   <div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
   <div class="prog-label"><span class="pct" id="progPct">0% complete</span><span>3 sections</span></div>
@@ -224,14 +163,14 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
   <p style="display:none"><input name="bot-field"></p>
   <input type="hidden" name="form-name" value="club-precall">
 
-  <!-- ══ 1 — CLUB OVERVIEW ═══════════════════════════════════════════ -->
+  <!-- ══ 1 — CLUB OVERVIEW ══════════════════════════════════════════ -->
   <div class="card">
     <div class="card-head">
       <div class="card-num">1</div>
       <div class="card-title">Club overview</div>
     </div>
     <div class="card-body">
-      <div class="card-note">The basics about your club — this goes straight into your CFH page.</div>
+      <div class="card-note">The basics about your club.</div>
 
       <div class="field-row">
         <div class="field">
@@ -255,15 +194,9 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
         </div>
       </div>
 
-      <div class="field-row">
-        <div class="field">
-          <label for="total_members">Total members (approx.) <span class="req">*</span></label>
-          <input type="number" id="total_members" name="total_members" placeholder="e.g. 350" min="1" required>
-        </div>
-        <div class="field">
-          <label for="junior_members">Junior members (under 18)</label>
-          <input type="number" id="junior_members" name="junior_members" placeholder="e.g. 280" min="0">
-        </div>
+      <div class="field">
+        <label for="total_members">Approximate total members <span class="req">*</span></label>
+        <input type="number" id="total_members" name="total_members" placeholder="e.g. 350" min="1" required>
       </div>
 
       <div class="field">
@@ -290,7 +223,7 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 
       <div class="field" style="margin-top:18px">
         <label for="website_url">Club website URL <span class="req">*</span></label>
-        <span class="hint">If you don't have a website, put your Facebook URL here</span>
+        <span class="hint">No website? Put your Facebook URL here instead</span>
         <input type="url" id="website_url" name="website_url" placeholder="https://yourclub.co.nz" required>
       </div>
 
@@ -300,86 +233,60 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
       </div>
 
       <div class="field">
-        <label for="instagram_handle">Instagram handle (if you have one)</label>
+        <label for="instagram_handle">Instagram handle</label>
         <input type="text" id="instagram_handle" name="instagram_handle" placeholder="@yourclub">
       </div>
 
     </div>
   </div>
 
-  <!-- ══ 2 — CAMPAIGN BASICS ══════════════════════════════════════════ -->
+  <!-- ══ 2 — WHAT YOU'RE RAISING FOR ══════════════════════════════ -->
   <div class="card">
     <div class="card-head">
       <div class="card-num">2</div>
-      <div class="card-title">What you're raising for</div>
+      <div class="card-title">What you're hoping to raise for</div>
     </div>
     <div class="card-body">
       <div class="card-note">
-        We'll lock in the details on the call — just give us your best thinking now. The more specific, the better your page will convert.
+        No need to have the numbers pinned down — we'll work through that together on the call. Just give us a sense of what you have in mind.
       </div>
 
       <div class="field">
-        <label for="campaign_goal_text">What will the money fund? <span class="req">*</span></label>
-        <span class="hint">Be specific — "60 new jerseys for junior players before July" builds a better page than "new equipment"</span>
+        <label for="campaign_goal_text">What would the money go towards? <span class="req">*</span></label>
+        <span class="hint">E.g. "new jerseys for our junior players" or "court resurfacing" — as specific or rough as you like at this stage</span>
         <textarea id="campaign_goal_text" name="campaign_goal_text" rows="3"
-          placeholder="e.g. $4,800 to buy 60 new jerseys for our junior grades before the season starts in July" required></textarea>
+          placeholder="Tell us what you're hoping to fund…" required></textarea>
       </div>
 
       <div class="field">
-        <label for="page_live_target">When would you like your page live?</label>
-        <span class="hint">Even a rough timeframe helps us prioritise your build</span>
-        <select id="page_live_target" name="page_live_target">
-          <option value="" disabled selected>Select…</option>
-          <option>As soon as possible</option>
-          <option>Within 2 weeks</option>
-          <option>Within a month</option>
-          <option>Before a specific date (tell us on the call)</option>
-          <option>No hard deadline</option>
+        <label for="fundraising_amount">Rough amount you're hoping to raise</label>
+        <span class="hint">A ballpark is fine — don't worry if you're not sure yet</span>
+        <select id="fundraising_amount" name="fundraising_amount">
+          <option value="" disabled selected>Select a range…</option>
+          <option>Under $1,000</option>
+          <option>$1,000 – $3,000</option>
+          <option>$3,000 – $5,000</option>
+          <option>$5,000 – $10,000</option>
+          <option>Over $10,000</option>
+          <option>Not sure yet</option>
         </select>
       </div>
 
       <div class="field">
-        <label>Sponsorship tiers — what feels right?</label>
-        <span class="hint">Don't stress if you're unsure — we'll guide you on the call. Enter rough amounts if you have a sense, leave blank if not.</span>
-        <table class="tier-table">
-          <thead>
-            <tr>
-              <th>Tier</th>
-              <th>Suggested starting point</th>
-              <th>Your rough amount ($)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><span class="tier-name">💎 Diamond</span></td>
-              <td><span class="tier-hint">$1,500+</span></td>
-              <td><input type="number" name="diamond_amount" placeholder="e.g. 1500" min="0"></td>
-            </tr>
-            <tr>
-              <td><span class="tier-name">🥇 Gold</span></td>
-              <td><span class="tier-hint">$500 – $1,499</span></td>
-              <td><input type="number" name="gold_amount" placeholder="e.g. 500" min="0"></td>
-            </tr>
-            <tr>
-              <td><span class="tier-name">🥈 Silver</span></td>
-              <td><span class="tier-hint">$150 – $499</span></td>
-              <td><input type="number" name="silver_amount" placeholder="e.g. 150" min="0"></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="field">
-        <label for="existing_biz">Any businesses your club already has a relationship with?</label>
-        <span class="hint">Names or types — these go to the top of your AI business list. E.g. "Dave at Warkworth Plumbing — knows our treasurer."</span>
-        <textarea id="existing_biz" name="existing_biz" rows="2"
-          placeholder="Optional — list anyone who's already shown interest or who knows your club well"></textarea>
+        <label for="page_live_target">When would you ideally like to get started?</label>
+        <select id="page_live_target" name="page_live_target">
+          <option value="" disabled selected>Select…</option>
+          <option>As soon as possible</option>
+          <option>Within the next month</option>
+          <option>Before a specific date (we'll discuss on the call)</option>
+          <option>No hard deadline — just exploring</option>
+        </select>
       </div>
 
     </div>
   </div>
 
-  <!-- ══ 3 — YOUR DETAILS ════════════════════════════════════════════ -->
+  <!-- ══ 3 — YOUR DETAILS ══════════════════════════════════════════ -->
   <div class="card">
     <div class="card-head">
       <div class="card-num">3</div>
@@ -418,9 +325,9 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
       </div>
 
       <div class="field">
-        <label for="anything_else">Anything else we should know before the call?</label>
-        <span class="hint">Timing pressures, committee sign-off needed, a specific event coming up — anything useful</span>
-        <textarea id="anything_else" name="anything_else" rows="2" placeholder="Optional…"></textarea>
+        <label for="anything_else">Anything else you'd like us to know before the call?</label>
+        <textarea id="anything_else" name="anything_else" rows="2"
+          placeholder="Optional — timing pressures, committee sign-off needed, anything that might be useful…"></textarea>
       </div>
 
     </div>
@@ -428,12 +335,10 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 
   <!-- SUBMIT -->
   <div class="submit-card">
-    <div class="submit-heading">That's everything — send it through</div>
-    <div class="submit-sub">
-      Your answers go straight into our system before the call.<br>We'll pick up right where this leaves off.
-    </div>
+    <div class="submit-heading">That's everything — thank you</div>
+    <div class="submit-sub">We'll have this in front of us when we talk. See you on the call.</div>
     <button type="submit" class="submit-btn" id="submitBtn">
-      Submit
+      Send it through
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
         <path d="M5 12h14M12 5l7 7-7 7"/>
       </svg>
@@ -443,7 +348,6 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 
 </form>
 
-<!-- SUCCESS -->
 <div class="success" id="successScreen">
   <div class="success-icon">✓</div>
   <div class="success-heading">All done — thank you.</div>
@@ -452,24 +356,19 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
     Need to make changes? Email <a href="mailto:hello@cfh.org.nz">hello@cfh.org.nz</a>
   </div>
 </div>
-
 </div>
 
 <script>
-// Progress tracking
 const required = document.querySelectorAll('input[required], select[required], textarea[required]');
-const radios   = ['membership_type'];
+const radioGroups = ['membership_type'];
 
 function updateProgress() {
   let total = 0, filled = 0;
-  // Non-radio required fields
   required.forEach(f => {
     if (f.type === 'radio') return;
-    total++;
-    if (f.value.trim()) filled++;
+    total++; if (f.value.trim()) filled++;
   });
-  // Radio groups
-  radios.forEach(name => {
+  radioGroups.forEach(name => {
     total++;
     if (document.querySelector(`[name="${name}"]:checked`)) filled++;
   });
@@ -484,13 +383,11 @@ document.getElementById('theForm').addEventListener('input', updateProgress);
 document.getElementById('theForm').addEventListener('change', updateProgress);
 updateProgress();
 
-// Submit
 document.getElementById('theForm').addEventListener('submit', async function(e) {
   e.preventDefault();
   const btn = document.getElementById('submitBtn');
   btn.textContent = 'Sending…';
   btn.disabled = true;
-
   try {
     await fetch('/', {
       method: 'POST',
