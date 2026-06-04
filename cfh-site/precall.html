@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Before Your Call — Community Fundraising Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+<!--
+╔══════════════════════════════════════════════════════════════════════╗
+║  CFH PRE-CALL FORM — v3.0 · June 2026                               ║
+║  cfh.org.nz/precall                                                  ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  DEPLOY                                                              ║
+║  Rename to precall.html → drag onto Netlify project.                 ║
+║  Live at cfh.org.nz/precall immediately.                             ║
+║                                                                      ║
+║  ZAPIER SETUP — "club-precall" form → Google Sheets                  ║
+║  Trigger : Netlify · New Form Submission · form = "club-precall"     ║
+║  Action  : Google Sheets · Create Spreadsheet Row                    ║
+║  Sheet   : CFH_Club_Management → tab "🏉 Clubs — Pipeline"          ║
+║                                                                      ║
+║  FIELD MAPPING (Zapier field name → Sheet column)                    ║
+║  club_name          → C  Club Name                                   ║
+║  contact_name       → D  Contact Name                                ║
+║  contact_role       → E  Role                                        ║
+║  contact_email      → F  Email                                       ║
+║  contact_phone      → G  Phone                                       ║
+║  [auto]             → H  STATUS = "📞 Interview Booked"              ║
+║  [today]            → B  Date Submitted = today's date               ║
+║  sport              → (intake interview tab col F)                   ║
+║  suburb             → (intake interview tab col G)                   ║
+║  region             → (intake interview tab col H)                   ║
+║  total_members      → (intake interview tab col J)                   ║
+║  junior_members     → (intake interview tab col K)                   ║
+║  membership_type    → (intake interview tab col Q)                   ║
+║  website_url        → (intake interview tab col N)                   ║
+║  facebook_url       → (intake interview tab col O)                   ║
+║  campaign_goal_text → (intake interview tab col R)                   ║
+║  diamond_amount     → (intake interview tab col X)                   ║
+║  gold_amount        → (intake interview tab col Y)                   ║
+║  silver_amount      → (intake interview tab col Z)                   ║
+║  page_live_target   → (intake interview tab col AB)                  ║
+║  existing_biz       → (intake interview tab col V)                   ║
+║  anything_else      → S  Notes (pipeline tab)                        ║
+║                                                                      ║
+║  ALSO ADD these static values in Zapier:                             ║
+║  Status     = 📞 Interview Booked                                    ║
+║  Workflow   = Step 3 – Interview Booked                              ║
+║  ToS Accepted = No                                                   ║
+║  Package Sent = No                                                   ║
+╚══════════════════════════════════════════════════════════════════════╝
+-->
+<style>
+:root {
+  --white:   #FFFFFF;
+  --sky:     #F4FAFF;
+  --blue:    #1769AA;
+  --blue2:   #125490;
+  --blue-lt: #EBF4FC;
+  --blue-lt2:#CCE2F4;
+  --amber:   #E08A0E;
+  --amber-lt:#FEF4E0;
+  --green:   #1F9E68;
+  --green-lt:#E4F7EF;
+  --text:    #162035;
+  --text2:   #344258;
+  --muted:   #637087;
+  --border:  rgba(23,105,170,0.12);
+  --border2: rgba(23,105,170,0.22);
+  --radius:  12px;
+  --radius2: 20px;
+  --shadow:  0 2px 20px rgba(23,105,170,0.08);
+  --shadow2: 0 8px 48px rgba(23,105,170,0.13);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.65;color:var(--text);background:var(--sky);min-height:100vh}
+
+/* NAV */
+.nav{background:var(--text);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+.nav-brand{display:flex;align-items:center;gap:10px}
+.nav-mark{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center}
+.nav-mark svg{width:18px;height:18px}
+.nav-wordmark{font-family:'Syne',sans-serif;font-weight:800;font-size:14px;color:var(--white)}
+.nav-wordmark span{color:#4AAEE8}
+.nav-tag{font-size:11px;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:3px 10px}
+
+/* HERO */
+.hero{background:var(--text);padding:52px 24px 68px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 60% at 15% 50%,rgba(23,105,170,.22) 0%,transparent 70%),radial-gradient(ellipse 40% 50% at 85% 30%,rgba(31,158,104,.1) 0%,transparent 70%);pointer-events:none}
+.hero-inner{position:relative;max-width:560px;margin:0 auto}
+.hero-label{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:2px;background:rgba(224,138,14,.1);border:1px solid rgba(224,138,14,.22);padding:4px 12px;border-radius:20px;margin-bottom:18px}
+.hero h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(24px,5vw,38px);color:var(--white);line-height:1.18;margin-bottom:14px}
+.hero h1 em{font-style:normal;color:#A8DCF0}
+.hero-sub{font-size:15px;color:rgba(255,255,255,.62);line-height:1.75;margin-bottom:22px}
+.hero-chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.hero-chip{font-size:12px;color:rgba(255,255,255,.5);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:3px 11px}
+.wave{background:var(--sky);line-height:0}
+.wave svg{display:block;width:100%}
+
+/* PROGRESS */
+.prog-wrap{max-width:600px;margin:28px auto 0;padding:0 24px}
+.prog-track{height:4px;background:var(--border);border-radius:4px;overflow:hidden;margin-bottom:7px}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--green));border-radius:4px;width:0%;transition:width .35s ease}
+.prog-label{font-size:12px;color:var(--muted);display:flex;justify-content:space-between}
+.prog-label .pct{font-weight:600;color:var(--blue)}
+
+/* LAYOUT */
+.form-wrap{max-width:600px;margin:0 auto;padding:24px 24px 80px}
+
+/* SECTION CARDS */
+.card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius2);overflow:hidden;box-shadow:var(--shadow);margin-bottom:20px;opacity:0;transform:translateY(14px);animation:up .38s ease forwards}
+.card:nth-child(1){animation-delay:.06s}
+.card:nth-child(2){animation-delay:.14s}
+.card:nth-child(3){animation-delay:.22s}
+@keyframes up{to{opacity:1;transform:none}}
+.card-head{background:var(--text);padding:18px 26px;display:flex;align-items:center;gap:12px}
+.card-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:var(--white);font-family:'Syne',sans-serif;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.card-title{font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:var(--white)}
+.card-body{padding:26px}
+.card-note{font-size:13px;color:var(--muted);font-style:italic;background:var(--blue-lt);border:1px solid var(--border2);border-radius:var(--radius);padding:11px 15px;margin-bottom:22px;line-height:1.6}
+
+/* FIELDS */
+.field{margin-bottom:18px}
+.field:last-child{margin-bottom:0}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
+.field-row .field{margin-bottom:0}
+label{display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:5px}
+label .req{color:var(--blue);margin-left:1px}
+.hint{font-size:12px;font-weight:400;color:var(--muted);display:block;margin-bottom:5px;font-style:italic}
+input[type=text],input[type=email],input[type=tel],input[type=number],input[type=url],select,textarea{width:100%;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--text);background:var(--white);border:1.5px solid var(--border2);border-radius:var(--radius);padding:11px 14px;transition:border-color .18s,box-shadow .18s;appearance:none;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(23,105,170,.1)}
+input::placeholder,textarea::placeholder{color:rgba(99,112,135,.45)}
+textarea{resize:vertical;min-height:80px;line-height:1.6}
+select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23637087' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:16px;padding-right:36px;cursor:pointer}
+
+/* RADIO / CHECK */
+.check-group{display:flex;flex-direction:column;gap:8px;margin-top:4px}
+.check-item{display:flex;align-items:flex-start;gap:9px;cursor:pointer}
+.check-item input[type=radio],.check-item input[type=checkbox]{width:17px;height:17px;margin-top:3px;flex-shrink:0;accent-color:var(--blue);cursor:pointer}
+.check-label{font-size:14px;color:var(--text2);line-height:1.5}
+
+/* TIER TABLE */
+.tier-table{width:100%;border-collapse:collapse;font-size:14px}
+.tier-table th{background:var(--blue);color:var(--white);font-family:'Syne',sans-serif;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.5px;padding:9px 12px;text-align:left}
+.tier-table td{padding:7px 10px;border-bottom:1px solid var(--border);vertical-align:middle}
+.tier-table tr:last-child td{border-bottom:none}
+.tier-table tr:nth-child(even) td{background:var(--sky)}
+.tier-name{font-weight:600}
+.tier-hint{font-size:12px;color:var(--muted)}
+.tier-table input[type=number]{padding:8px 10px;font-size:14px;width:130px}
+
+/* SUBMIT */
+.submit-card{background:var(--text);border-radius:var(--radius2);padding:32px 28px;text-align:center;box-shadow:var(--shadow2)}
+.submit-heading{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--white);margin-bottom:8px}
+.submit-sub{font-size:14px;color:rgba(255,255,255,.52);margin-bottom:24px;line-height:1.65}
+.submit-btn{display:inline-flex;align-items:center;gap:9px;background:var(--blue);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;padding:14px 36px;border-radius:var(--radius);border:none;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s}
+.submit-btn:hover{background:var(--blue2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(23,105,170,.35)}
+.submit-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.submit-note{font-size:11px;color:rgba(255,255,255,.28);margin-top:14px}
+
+/* SUCCESS */
+.success{display:none;text-align:center;padding:72px 24px;max-width:440px;margin:0 auto}
+.success-icon{width:68px;height:68px;border-radius:50%;background:var(--green-lt);border:2px solid var(--green);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 22px}
+.success-heading{font-family:'Syne',sans-serif;font-weight:800;font-size:26px;color:var(--text);margin-bottom:10px}
+.success-sub{font-size:15px;color:var(--muted);line-height:1.75}
+.success-sub a{color:var(--blue);font-weight:600}
+
+@media(max-width:560px){
+  .field-row{grid-template-columns:1fr}
+  .card-body{padding:20px}
+  .submit-card{padding:24px 18px}
+  .hero{padding:40px 18px 56px}
+  .tier-table input[type=number]{width:100px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand">
+    <div class="nav-mark">
+      <svg viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="8" r="3.5" fill="white"/>
+        <circle cx="6" cy="15" r="2.5" fill="rgba(255,255,255,0.7)"/>
+        <circle cx="18" cy="15" r="2.5" fill="rgba(255,255,255,0.7)"/>
+        <path d="M12 11.5C9.5 11.5 7.5 13 7.5 15H16.5C16.5 13 14.5 11.5 12 11.5Z" fill="rgba(255,255,255,0.45)"/>
+      </svg>
+    </div>
+    <div class="nav-wordmark">Community <span>Fundraising</span> Hub</div>
+  </div>
+  <div class="nav-tag">Before your call</div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">Before your intake call</div>
+    <h1>Tell us about<br><em>your club</em></h1>
+    <p class="hero-sub">
+      A few minutes now means we can spend the call on what actually matters — building your page and getting you live fast.
+    </p>
+    <div class="hero-chips">
+      <span class="hero-chip">⏱ ~5 minutes</span>
+      <span class="hero-chip">📋 3 sections</span>
+      <span class="hero-chip">🔒 Shared only with your CFH contact</span>
+    </div>
+  </div>
+</section>
+<div class="wave">
+  <svg viewBox="0 0 1440 36" preserveAspectRatio="none" height="36">
+    <path d="M0,24 C360,4 1080,36 1440,14 L1440,36 L0,36 Z" fill="#F4FAFF"/>
+  </svg>
+</div>
+
+<!-- PROGRESS -->
+<div class="prog-wrap">
+  <div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
+  <div class="prog-label"><span class="pct" id="progPct">0% complete</span><span>3 sections</span></div>
+</div>
+
+<div class="form-wrap">
+<form name="club-precall" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="theForm">
+  <p style="display:none"><input name="bot-field"></p>
+  <input type="hidden" name="form-name" value="club-precall">
+
+  <!-- ══ 1 — CLUB OVERVIEW ═══════════════════════════════════════════ -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-num">1</div>
+      <div class="card-title">Club overview</div>
+    </div>
+    <div class="card-body">
+      <div class="card-note">The basics about your club — this goes straight into your CFH page.</div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="club_name">Full club name <span class="req">*</span></label>
+          <input type="text" id="club_name" name="club_name" placeholder="e.g. Warkworth Netball Club" required>
+        </div>
+        <div class="field">
+          <label for="sport">Sport <span class="req">*</span></label>
+          <input type="text" id="sport" name="sport" placeholder="e.g. Netball" required>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="suburb">Suburb / town <span class="req">*</span></label>
+          <input type="text" id="suburb" name="suburb" placeholder="e.g. Warkworth" required>
+        </div>
+        <div class="field">
+          <label for="region">Region <span class="req">*</span></label>
+          <input type="text" id="region" name="region" placeholder="e.g. Northland" required>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="total_members">Total members (approx.) <span class="req">*</span></label>
+          <input type="number" id="total_members" name="total_members" placeholder="e.g. 350" min="1" required>
+        </div>
+        <div class="field">
+          <label for="junior_members">Junior members (under 18)</label>
+          <input type="number" id="junior_members" name="junior_members" placeholder="e.g. 280" min="0">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Membership type <span class="req">*</span></label>
+        <div class="check-group">
+          <label class="check-item">
+            <input type="radio" name="membership_type" value="Predominantly juniors (under 18)" required>
+            <span class="check-label">Predominantly juniors (under 18)</span>
+          </label>
+          <label class="check-item">
+            <input type="radio" name="membership_type" value="Predominantly adults (18+)">
+            <span class="check-label">Predominantly adults (18+)</span>
+          </label>
+          <label class="check-item">
+            <input type="radio" name="membership_type" value="Mixed juniors and adults">
+            <span class="check-label">Mixed juniors and adults</span>
+          </label>
+          <label class="check-item">
+            <input type="radio" name="membership_type" value="Family membership model">
+            <span class="check-label">Family membership model</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field" style="margin-top:18px">
+        <label for="website_url">Club website URL <span class="req">*</span></label>
+        <span class="hint">If you don't have a website, put your Facebook URL here</span>
+        <input type="url" id="website_url" name="website_url" placeholder="https://yourclub.co.nz" required>
+      </div>
+
+      <div class="field">
+        <label for="facebook_url">Club Facebook page URL <span class="req">*</span></label>
+        <input type="url" id="facebook_url" name="facebook_url" placeholder="https://facebook.com/yourclub" required>
+      </div>
+
+      <div class="field">
+        <label for="instagram_handle">Instagram handle (if you have one)</label>
+        <input type="text" id="instagram_handle" name="instagram_handle" placeholder="@yourclub">
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ 2 — CAMPAIGN BASICS ══════════════════════════════════════════ -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-num">2</div>
+      <div class="card-title">What you're raising for</div>
+    </div>
+    <div class="card-body">
+      <div class="card-note">
+        We'll lock in the details on the call — just give us your best thinking now. The more specific, the better your page will convert.
+      </div>
+
+      <div class="field">
+        <label for="campaign_goal_text">What will the money fund? <span class="req">*</span></label>
+        <span class="hint">Be specific — "60 new jerseys for junior players before July" builds a better page than "new equipment"</span>
+        <textarea id="campaign_goal_text" name="campaign_goal_text" rows="3"
+          placeholder="e.g. $4,800 to buy 60 new jerseys for our junior grades before the season starts in July" required></textarea>
+      </div>
+
+      <div class="field">
+        <label for="page_live_target">When would you like your page live?</label>
+        <span class="hint">Even a rough timeframe helps us prioritise your build</span>
+        <select id="page_live_target" name="page_live_target">
+          <option value="" disabled selected>Select…</option>
+          <option>As soon as possible</option>
+          <option>Within 2 weeks</option>
+          <option>Within a month</option>
+          <option>Before a specific date (tell us on the call)</option>
+          <option>No hard deadline</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Sponsorship tiers — what feels right?</label>
+        <span class="hint">Don't stress if you're unsure — we'll guide you on the call. Enter rough amounts if you have a sense, leave blank if not.</span>
+        <table class="tier-table">
+          <thead>
+            <tr>
+              <th>Tier</th>
+              <th>Suggested starting point</th>
+              <th>Your rough amount ($)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="tier-name">💎 Diamond</span></td>
+              <td><span class="tier-hint">$1,500+</span></td>
+              <td><input type="number" name="diamond_amount" placeholder="e.g. 1500" min="0"></td>
+            </tr>
+            <tr>
+              <td><span class="tier-name">🥇 Gold</span></td>
+              <td><span class="tier-hint">$500 – $1,499</span></td>
+              <td><input type="number" name="gold_amount" placeholder="e.g. 500" min="0"></td>
+            </tr>
+            <tr>
+              <td><span class="tier-name">🥈 Silver</span></td>
+              <td><span class="tier-hint">$150 – $499</span></td>
+              <td><input type="number" name="silver_amount" placeholder="e.g. 150" min="0"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="field">
+        <label for="existing_biz">Any businesses your club already has a relationship with?</label>
+        <span class="hint">Names or types — these go to the top of your AI business list. E.g. "Dave at Warkworth Plumbing — knows our treasurer."</span>
+        <textarea id="existing_biz" name="existing_biz" rows="2"
+          placeholder="Optional — list anyone who's already shown interest or who knows your club well"></textarea>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ 3 — YOUR DETAILS ════════════════════════════════════════════ -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-num">3</div>
+      <div class="card-title">Your details</div>
+    </div>
+    <div class="card-body">
+
+      <div class="field-row">
+        <div class="field">
+          <label for="contact_name">Your name <span class="req">*</span></label>
+          <input type="text" id="contact_name" name="contact_name" placeholder="First and last name" required>
+        </div>
+        <div class="field">
+          <label for="contact_role">Your role <span class="req">*</span></label>
+          <select id="contact_role" name="contact_role" required>
+            <option value="" disabled selected>Select…</option>
+            <option>Treasurer</option>
+            <option>President / Chairperson</option>
+            <option>Secretary</option>
+            <option>Committee member</option>
+            <option>Club manager</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="contact_email">Email address <span class="req">*</span></label>
+          <input type="email" id="contact_email" name="contact_email" placeholder="you@yourclub.co.nz" required>
+        </div>
+        <div class="field">
+          <label for="contact_phone">Phone / mobile</label>
+          <input type="tel" id="contact_phone" name="contact_phone" placeholder="021 123 4567">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="anything_else">Anything else we should know before the call?</label>
+        <span class="hint">Timing pressures, committee sign-off needed, a specific event coming up — anything useful</span>
+        <textarea id="anything_else" name="anything_else" rows="2" placeholder="Optional…"></textarea>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SUBMIT -->
+  <div class="submit-card">
+    <div class="submit-heading">That's everything — send it through</div>
+    <div class="submit-sub">
+      Your answers go straight into our system before the call.<br>We'll pick up right where this leaves off.
+    </div>
+    <button type="submit" class="submit-btn" id="submitBtn">
+      Submit
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </button>
+    <div class="submit-note">Shared only with your CFH contact · hello@cfh.org.nz</div>
+  </div>
+
+</form>
+
+<!-- SUCCESS -->
+<div class="success" id="successScreen">
+  <div class="success-icon">✓</div>
+  <div class="success-heading">All done — thank you.</div>
+  <div class="success-sub">
+    We've got everything we need. See you on the call.<br><br>
+    Need to make changes? Email <a href="mailto:hello@cfh.org.nz">hello@cfh.org.nz</a>
+  </div>
+</div>
+
+</div>
+
+<script>
+// Progress tracking
+const required = document.querySelectorAll('input[required], select[required], textarea[required]');
+const radios   = ['membership_type'];
+
+function updateProgress() {
+  let total = 0, filled = 0;
+  // Non-radio required fields
+  required.forEach(f => {
+    if (f.type === 'radio') return;
+    total++;
+    if (f.value.trim()) filled++;
+  });
+  // Radio groups
+  radios.forEach(name => {
+    total++;
+    if (document.querySelector(`[name="${name}"]:checked`)) filled++;
+  });
+  const pct = Math.round((filled / total) * 100);
+  document.getElementById('progFill').style.width = pct + '%';
+  const lbl = document.getElementById('progPct');
+  lbl.textContent = pct + '% complete';
+  lbl.style.color = pct === 100 ? 'var(--green)' : 'var(--blue)';
+}
+
+document.getElementById('theForm').addEventListener('input', updateProgress);
+document.getElementById('theForm').addEventListener('change', updateProgress);
+updateProgress();
+
+// Submit
+document.getElementById('theForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+
+  try {
+    await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(this)).toString()
+    });
+    this.style.display = 'none';
+    document.querySelector('.prog-wrap').style.display = 'none';
+    document.getElementById('successScreen').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } catch(err) {
+    btn.textContent = 'Something went wrong — try again';
+    btn.style.background = '#c0392b';
+    btn.disabled = false;
+  }
+});
+</script>
+</body>
+</html>
