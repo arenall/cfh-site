@@ -1127,11 +1127,19 @@ footer{background:var(--text);padding:48px 0 28px;color:rgba(255,255,255,0.65)}
         <form id="club-form" name="club-registrations" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="submitForm(event,'club')">
           <input type="hidden" name="form-name" value="club-registrations">
           <p style="display:none"><label>Don't fill this in if you're human: <input name="bot-field"></label></p>
-          <div class="form-group"><label class="form-label">Club name *</label><input class="form-input" type="text" name="club-name" placeholder="e.g. Westside Netball Club" required></div>
-          <div class="form-group"><label class="form-label">Your name *</label><input class="form-input" type="text" name="name" placeholder="e.g. Sarah Wilson" required></div>
-          <div class="form-group"><label class="form-label">Your role</label><input class="form-input" type="text" name="role" placeholder="e.g. Treasurer, Committee Member"></div>
-          <div class="form-group"><label class="form-label">Email address *</label><input class="form-input" type="email" name="email" placeholder="sarah@westsidenetball.co.nz" required></div>
-          <div class="form-group"><label class="form-label">What would you like to raise for?</label><input class="form-input" type="text" name="fundraising-goal" placeholder="e.g. New uniforms for junior teams"></div>
+          <div class="form-group"><label class="form-label">Club name *</label><input class="form-input" type="text" name="club_name" placeholder="e.g. Warkworth Netball Club" required></div>
+          <div class="form-group"><label class="form-label">Sport *</label><input class="form-input" type="text" name="sport" placeholder="e.g. Netball, Rugby, Football" required></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <div class="form-group"><label class="form-label">Suburb / town *</label><input class="form-input" type="text" name="suburb" placeholder="e.g. Warkworth" required></div>
+            <div class="form-group"><label class="form-label">Region *</label><input class="form-input" type="text" name="region" placeholder="e.g. Northland" required></div>
+          </div>
+          <div class="form-group"><label class="form-label">Your name *</label><input class="form-input" type="text" name="contact_name" placeholder="e.g. Sarah Wilson" required></div>
+          <div class="form-group"><label class="form-label">Your role</label><input class="form-input" type="text" name="contact_role" placeholder="e.g. Treasurer, Committee Member"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <div class="form-group"><label class="form-label">Email address *</label><input class="form-input" type="email" name="contact_email" placeholder="sarah@yourclub.co.nz" required></div>
+            <div class="form-group"><label class="form-label">Phone / mobile</label><input class="form-input" type="tel" name="contact_phone" placeholder="021 123 4567"></div>
+          </div>
+          <div class="form-group"><label class="form-label">What would you like to raise for?</label><input class="form-input" type="text" name="campaign_goal_text" placeholder="e.g. New uniforms for our junior players"></div>
           <button type="submit" class="btn btn-blue wfull">Register our club →</button>
         </form>
         <div class="form-success" id="club-success"><h4>You're on the list! 🎉</h4><p>James will be in touch personally within a couple of days. Keep an eye on your inbox.</p></div>
