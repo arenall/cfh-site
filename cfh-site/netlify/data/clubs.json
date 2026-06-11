@@ -7,7 +7,6 @@
     "programme_start": "2026-05-20",
     "season_goal": 4000,
     "bank_account_name": "Kiwibank · WNC",
-    "week_number": 1,
     "active": true,
     "recipients": [
       "amy.renall@outlook.com"
@@ -24,7 +23,7 @@
   //   programme_start    — date their page went live (YYYY-MM-DD)
   //   season_goal        — optional dollar target; set to null to hide progress bar
   //   bank_account_name  — short display name for their bank account (e.g. "Kiwibank · WRC")
-  //   week_number        — always start at 1; scheduler increments this each Friday
   //   active             — set to false to pause sends without removing the club
   //   recipients         — array of email addresses; can be more than one contact
+  //   NOTE: week_number is auto-calculated from programme_start — do not add it
 ]
