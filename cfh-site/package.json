@@ -4,6 +4,7 @@
   "description": "Community Fundraising Hub",
   "dependencies": {
     "stripe": "^14.0.0",
-    "resend": "^3.0.0"
+    "resend": "^3.0.0",
+    "@netlify/functions": "^2.0.0"
   }
 }
