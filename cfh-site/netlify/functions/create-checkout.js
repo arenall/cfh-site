@@ -34,6 +34,7 @@ exports.handler = async (event) => {
       amountCents,     // amount in cents e.g. 100000 for $1000
       tierName,        // e.g. "Gold Sponsor"
       clubName,        // e.g. "Warkworth Netball Club"
+      clubSlug,        // e.g. "warkworth-netball" — matches clubs.json stripe_club_slug
       coverFee,        // boolean — true if sponsor is covering the 7% fee
       sponsorName,     // sponsor's full name
       businessName,    // sponsor's business name
@@ -112,14 +113,15 @@ exports.handler = async (event) => {
       // Pass metadata through to webhook for receipt generation
       payment_intent_data: {
         metadata: {
-          club_name: clubName,
-          tier_name: tierName,
-          donor_name: sponsorName || '',
-          business_name: businessName || '',
-          donor_email: sponsorEmail || '',
-          cover_fee: coverFee ? 'yes' : 'no',
+          club_name:             clubName,
+          club_slug:             clubSlug || '',   // ← ADDED: links payment to clubs.json entry
+          tier_name:             tierName,
+          donor_name:            sponsorName || '',
+          business_name:         businessName || '',
+          donor_email:           sponsorEmail || '',
+          cover_fee:             coverFee ? 'yes' : 'no',
           original_amount_cents: amountCents.toString(),
-          final_amount_cents: finalAmountCents.toString(),
+          final_amount_cents:    finalAmountCents.toString(),
         },
       },
       // Redirect URLs
