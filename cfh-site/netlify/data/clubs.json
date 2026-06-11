@@ -1,0 +1,30 @@
+[
+  {
+    "club_id": "warkworth-netball",
+    "club_name": "Warkworth Netball Club",
+    "club_page_url": "cfh.org.nz/warkworth-netball",
+    "stripe_club_slug": "warkworth-netball",
+    "programme_start": "2026-05-20",
+    "season_goal": 4000,
+    "bank_account_name": "Kiwibank · WNC",
+    "week_number": 1,
+    "active": true,
+    "recipients": [
+      "amy.renall@outlook.com"
+    ]
+  }
+
+  // ── Add each new club below when their page goes live ──────────────────
+  // Copy the block above, update all fields, set week_number to 1.
+  // Fields:
+  //   club_id            — unique slug, matches their page URL and Stripe clubSlug
+  //   club_name          — full registered name as shown in the email
+  //   club_page_url      — live URL on cfh.org.nz
+  //   stripe_club_slug   — must match the clubSlug sent in create-stripe-session
+  //   programme_start    — date their page went live (YYYY-MM-DD)
+  //   season_goal        — optional dollar target; set to null to hide progress bar
+  //   bank_account_name  — short display name for their bank account (e.g. "Kiwibank · WRC")
+  //   week_number        — always start at 1; scheduler increments this each Friday
+  //   active             — set to false to pause sends without removing the club
+  //   recipients         — array of email addresses; can be more than one contact
+]
