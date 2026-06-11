@@ -6,6 +6,9 @@
 // Loops through all active clubs in clubs.json, fetches their Stripe data,
 // picks the right email template, and sends via Resend.
 //
+// Week number is AUTO-CALCULATED from programme_start — no manual updates needed.
+// clubs.json never needs to be touched after a club is first added.
+//
 // Netlify scheduled function docs:
 // https://docs.netlify.com/functions/scheduled-functions/
 //
@@ -13,11 +16,11 @@
 //   netlify functions:invoke club-insights-scheduler
 // ─────────────────────────────────────────────────────────────────────────────
 
-const { schedule }          = require('@netlify/functions');
-const { Resend }            = require('resend');
-const { getClubStripeData } = require('./get-club-stripe-data');
+const { schedule }           = require('@netlify/functions');
+const { Resend }             = require('resend');
+const { getClubStripeData }  = require('./get-club-stripe-data');
 const { buildInsightsEmail } = require('./build-insights-email');
-const clubs                 = require('../data/clubs.json');
+const clubs                  = require('../data/clubs.json');
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -28,30 +31,35 @@ const handler = schedule('0 3 * * 5', async () => {
 
   console.log(`[CFH Insights] Scheduler fired at ${new Date().toISOString()}`);
 
-  const now       = new Date();
-  const windowEnd = getMostRecentFriday(now);        // this Friday (today)
+  const now         = new Date();
+  const windowEnd   = getMostRecentFriday(now);     // this Friday (today)
   const windowStart = new Date(windowEnd);
-  windowStart.setDate(windowStart.getDate() - 7);    // last Friday
+  windowStart.setDate(windowStart.getDate() - 7);   // last Friday
 
   const activeClubs = clubs.filter(club => club.active);
   console.log(`[CFH Insights] Processing ${activeClubs.length} active club(s)`);
 
   for (const club of activeClubs) {
     try {
-      console.log(`[CFH Insights] Processing: ${club.club_name}`);
+      // ── Auto-calculate week number from programme_start ───────────────────
+      // No manual updates to clubs.json needed — ever.
+      const weekNumber  = getWeekNumber(club.programme_start, windowEnd);
+      const clubRuntime = { ...club, week_number: weekNumber };
+
+      console.log(`[CFH Insights] ${club.club_name} — week ${weekNumber} (auto-calculated from ${club.programme_start})`);
 
       // ── 1. Fetch Stripe data ──────────────────────────────────────────────
-      const stripeData = await getClubStripeData(club, windowStart, windowEnd);
+      const stripeData = await getClubStripeData(clubRuntime, windowStart, windowEnd);
 
       // ── 2. Determine template type ────────────────────────────────────────
-      const templateType = pickTemplate(club, stripeData);
+      const templateType = pickTemplate(weekNumber, stripeData);
       console.log(`[CFH Insights] ${club.club_name} → template: ${templateType}`);
 
       // ── 3. Build email HTML ───────────────────────────────────────────────
-      const html = buildInsightsEmail(club, stripeData, templateType, windowEnd);
+      const html = buildInsightsEmail(clubRuntime, stripeData, templateType, windowEnd);
 
       // ── 4. Build subject line ─────────────────────────────────────────────
-      const subject = buildSubject(club, stripeData, templateType, windowEnd);
+      const subject = buildSubject(clubRuntime, stripeData, templateType, windowEnd);
 
       // ── 5. Send to all nominated contacts ────────────────────────────────
       for (const recipient of club.recipients) {
@@ -69,13 +77,6 @@ const handler = schedule('0 3 * * 5', async () => {
         }
       }
 
-      // ── 6. Increment week number (weeks 1–4 only) ─────────────────────────
-      // Note: at pilot scale we log this — post-pilot this writes back to Supabase.
-      // For now, manually update week_number in clubs.json each Friday after send.
-      if (club.week_number <= 4) {
-        console.log(`[CFH Insights] ${club.club_name} week_number is currently ${club.week_number} — remember to increment in clubs.json after this send.`);
-      }
-
     } catch (err) {
       // Log the error but continue processing other clubs
       console.error(`[CFH Insights] Error processing ${club.club_name}:`, err);
@@ -87,15 +88,30 @@ const handler = schedule('0 3 * * 5', async () => {
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
+// WEEK NUMBER — auto-calculated from programme_start
+// ─────────────────────────────────────────────────────────────────────────────
+
+// Returns which week of the programme this Friday represents.
+// Week 1 = first 7 days after programme_start.
+// Week 5+ = monthly mode (template switches automatically).
+// Example: programme_start = 20 May, windowEnd = 13 June → week 4.
+function getWeekNumber(programmeStart, windowEnd) {
+  const start    = new Date(programmeStart);
+  const msPerWeek = 7 * 24 * 60 * 60 * 1000;
+  const weeksSince = Math.floor((windowEnd - start) / msPerWeek);
+  return Math.max(1, weeksSince + 1); // week 1-indexed, minimum 1
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // TEMPLATE SELECTOR
 // ─────────────────────────────────────────────────────────────────────────────
 
-function pickTemplate(club, stripeData) {
+function pickTemplate(weekNumber, stripeData) {
   // Weeks 1–4: weekly cadence, switch on activity
-  if (club.week_number <= 4) {
+  if (weekNumber <= 4) {
     return stripeData.weekTotal > 0 ? 'active_weekly' : 'quiet_weekly';
   }
-  // Month 2+: always monthly template
+  // Week 5+: always monthly template
   return 'monthly';
 }
 
@@ -104,8 +120,6 @@ function pickTemplate(club, stripeData) {
 // ─────────────────────────────────────────────────────────────────────────────
 
 function buildSubject(club, stripeData, templateType, windowEnd) {
-  const clubShort = club.club_name.replace('Club', '').trim(); // e.g. "Warkworth Netball"
-
   if (templateType === 'active_weekly') {
     return `${stripeData.weekTotalText} raised this week · ${club.club_name} · Week ${club.week_number} update`;
   }
@@ -121,13 +135,13 @@ function buildSubject(club, stripeData, templateType, windowEnd) {
 // UTILITIES
 // ─────────────────────────────────────────────────────────────────────────────
 
-// Returns the most recent Friday (today if today is Friday)
+// Returns the most recent Friday at 03:00 UTC
 function getMostRecentFriday(date) {
-  const d = new Date(date);
-  const day = d.getUTCDay(); // 0 = Sunday, 5 = Friday
+  const d   = new Date(date);
+  const day  = d.getUTCDay(); // 0 = Sunday, 5 = Friday
   const diff = (day + 2) % 7; // days since last Friday
   d.setUTCDate(d.getUTCDate() - diff);
-  d.setUTCHours(3, 0, 0, 0); // 03:00 UTC
+  d.setUTCHours(3, 0, 0, 0);
   return d;
 }
 
