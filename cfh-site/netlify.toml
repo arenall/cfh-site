@@ -1,2 +1,5 @@
 [build]
   functions = "netlify/functions"
+
+[functions."club-insights-scheduler"]
+  schedule = "0 3 * * 5"
