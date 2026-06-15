@@ -2,4 +2,4 @@
   functions = "netlify/functions"
 
 [functions."club-insights-scheduler"]
-  schedule = "58 8 * * *"
+  schedule = "9 9 * * *"
