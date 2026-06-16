@@ -56,36 +56,26 @@ function buildInsightsEmail(clubData, stripeData, templateType, windowEnd) {
     </td>
   </tr>
 
-  <!-- HERO — background image with HTML text overlay -->
+  <!-- HERO -->
   <tr>
-    <td background="${HERO_BG_IMG}" bgcolor="#162035" style="background-image:url('${HERO_BG_IMG}');background-color:#162035;background-size:cover;background-position:center;padding:28px 32px 24px">
-      <!--[if gte mso 9]>
-      <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:620px">
-        <v:fill type="tile" src="${HERO_BG_IMG}" color="#162035"/>
-        <v:textbox inset="0,0,0,0">
-      <![endif]-->
-      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <td bgcolor="#162035" style="background-color:#162035;padding:0;line-height:0;font-size:0">
+      <img src="${HERO_BG_IMG}" width="620" height="120" alt="" style="width:100%;max-width:620px;height:auto;display:block" aria-hidden="true">
+    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#1a2d4a" style="background-color:#1a2d4a;padding:24px 32px 28px">
+      <p style="margin:0 0 8px;font-size:11px;font-weight:bold;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.45);font-family:Arial,sans-serif">Club Insights Summary</p>
+      <p style="margin:0 0 14px;font-size:22px;font-weight:bold;color:#ffffff;line-height:1.2;font-family:Arial,sans-serif">${clubData.club_name}</p>
+      <table border="0" cellpadding="0" cellspacing="0">
         <tr>
-          <td>
-            <p style="margin:0 0 8px;font-size:11px;font-weight:bold;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);font-family:Arial,sans-serif">Club Insights Summary</p>
-            <p style="margin:0 0 14px;font-size:22px;font-weight:bold;color:#ffffff;line-height:1.2;font-family:Arial,sans-serif">${clubData.club_name}</p>
-            <table border="0" cellpadding="0" cellspacing="0">
-              <tr>
-                <td bgcolor="#2a3f5e" style="background-color:#2a3f5e;border-radius:20px;padding:4px 14px">
-                  <span style="font-size:12px;color:rgba(255,255,255,0.8);font-family:Arial,sans-serif">${weekLabel}</span>
-                </td>
-                <td style="padding-left:12px">
-                  <span style="font-size:12px;color:rgba(255,255,255,0.45);font-family:Arial,sans-serif">Week ending ${fridayLabel}</span>
-                </td>
-              </tr>
-            </table>
+          <td bgcolor="#243858" style="background-color:#243858;border-radius:20px;padding:4px 14px">
+            <span style="font-size:12px;color:rgba(255,255,255,0.8);font-family:Arial,sans-serif">${weekLabel}</span>
+          </td>
+          <td style="padding-left:12px">
+            <span style="font-size:12px;color:rgba(255,255,255,0.40);font-family:Arial,sans-serif">Week ending ${fridayLabel}</span>
           </td>
         </tr>
       </table>
-      <!--[if gte mso 9]>
-        </v:textbox>
-      </v:rect>
-      <![endif]-->
     </td>
   </tr>
 
