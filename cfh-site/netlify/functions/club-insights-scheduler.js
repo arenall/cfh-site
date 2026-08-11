@@ -8,6 +8,10 @@
 //
 // Week number is AUTO-CALCULATED from programme_start — no manual updates needed.
 //
+// Weeks 1-4: sends every Friday (active_weekly / quiet_weekly).
+// Week 5+:   only sends on the LAST Friday of the calendar month
+//            (monthly_active / monthly_quiet, based on that month's total).
+//
 // Netlify scheduled function docs:
 // https://docs.netlify.com/functions/scheduled-functions/
 // ─────────────────────────────────────────────────────────────────────────────
@@ -40,12 +44,21 @@ const handler = async () => {
   for (const club of activeClubs) {
     try {
       // ── Auto-calculate week number from programme_start ───────────────────
-      const weekNumber  = getWeekNumber(club.programme_start, windowEnd);
-      const clubRuntime = { ...club, week_number: weekNumber };
+      const weekNumber = getWeekNumber(club.programme_start, windowEnd);
 
+      // ── Weeks 1-4 send every Friday. Week 5+ only sends on the LAST
+      //    Friday of the calendar month — everything else is skipped. ───────
+      if (weekNumber > 4 && !isLastFridayOfMonth(windowEnd)) {
+        console.log(`[CFH Insights] ${club.club_name} — week ${weekNumber}, not the last Friday of the month, skipping`);
+        continue;
+      }
+
+      const clubRuntime = { ...club, week_number: weekNumber };
       console.log(`[CFH Insights] ${club.club_name} — week ${weekNumber} (auto-calculated from ${club.programme_start})`);
 
       // ── 1. Fetch Stripe data ──────────────────────────────────────────────
+      // Returns both the 7-day window total AND the calendar-month total
+      // (monthTotal), so no second Stripe call is needed for the monthly send.
       const stripeData = await getClubStripeData(clubRuntime, windowStart, windowEnd);
 
       // ── 2. Determine template type ────────────────────────────────────────
@@ -95,14 +108,29 @@ function getWeekNumber(programmeStart, windowEnd) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// LAST FRIDAY OF MONTH CHECK
+// True if adding 7 days to this Friday rolls into the next calendar month.
+// ─────────────────────────────────────────────────────────────────────────────
+
+function isLastFridayOfMonth(date) {
+  const d = new Date(date);
+  const nextFriday = new Date(d);
+  nextFriday.setUTCDate(d.getUTCDate() + 7);
+  return nextFriday.getUTCMonth() !== d.getUTCMonth();
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // TEMPLATE SELECTOR
+// weekNumber <= 4  → weekly, active or quiet based on THIS WEEK's total
+// weekNumber > 4   → monthly, active or quiet based on THIS MONTH's total
+// (only reached on the last Friday of the month — see the skip check above)
 // ─────────────────────────────────────────────────────────────────────────────
 
 function pickTemplate(weekNumber, stripeData) {
   if (weekNumber <= 4) {
     return stripeData.weekTotal > 0 ? 'active_weekly' : 'quiet_weekly';
   }
-  return 'monthly';
+  return stripeData.monthTotal > 0 ? 'monthly_active' : 'monthly_quiet';
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -116,8 +144,14 @@ function buildSubject(club, stripeData, templateType, windowEnd) {
   if (templateType === 'quiet_weekly') {
     return `Your Week ${club.week_number} update · ${club.club_name} · Keep the momentum going`;
   }
+
   const monthName = windowEnd.toLocaleDateString('en-NZ', { month: 'long', year: 'numeric' });
-  return `${monthName} summary · ${stripeData.monthTotalText} raised · ${club.club_name}`;
+
+  if (templateType === 'monthly_active') {
+    return `${monthName} summary · ${stripeData.monthTotalText} raised · ${club.club_name}`;
+  }
+  // monthly_quiet
+  return `${monthName} summary · ${club.club_name} · Keep the momentum going`;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
