@@ -17,11 +17,15 @@ function buildInsightsEmail(clubData, stripeData, templateType, windowEnd) {
     day: 'numeric', month: 'long', year: 'numeric'
   });
 
-  const weekLabel = templateType === 'monthly'
-    ? `Month ${Math.ceil(clubData.week_number / 4)} summary`
+  const monthLabel = windowEnd.toLocaleDateString('en-NZ', { month: 'long', year: 'numeric' });
+
+  const isMonthly = templateType === 'monthly_active' || templateType === 'monthly_quiet';
+
+  const weekLabel = isMonthly
+    ? `${monthLabel} summary`
     : `Week ${clubData.week_number} of 4`;
 
-  const preheader = buildPreheader(clubData, stripeData, templateType);
+  const preheader = buildPreheader(clubData, stripeData, templateType, monthLabel);
   const statStrip = buildStatStrip(clubData, stripeData, templateType, programmeStartLabel);
   const body      = buildBody(clubData, stripeData, templateType, fridayLabel, programmeStartLabel);
   const signoff   = buildSignoff(clubData, stripeData, templateType);
@@ -118,9 +122,11 @@ function buildInsightsEmail(clubData, stripeData, templateType, windowEnd) {
 // STAT STRIP
 // ─────────────────────────────────────────────────────────────────────────────
 function buildStatStrip(clubData, stripeData, templateType, programmeStartLabel) {
-  const col1Label = templateType === 'monthly' ? 'Raised this month' : 'Raised this week';
-  const col1Value = templateType === 'monthly' ? stripeData.monthTotalText : stripeData.weekTotalText;
-  const col1Sub   = templateType === 'monthly'
+  const isMonthly = templateType === 'monthly_active' || templateType === 'monthly_quiet';
+
+  const col1Label = isMonthly ? 'Raised this month' : 'Raised this week';
+  const col1Value = isMonthly ? stripeData.monthTotalText : stripeData.weekTotalText;
+  const col1Sub   = isMonthly
     ? `${stripeData.monthDonationCount} donation${stripeData.monthDonationCount !== 1 ? 's' : ''}`
     : `${stripeData.donationCount} donation${stripeData.donationCount !== 1 ? 's' : ''}`;
 
@@ -152,7 +158,8 @@ function buildStatStrip(clubData, stripeData, templateType, programmeStartLabel)
 function buildBody(clubData, stripeData, templateType, fridayLabel, programmeStartLabel) {
   if (templateType === 'active_weekly') return buildActiveWeekly(clubData, stripeData, fridayLabel, programmeStartLabel);
   if (templateType === 'quiet_weekly') return buildQuietWeekly(clubData, stripeData, programmeStartLabel);
-  return buildMonthly(clubData, stripeData, fridayLabel, programmeStartLabel);
+  // monthly_active or monthly_quiet
+  return buildMonthly(clubData, stripeData, templateType, fridayLabel, programmeStartLabel);
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -259,9 +266,10 @@ function buildQuietWeekly(clubData, stripeData, programmeStartLabel) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// MONTHLY
+// MONTHLY (active + quiet share the same layout — only the callout differs,
+// per spec: "If MONTH_TOTAL = 0, include the quiet variant of the callout")
 // ─────────────────────────────────────────────────────────────────────────────
-function buildMonthly(clubData, stripeData, fridayLabel, programmeStartLabel) {
+function buildMonthly(clubData, stripeData, templateType, fridayLabel, programmeStartLabel) {
   return `
     <p style="margin:0 0 14px;font-weight:bold;font-size:15px;color:#162035;font-family:Arial,sans-serif">📊&nbsp; This Month's Summary</p>
     ${buildProgressSection(clubData, stripeData, programmeStartLabel)}
@@ -287,7 +295,7 @@ function buildMonthly(clubData, stripeData, fridayLabel, programmeStartLabel) {
     <table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td style="height:1px;background-color:#EAF3FC;font-size:0;line-height:0">&nbsp;</td></tr></table>
     <div style="height:24px;line-height:24px;font-size:24px">&nbsp;</div>
 
-    ${buildNudge(clubData)}`;
+    ${buildMonthlyNudge(clubData, templateType)}`;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -378,7 +386,7 @@ function buildMiniStats(clubData, stripeData, programmeStartLabel) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// NUDGE
+// NUDGE — weekly (weeks 1-4 only)
 // ─────────────────────────────────────────────────────────────────────────────
 function buildNudge(clubData) {
   const weekNum = clubData.week_number;
@@ -396,6 +404,7 @@ function buildNudge(clubData) {
     title = 'Final week of weekly updates.';
     body  = "After this week, your summaries move to monthly. Now is the time to close out any warm leads — a final personal message to anyone who showed interest but hasn't donated yet. Keep it simple and genuine.";
   } else {
+    // Fallback only — weeks 5+ are routed to buildMonthlyNudge() instead.
     title = 'Keep the momentum going.';
     body  = "Reach out to any businesses who haven't donated yet — a brief personal message goes a long way. Your page is live and ready.";
   }
@@ -414,6 +423,51 @@ function buildNudge(clubData) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// MONTHLY NUDGE — "Keep the Momentum Going" (month 2 onwards)
+// Same box/eyebrow as the weekly nudge; bullet content swaps active ↔ quiet
+// based on whether MONTH_TOTAL was > 0.
+// ─────────────────────────────────────────────────────────────────────────────
+function buildMonthlyNudge(clubData, templateType) {
+  const isQuiet = templateType === 'monthly_quiet';
+
+  const intro = isQuiet
+    ? "A quiet month — that's normal, and it doesn't mean the page has stopped working. Sponsorship often comes in waves. A few things worth trying:"
+    : "Sponsorship often tapers after the first month — but it doesn't have to. Consider:";
+
+  const bullets = isQuiet
+    ? [
+        "Pick two or three businesses from your list you haven't heard back from and give them a call — a quick check-in works better than a second email",
+        "Share your fundraising page on the club's socials again — a lot of people miss the first post",
+        "If it's been a while since you last reached out to anyone new, this is a good time to add a few more names to your list",
+      ]
+    : [
+        "Reaching out to businesses you haven't heard from yet — a personal follow-up goes a long way",
+        "Sharing your fundraising page on your club's social media — word of mouth opens doors",
+        "Letting your existing supporters know the page is still open — some will give again or refer others",
+      ];
+
+  const bulletRows = bullets.map(b => `
+          <tr>
+            <td width="18" valign="top" style="padding-top:1px"><span style="color:#4AAEE8;font-size:13.5px;font-family:Arial,sans-serif">&rarr;</span></td>
+            <td style="font-size:13.5px;color:rgba(255,255,255,0.72);line-height:1.65;font-family:Arial,sans-serif;padding-bottom:8px">${b}</td>
+          </tr>`).join('');
+
+  return `
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+        <td bgcolor="#162035" style="background-color:#162035;border-radius:12px;padding:22px 24px">
+          <p style="margin:0 0 8px;font-size:10px;font-weight:bold;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);font-family:Arial,sans-serif">Keep the momentum going</p>
+          <p style="margin:0 0 14px;font-size:13.5px;color:rgba(255,255,255,0.72);line-height:1.65;font-family:Arial,sans-serif">${intro}</p>
+          <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:16px">
+            ${bulletRows}
+          </table>
+          <a href="${clubData.club_page_url}" style="display:inline-block;background-color:#1769AA;color:#ffffff;font-size:13px;font-weight:bold;padding:10px 18px;border-radius:8px;text-decoration:none;font-family:Arial,sans-serif">View your fundraising page &rarr;</a>
+        </td>
+      </tr>
+    </table>`;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // SIGN-OFF
 // ─────────────────────────────────────────────────────────────────────────────
 function buildSignoff(clubData, stripeData, templateType) {
@@ -422,6 +476,8 @@ function buildSignoff(clubData, stripeData, templateType) {
     text = `${stripeData.donationCount} business${stripeData.donationCount !== 1 ? 'es' : ''} chose to invest in your community this week — that's because of the relationships you're building. Keep going.`;
   } else if (templateType === 'quiet_weekly') {
     text = "We're here if you need anything. Your page is live and ready — every email you send is another chance for a business to invest in your community.";
+  } else if (templateType === 'monthly_active' && stripeData.monthDonationCount > 0) {
+    text = `${stripeData.monthDonationCount} business${stripeData.monthDonationCount !== 1 ? 'es' : ''} chose to invest in your community this month — that's real momentum. Thanks for keeping it up.`;
   } else {
     text = "Thanks for being part of Community Fundraising Hub. We're here if you need anything — reach out any time.";
   }
@@ -438,10 +494,11 @@ function buildSignoff(clubData, stripeData, templateType) {
 // ─────────────────────────────────────────────────────────────────────────────
 // PREHEADER
 // ─────────────────────────────────────────────────────────────────────────────
-function buildPreheader(clubData, stripeData, templateType) {
+function buildPreheader(clubData, stripeData, templateType, monthLabel) {
   if (templateType === 'active_weekly') return `${stripeData.weekTotalText} raised this week · ${stripeData.donationCount} new supporter${stripeData.donationCount !== 1 ? 's' : ''} · ${stripeData.settlementAmountText} settled`;
   if (templateType === 'quiet_weekly') return `Your week ${clubData.week_number} update · ${clubData.club_name} · Keep the momentum going`;
-  return `Monthly summary · ${stripeData.monthTotalText} raised · ${clubData.club_name}`;
+  if (templateType === 'monthly_active') return `${monthLabel} summary · ${stripeData.monthTotalText} raised · ${clubData.club_name}`;
+  return `${monthLabel} summary · ${clubData.club_name} · Keep the momentum going`;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
